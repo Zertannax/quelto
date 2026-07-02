@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Quelto</title>
+  <meta name="description" content="Contactez Quelto pour votre projet de site web. Réponse sous 24h, sans engagement.">
+  <meta name="theme-color" content="#1E40AF">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="contact.css">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+</head>
+<body>
+  <!-- Header (same as index) -->
+  <header class="site-header scrolled" id="siteHeader">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="Quelto — accueil">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+          <rect x="2" y="2" width="28" height="28" rx="8" fill="#1E40AF"/>
+          <path d="M11 20 L16 10 L21 20" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="16" cy="22.5" r="1.4" fill="white"/>
+        </svg>
+        <span class="brand-name">Quelto</span>
+      </a>
+      <nav class="primary-nav" aria-label="Navigation principale">
+        <a href="index.html#offre">Offre</a>
+        <a href="index.html#process">Comment ça marche</a>
+        <a href="realisations.html">Réalisations</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+      </nav>
+      <a href="contact.html" class="btn btn-primary btn-sm header-cta">Demander mon site</a>
+      <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" id="navToggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu" hidden>
+      <a href="index.html#offre">Offre</a>
+      <a href="index.html#process">Comment ça marche</a>
+      <a href="realisations.html">Réalisations</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="btn btn-primary btn-sm">Demander mon site</a>
+    </div>
+  </header>
+
+  <main class="contact-page">
+    <section class="contact-hero">
+      <div class="container">
+        <span class="eyebrow reveal">On en parle ?</span>
+        <h1 class="contact-title reveal" data-reveal-delay="100">Un projet de site ?<br><span class="text-accent">Écrivez-nous.</span></h1>
+        <p class="lead reveal" data-reveal-delay="200">Réponse sous 24h ouvrées, sans engagement. Plus vous nous parlez de votre activité, mieux c'est — mais 3 lignes suffisent pour démarrer.</p>
+      </div>
+    </section>
+
+    <section class="contact-form-section">
+      <div class="container contact-layout">
+        <form class="contact-form reveal" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="name">Nom <span class="req">*</span></label>
+              <input type="text" id="name" name="name" required autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="company">Entreprise / activité</label>
+              <input type="text" id="company" name="company" autocomplete="organization">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="email">Email <span class="req">*</span></label>
+              <input type="email" id="email" name="email" required autocomplete="email">
+            </div>
+            <div class="field">
+              <label for="phone">Téléphone <span class="opt">(optionnel)</span></label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel">
+            </div>
+          </div>
+          <div class="field">
+            <label for="message">Votre message <span class="req">*</span></label>
+            <textarea id="message" name="message" rows="6" required placeholder="Parlez-nous de votre activité, ce que vous faites, ce que vous voulez montrer…"></textarea>
+          </div>
+          <div class="form-foot">
+            <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">Envoyer →</button>
+            <p class="form-note">En envoyant ce formulaire, vous acceptez d'être recontacté·e au sujet de votre projet. Pas de newsletter, pas de spam.</p>
+          </div>
+          <div class="form-success" id="formSuccess" hidden>
+            <strong>Merci !</strong> Votre message est bien parti. On revient vers vous sous 24h ouvrées.
+          </div>
+        </form>
+
+        <aside class="contact-aside reveal" data-reveal-delay="200">
+          <div class="aside-card">
+            <h3>Vous préférez l'écrit ?</h3>
+            <a href="mailto:hello@quelto.fr" class="aside-link">
+              <span class="aside-label">Email</span>
+              <span class="aside-value">hello@quelto.fr</span>
+            </a>
+            <a href="tel:+33600000000" class="aside-link">
+              <span class="aside-label">Téléphone</span>
+              <span class="aside-value">06 00 00 00 00</span>
+            </a>
+          </div>
+          <div class="aside-card aside-card-quiet">
+            <h3>À quoi s'attendre</h3>
+            <ol class="aside-steps">
+              <li><span>1.</span> Vous nous écrivez (ça prend 2 min)</li>
+              <li><span>2.</span> On revient vers vous sous 24h ouvrées</li>
+              <li><span>3.</span> Si ça matche, on planifie un échange de 20-30 min</li>
+            </ol>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+            <rect x="2" y="2" width="28" height="28" rx="8" fill="#1E40AF"/>
+            <path d="M11 20 L16 10 L21 20" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <circle cx="16" cy="22.5" r="1.4" fill="white"/>
+          </svg>
+          <span class="brand-name">Quelto</span>
+        </a>
+        <p class="footer-tag">Sites web pour artisans, commerces et PME locales.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Navigation pied de page">
+        <a href="index.html">Accueil</a>
+        <a href="index.html#offre">Offre</a>
+        <a href="index.html#process">Comment ça marche</a>
+        <a href="realisations.html">Réalisations</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="footer-meta">
+        <p>© <span id="year">2026</span> Quelto. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="contact.js"></script>
+</body>
+</html>

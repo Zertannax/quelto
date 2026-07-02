@@ -1,0 +1,81 @@
+/* =========================================================
+   QUELTO — page Réalisations (état vide honnête)
+   ========================================================= */
+
+.real-page { background: white; }
+.real-hero {
+  padding: var(--s-9) 0 var(--s-7);
+  background: linear-gradient(180deg, var(--c-bg-warm) 0%, var(--c-bg) 100%);
+  text-align: center;
+}
+.real-title {
+  font-family: var(--ff-serif);
+  font-weight: 400;
+  font-size: clamp(36px, 5vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: var(--s-4);
+}
+.real-hero .lead { margin: 0 auto; max-width: 56ch; }
+
+.real-empty { padding: var(--s-7) 0; }
+.empty-card {
+  max-width: 760px;
+  margin: 0 auto;
+  background: var(--c-bg-soft);
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-xl);
+  padding: var(--s-7) var(--s-6);
+  text-align: center;
+}
+.empty-illu {
+  max-width: 320px;
+  margin: 0 auto var(--s-5);
+  opacity: 0.95;
+}
+.empty-card h2 {
+  font-family: var(--ff-serif);
+  font-weight: 400;
+  font-size: clamp(22px, 2.4vw, 28px);
+  line-height: 1.3;
+  margin-bottom: var(--s-4);
+  letter-spacing: -0.02em;
+}
+.empty-card p {
+  color: var(--c-ink-soft);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 50ch;
+  margin: 0 auto var(--s-5);
+}
+.empty-cta { margin-top: var(--s-3); }
+
+.real-promise { background: var(--c-bg-soft); padding: var(--s-9) 0; }
+.promise-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-5);
+}
+@media (min-width: 800px) { .promise-grid { grid-template-columns: repeat(3, 1fr); } }
+.promise-item {
+  background: white;
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-lg);
+  padding: var(--s-6);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.promise-item:hover { transform: translateY(-3px); box-shadow: var(--sh-2); }
+.promise-num {
+  font-family: var(--ff-serif);
+  font-size: 32px;
+  color: var(--c-brand);
+  margin-bottom: var(--s-3);
+  letter-spacing: -0.02em;
+}
+.promise-item h3 {
+  font-family: var(--ff-sans);
+  font-weight: 600;
+  font-size: 19px;
+  margin-bottom: 10px;
+}
+.promise-item p { color: var(--c-ink-soft); font-size: 15px; line-height: 1.6; }
