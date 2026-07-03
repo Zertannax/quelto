@@ -1,9 +1,7 @@
 /* =========================================================
-   QUELTO — Contact form handler
+   QUELTO — Contact form handler (sobre)
    - Validation client (nom/email/message)
-   - Pas de backend ici : fallback mailto + confirmation visuelle
-   - Pour brancher un vrai service (Formspree, Resend, etc.),
-     remplacer handleSubmit() par un fetch().
+   - Fallback mailto + confirmation visuelle
    ========================================================= */
 
 (function () {
@@ -15,7 +13,6 @@
   const successBox = document.getElementById('formSuccess');
   const submitBtn = document.getElementById('submitBtn');
 
-  // ----- Helpers -----
   const isValidEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
 
   const setInvalid = (input, invalid) => {
@@ -23,7 +20,6 @@
     else input.classList.remove('invalid');
   };
 
-  // ----- Submit -----
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -31,7 +27,6 @@
     const email = form.querySelector('#email');
     const message = form.querySelector('#message');
 
-    // Reset state
     [name, email, message].forEach((el) => setInvalid(el, false));
 
     let ok = true;
@@ -40,7 +35,6 @@
     if (message.value.trim().length < 5) { setInvalid(message, true); ok = false; }
     if (!ok) return;
 
-    // Build a clean mailto fallback (works even without backend)
     const subject = encodeURIComponent(`Demande Quelto — ${name.value.trim()}`);
     const body = encodeURIComponent(
       `Nom : ${name.value.trim()}\n` +
@@ -53,20 +47,17 @@
     submitBtn.disabled = true;
     submitBtn.textContent = 'Envoi…';
 
-    // Open the user's mail client
-    window.location.href = `mailto:hello@quelto.fr?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:bonjour@quelto.fr?subject=${subject}&body=${body}`;
 
-    // Show success state after a short delay
     setTimeout(() => {
       successBox.hidden = false;
       form.reset();
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Envoyer →';
+      submitBtn.textContent = 'Envoyer le message';
       successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }, 600);
   });
 
-  // ----- Live clear invalid state on input -----
   form.querySelectorAll('input, textarea').forEach((el) => {
     el.addEventListener('input', () => setInvalid(el, false));
   });
