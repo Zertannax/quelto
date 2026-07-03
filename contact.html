@@ -1,112 +1,157 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Écrire à Quelto</title>
-  <meta name="description" content="Formulaire de contact Quelto. Réponse sous vingt-quatre heures ouvrées, sans engagement.">
-  <meta name="theme-color" content="#F4F1E8">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="contact.css">
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#0A0A0B"/>
+<meta name="description" content="Contactez Quelto pour votre projet de site web. Rémi Chevassut, développeur à Grenoble. Réponse en 24h."/>
+<title>Contact — Quelto</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"/>
+<link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="contact.css"/>
 </head>
 <body>
-  <div class="cursor" id="cursor" aria-hidden="true"></div>
-  <div class="page-grain" aria-hidden="true"></div>
 
-  <header class="site-header scrolled">
-    <div class="container header-inner">
-      <a href="index.html" class="brand" aria-label="Quelto — accueil">
-        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
-          <path d="M4 6 L4 26 M4 6 L20 6 M4 16 L16 16 M20 6 L28 26" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-        <span class="brand-name">Quelto</span>
-      </a>
-      <nav class="primary-nav">
-        <a href="index.html#offre">L'offre</a>
-        <a href="index.html#tarif">Tarif</a>
-        <a href="index.html#qui">Qui</a>
-      </nav>
-      <a href="contact.html" class="nav-cta magnetic">Écrire <span class="arrow">→</span></a>
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+<header class="site-header" id="siteHeader">
+  <a class="logo" href="index.html" aria-label="Quelto — accueil">
+    <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true">
+      <path d="M5 8 L5 25 M5 8 L20 8 M5 16 L17 16 M21 8 L27 25" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+    <span>Quelto</span>
+  </a>
+  <nav class="nav" aria-label="Navigation principale">
+    <a href="index.html#offre">Offre</a>
+    <a href="index.html#process">Process</a>
+    <a href="index.html#tarif">Tarif</a>
+    <a href="index.html#qui">Qui</a>
+    <a href="contact.html" class="nav-cta" aria-current="page">Contact</a>
+  </nav>
+  <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="index.html#offre">Offre</a>
+  <a href="index.html#process">Process</a>
+  <a href="index.html#tarif">Tarif</a>
+  <a href="index.html#qui">Qui</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<main>
+  <section class="contact-page">
+    <div class="contact-page-bg" aria-hidden="true">
+      <div class="hero-glow"></div>
     </div>
-  </header>
 
-  <main>
-    <section class="contact-page">
-      <div class="contact-pattern" aria-hidden="true"></div>
-      <div class="container">
-        <p class="hero-eyebrow"><span class="dot"></span>Contact</p>
-        <h1 class="reveal">Écrire à Quelto.</h1>
-        <p class="lead reveal">Quelques lignes sur votre activité, votre ville, et si vous avez une idée du site que vous voudriez. Je reviens vers vous sous vingt-quatre heures ouvrées, par e-mail ou par téléphone, pour proposer un créneau d'échange d'une demi-heure.</p>
-        <p class="direct reveal">Si vous préférez écrire directement&nbsp;: <a href="mailto:bonjour@quelto.fr">bonjour@quelto.fr</a>. Ou téléphoner&nbsp;: <a href="tel:+336****0000">06 00 00 00 00</a>.</p>
+    <div class="contact-page-inner">
+      <div class="eyebrow">
+        <span class="dot"></span>
+        <span>réponse en 24h, du lundi au samedi</span>
+      </div>
 
-        <form class="contact-form reveal" id="contactForm" novalidate>
-          <div class="form-row">
-            <div class="field">
-              <label for="name">Nom et prénom</label>
-              <input type="text" id="name" name="name" required autocomplete="name">
-            </div>
-            <div class="field">
-              <label for="company">Activité</label>
-              <input type="text" id="company" name="company" autocomplete="organization" placeholder="Boulanger, kiné, fleuriste…">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="field">
-              <label for="email">Adresse e-mail</label>
-              <input type="email" id="email" name="email" required autocomplete="email">
-            </div>
-            <div class="field">
-              <label for="phone">Téléphone (optionnel)</label>
-              <input type="tel" id="phone" name="phone" autocomplete="tel">
-            </div>
-          </div>
+      <h1 class="contact-title">
+        Parlons de votre <em>projet</em>.
+      </h1>
+      <p class="contact-lede">
+        Remplissez le formulaire ou écrivez-moi directement à <a href="mailto:remi@quelto.fr">remi@quelto.fr</a>. Je lis tout, je réponds à tout, je rappelle dans la journée.
+      </p>
+
+      <div class="contact-layout">
+        <form class="contact-form" id="contactForm" novalidate>
           <div class="field">
-            <label for="message">Votre message</label>
-            <textarea id="message" name="message" rows="8" required placeholder="Quelques mots sur votre activité, votre ville, et si vous avez une idée du site que vous voudriez. Si vous n'en avez pas, dites-le, on en discutera."></textarea>
+            <label for="name">Votre nom <span class="req">*</span></label>
+            <input type="text" id="name" name="name" required autocomplete="name"/>
           </div>
-          <p class="form-foot">
-            <button type="submit" class="btn-primary magnetic" id="submitBtn">Envoyer →</button>
-            <span class="form-note">En envoyant ce formulaire, vous acceptez que je vous réponde au sujet de votre demande. Pas de newsletter, pas de relance commerciale.</span>
-          </p>
-          <div class="form-success" id="formSuccess" hidden>
-            Merci. Votre message est bien parti. Je reviens vers vous sous vingt-quatre heures ouvrées.
+
+          <div class="field">
+            <label for="company">Nom du commerce ou de l'entreprise</label>
+            <input type="text" id="company" name="company" autocomplete="organization"/>
           </div>
+
+          <div class="field">
+            <label for="email">Adresse mail <span class="req">*</span></label>
+            <input type="email" id="email" name="email" required autocomplete="email"/>
+          </div>
+
+          <div class="field">
+            <label for="phone">Téléphone (optionnel)</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel"/>
+          </div>
+
+          <div class="field">
+            <label for="project">Qu'est-ce que vous voulez faire ? <span class="req">*</span></label>
+            <select id="project" name="project" required>
+              <option value="">Choisir...</option>
+              <option value="onepage">Un site one-page (à partir de 500 €)</option>
+              <option value="vitrine">Un site vitrine 5 pages (à partir de 900 €)</option>
+              <option value="surmesure">Un truc sur-mesure (devis)</option>
+              <option value="maintenance">Une maintenance / un site existant</option>
+              <option value="autre">Autre chose</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="message">Dites-m'en un peu plus <span class="req">*</span></label>
+            <textarea id="message" name="message" rows="5" required placeholder="Votre activité, vos horaires, ce que vous voulez montrer, ce que vous n'aimez pas dans votre site actuel (si vous en avez un)..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-large" data-magnetic>
+            <span>Envoyer</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="form-note">Aucune donnée stockée. Le mail s'ouvre dans votre client.</p>
         </form>
 
-        <p class="back-link"><a href="index.html">← Retour à l'accueil</a></p>
-      </div>
-    </section>
-  </main>
+        <aside class="contact-side">
+          <div class="side-block">
+            <div class="kicker kicker-light"><span>A</span> Délai</div>
+            <p>Premier retour sous 24h. Mise en ligne en 2-3 jours pour un one-page, 5-7 jours pour une vitrine.</p>
+          </div>
+          <div class="side-block">
+            <div class="kicker kicker-light"><span>B</span> Localisation</div>
+            <p>Basé à Grenoble, je travaille avec des clients partout en France. Échanges en visio ou par téléphone.</p>
+          </div>
+          <div class="side-block">
+            <div class="kicker kicker-light"><span>C</span> Engagement</div>
+            <p>Aucun. Pas de devis surprise, pas d'engagement de durée, pas de frais cachés au 13e mois.</p>
+          </div>
 
-  <section class="carte-visite">
-    <div class="container carte-inner">
-      <div class="carte-col">
-        <p class="carte-label">Quelto</p>
-        <p class="carte-value">Sites web pour artisans et commerçants, à partir de 500&nbsp;€.</p>
-      </div>
-      <div class="carte-col">
-        <p class="carte-label">Rémi Chevassut</p>
-        <p class="carte-value">Développeur à Grenoble · auto-entrepreneur · juillet 2026</p>
-      </div>
-      <div class="carte-col">
-        <p class="carte-label">Contact direct</p>
-        <p class="carte-value"><a href="mailto:bonjour@quelto.fr">bonjour@quelto.fr</a><br><a href="tel:+336****0000">06 00 00 00 00</a></p>
+          <a href="mailto:remi@quelto.fr" class="side-mail">
+            <span class="side-mail-l">Mail direct</span>
+            <span class="side-mail-v">remi@quelto.fr →</span>
+          </a>
+        </aside>
       </div>
     </div>
   </section>
+</main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p class="footer-mark">Quelto</p>
-      <p>© <span id="year">2026</span> · SIRET sur demande</p>
+<footer class="site-foot">
+  <div class="foot-inner">
+    <div class="foot-l">
+      <span>© 2026 Quelto</span>
+      <span class="dot-sep">·</span>
+      <span>Rémi Chevassut</span>
+      <span class="dot-sep">·</span>
+      <span>auto-entrepreneur</span>
+      <span class="dot-sep">·</span>
+      <span>Grenoble</span>
     </div>
-  </footer>
+    <div class="foot-r">
+      <a href="index.html">← Retour à l'accueil</a>
+    </div>
+  </div>
+</footer>
 
-  <script src="script.js"></script>
-  <script src="contact.js"></script>
+<script src="script.js"></script>
+<script src="contact.js"></script>
 </body>
 </html>

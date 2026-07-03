@@ -1,57 +1,72 @@
-(function () {
-  'use strict';
+/* Quelto — contact form
+   No backend. We compose a mailto: link with all fields.
+   To swap to a real backend later (Formspree, Resend, etc.),
+   replace the body of `submit` handler — keep the same field names. */
 
+(() => {
+  'use strict';
   const form = document.getElementById('contactForm');
   if (!form) return;
 
-  const successBox = document.getElementById('formSuccess');
-  const submitBtn = document.getElementById('submitBtn');
+  const RECIPIENT = 'remi@quelto.fr';
+  const SUBJECT_PREFIX = '[Quelto] Nouveau projet';
 
-  const isValidEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
-
-  const setInvalid = (input, invalid) => {
-    if (invalid) input.classList.add('invalid');
-    else input.classList.remove('invalid');
+  const showNote = (msg, ok = true) => {
+    let n = form.querySelector('.form-status');
+    if (!n) {
+      n = document.createElement('p');
+      n.className = 'form-status';
+      n.style.cssText = 'font-family:JetBrains Mono,monospace;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;';
+      form.appendChild(n);
+    }
+    n.textContent = msg;
+    n.style.color = ok ? 'var(--orange)' : '#F87171';
   };
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', e => {
     e.preventDefault();
 
-    const name = form.querySelector('#name');
-    const email = form.querySelector('#email');
-    const message = form.querySelector('#message');
+    const data = new FormData(form);
+    const name    = (data.get('name')    || '').toString().trim();
+    const company = (data.get('company') || '').toString().trim();
+    const email   = (data.get('email')   || '').toString().trim();
+    const phone   = (data.get('phone')   || '').toString().trim();
+    const project = (data.get('project') || '').toString().trim();
+    const message = (data.get('message') || '').toString().trim();
 
-    [name, email, message].forEach((el) => setInvalid(el, false));
+    // Basic validation
+    if (!name || !email || !project || !message) {
+      showNote('Champs requis manquants.', false);
+      return;
+    }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      showNote('Adresse mail invalide.', false);
+      return;
+    }
 
-    let ok = true;
-    if (!name.value.trim()) { setInvalid(name, true); ok = false; }
-    if (!isValidEmail(email.value)) { setInvalid(email, true); ok = false; }
-    if (message.value.trim().length < 5) { setInvalid(message, true); ok = false; }
-    if (!ok) return;
+    const projectLabels = {
+      onepage: 'One-page (à partir de 500 €)',
+      vitrine: 'Vitrine 5 pages (à partir de 900 €)',
+      surmesure: 'Sur-mesure (devis)',
+      maintenance: 'Maintenance / site existant',
+      autre: 'Autre chose'
+    };
 
-    const subject = encodeURIComponent(`Demande Quelto — ${name.value.trim()}`);
-    const body = encodeURIComponent(
-      `Nom : ${name.value.trim()}\n` +
-      `${form.querySelector('#company').value ? 'Activité : ' + form.querySelector('#company').value.trim() + '\n' : ''}` +
-      `${form.querySelector('#phone').value ? 'Tél : ' + form.querySelector('#phone').value.trim() + '\n' : ''}` +
-      `Email : ${email.value.trim()}\n\n` +
-      `${message.value.trim()}`
-    );
+    const body =
+`Nom : ${name}
+${company ? 'Commerce/Entreprise : ' + company + '\n' : ''}Email : ${email}
+${phone ? 'Téléphone : ' + phone + '\n' : ''}Projet : ${projectLabels[project] || project}
 
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Envoi…';
-    window.location.href = `mailto:bonjour@quelto.fr?subject=${subject}&body=${body}`;
+Message :
+${message}
 
-    setTimeout(() => {
-      successBox.hidden = false;
-      form.reset();
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Envoyer →';
-      successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 600);
-  });
+---
+Envoyé depuis le formulaire quelto.fr (pas de données stockées).`;
 
-  form.querySelectorAll('input, textarea').forEach((el) => {
-    el.addEventListener('input', () => setInvalid(el, false));
+    const subject = `${SUBJECT_PREFIX} — ${projectLabels[project] || '?'} — ${name}`;
+    const mailto = `mailto:${RECIPIENT}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    showNote('Ouverture de votre client mail…', true);
+    window.location.href = mailto;
   });
 })();

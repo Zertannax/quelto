@@ -1,337 +1,397 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quelto — sites web pour artisans et commerçants, à partir de 500&nbsp;€</title>
-  <meta name="description" content="Rémi, développeur à Grenoble. Je fais des sites web pour des artisans, des commerçants et des professions libérales. Un échange d'une demi-heure, un site livré en deux ou trois jours, à partir de 500 euros.">
-  <meta name="theme-color" content="#F4F1E8">
-  <meta property="og:title" content="Quelto — sites web pour artisans et commerçants, à partir de 500 €">
-  <meta property="og:description" content="Rémi, développeur à Grenoble. Sites web livrés en 2-3 jours, à partir de 500 €.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <script type="importmap">
-  {
-    "imports": {
-      "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
-    }
-  }
-  </script>
-  <script>
-    window._queltoEnableThree = (function () {
-      try {
-        const c = document.createElement('canvas');
-        const hasWebGL = !!(window.WebGLRenderingContext && (c.getContext('webgl') || c.getContext('experimental-webgl')));
-        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        return hasWebGL && !reducedMotion;
-      } catch (e) { return false; }
-    })();
-  </script>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#0A0A0B"/>
+<meta name="description" content="Sites web pour artisans, commerçants et PME locales. Un site livré en 2-3 jours, à partir de 500 €."/>
+<title>Quelto — sites web pour artisans et PME locales</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"/>
+<link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div class="cursor" id="cursor" aria-hidden="true"></div>
-  <div class="page-grain" aria-hidden="true"></div>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="index.html" class="brand" aria-label="Quelto — accueil">
-        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
-          <path d="M4 6 L4 26 M4 6 L20 6 M4 16 L16 16 M20 6 L28 26" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-        <span class="brand-name">Quelto</span>
-      </a>
-      <nav class="primary-nav">
-        <a href="#offre">L'offre</a>
-        <a href="#tarif">Tarif</a>
-        <a href="#qui">Qui</a>
-      </nav>
-      <a href="contact.html" class="nav-cta magnetic">Écrire <span class="arrow">→</span></a>
+<!-- Custom cursor (desktop only) -->
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+<!-- Header -->
+<header class="site-header" id="siteHeader">
+  <a class="logo" href="#top" aria-label="Quelto — accueil">
+    <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true">
+      <path d="M5 8 L5 25 M5 8 L20 8 M5 16 L17 16 M21 8 L27 25" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+    <span>Quelto</span>
+  </a>
+  <nav class="nav" aria-label="Navigation principale">
+    <a href="#offre">Offre</a>
+    <a href="#process">Process</a>
+    <a href="#tarif">Tarif</a>
+    <a href="#qui">Qui</a>
+    <a href="contact.html" class="nav-cta">Contact</a>
+  </nav>
+  <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- Mobile menu -->
+<nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="#offre">Offre</a>
+  <a href="#process">Process</a>
+  <a href="#tarif">Tarif</a>
+  <a href="#qui">Qui</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-grid"></div>
+      <div class="hero-glow"></div>
     </div>
-  </header>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-pattern" aria-hidden="true"></div>
-      <div class="container hero-inner">
-        <div class="hero-content">
-          <p class="hero-eyebrow"><span class="dot"></span>Grenoble · depuis 2026</p>
-          <h1>Je fais des sites web pour des artisans et des commerçants.</h1>
-          <p class="hero-sub">Rémi, développeur. Un échange d'une demi-heure, un site livré en deux ou trois jours, à partir de 500&nbsp;euros. Le site vous appartient, vous pouvez le faire héberger où vous voulez.</p>
-          <p class="hero-cta">
-            <a href="contact.html" class="btn-primary magnetic">Écrire pour démarrer</a>
-            <a href="#offre" class="link-quiet">Voir comment ça se passe</a>
-          </p>
-          <dl class="hero-stats">
-            <div>
-              <dt class="counter" data-count="500">0</dt>
-              <dd>tarif fixe, annoncé après l'échange</dd>
-            </div>
-            <div>
-              <dt><span class="counter" data-count="2">0</span>–<span class="counter" data-count="3">0</span></dt>
-              <dd>jours de la première discussion à la mise en ligne</dd>
-            </div>
-            <div>
-              <dt><span class="counter" data-count="30">0</span> min</dt>
-              <dd>d'échange, en visio ou téléphone</dd>
-            </div>
-          </dl>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="eyebrow">
+          <span class="dot"></span>
+          <span>Grenoble · auto-entrepreneur · juillet 2026</span>
         </div>
-        <div class="hero-3d">
-          <div class="hero-3d-label">
-            <span class="mono">fig. 01</span>
-            <span>l'horloge du projet</span>
+
+        <h1 class="hero-title">
+          Sites web pour artisans, commerçants, <em>PME locales</em>.
+        </h1>
+
+        <p class="hero-sub">
+          Un site qui ressemble à votre commerce, livré en 2 à 3 jours, à partir de 500&nbsp;€.
+          Pas de template copié, pas de jargon. Vous me dites ce que vous faites, je traduis en page web.
+        </p>
+
+        <div class="hero-actions">
+          <a href="contact.html" class="btn btn-primary" data-magnetic>
+            <span>Demander mon site</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#offre" class="btn btn-ghost" data-magnetic>
+            <span>Voir l'offre</span>
+          </a>
+        </div>
+
+        <div class="hero-meta">
+          <div><span class="num" data-count="500">0</span><span class="unit">€</span><span class="lbl">à partir de</span></div>
+          <div><span class="num" data-count="2" data-suffix="–3">0</span><span class="unit">j</span><span class="lbl">délai</span></div>
+          <div><span class="num" data-count="30">0</span><span class="unit">min</span><span class="lbl">premier échange</span></div>
+        </div>
+      </div>
+
+      <div class="hero-card" id="heroCard">
+        <div class="card-window">
+          <div class="card-bar">
+            <span class="dot-r"></span>
+            <span class="dot-y"></span>
+            <span class="dot-g"></span>
+            <span class="card-url">votre-commerce.fr</span>
           </div>
-          <canvas id="heroCanvas" aria-hidden="true"></canvas>
-          <svg class="hero-fallback" viewBox="0 0 200 200" aria-hidden="true">
-            <g stroke="#1A1A1A" stroke-width="1.4" stroke-linecap="round" fill="none">
-              <circle cx="100" cy="100" r="78"/>
-              <line x1="100" y1="100" x2="100" y2="50"/>
-              <line x1="100" y1="100" x2="138" y2="100"/>
-              <circle cx="100" cy="100" r="3" fill="#1A1A1A" stroke="none"/>
-              <line x1="100" y1="22" x2="100" y2="30"/>
-              <line x1="100" y1="170" x2="100" y2="178"/>
-              <line x1="22" y1="100" x2="30" y2="100"/>
-              <line x1="170" y1="100" x2="178" y2="100"/>
-            </g>
-            <text x="100" y="195" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#3D5A4A">2–3 jours</text>
-          </svg>
+          <div class="card-body">
+            <div class="card-row">
+              <div class="card-thumb"></div>
+              <div class="card-lines">
+                <div class="l w80"></div>
+                <div class="l w60"></div>
+                <div class="l w40"></div>
+              </div>
+            </div>
+            <div class="card-grid-mini">
+              <span></span><span></span><span></span>
+              <span></span><span></span><span></span>
+            </div>
+            <div class="card-cta">Demander un devis</div>
+          </div>
         </div>
+        <div class="card-glow" aria-hidden="true"></div>
       </div>
-    </section>
+    </div>
 
-    <!-- OFFRE -->
-    <section class="offre" id="offre">
-      <div class="container offre-inner">
-        <div class="offre-text">
-          <p class="section-num">01</p>
-          <h2 class="reveal">Ce que je fais.</h2>
-          <p class="reveal">Un site de quatre ou cinq pages. Accueil, à propos, prestations ou catalogue, contact, et selon votre activité une page réalisations, des horaires, une carte. On en parle pendant l'échange, je m'adapte à votre métier plutôt que l'inverse.</p>
-          <p class="reveal">Les textes, c'est moi qui les écris, à partir de ce que vous me dites. Pas de questionnaire à remplir en ligne, pas de blocs vides à compléter vous-même. Je vous soumets les textes pour validation avant la mise en ligne.</p>
-          <p class="reveal">Le design est sobre, lisible, adapté à votre secteur. Le site s'affiche correctement sur téléphone et sur ordinateur, et il est rapide à charger. Vous pouvez le relier à votre nom de domaine et le montrer à vos clients sans rougir.</p>
-          <p class="reveal">Le formulaire de contact envoie les demandes sur votre adresse e-mail. Pas de CRM, pas de pixel Meta, pas de tunnel de conversion. Vous répondez directement, comme à un appel téléphonique.</p>
-          <p class="reveal">Une fois le site en ligne, vous avez quinze jours pour me demander des ajustements de textes ou d'images. Au-delà, je peux continuer à intervenir, mais sur devis, au temps passé. Le site vous appartient, vous pouvez le faire héberger où vous voulez et changer de prestataire si ça ne se passe pas bien avec moi.</p>
+    <a href="#offre" class="scroll-hint" aria-label="Défiler vers le contenu">
+      <span>SCROLL</span>
+      <svg width="10" height="22" viewBox="0 0 10 22" aria-hidden="true"><path d="M5 0v18M1 14l4 4 4-4" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </section>
+
+
+  <!-- SECTION 1 — OFFRE / BENTO -->
+  <section class="section" id="offre">
+    <header class="section-head">
+      <div class="kicker"><span>01</span> Ce qu'on fait</div>
+      <h2>Quatre formats, du plus simple au plus complet.</h2>
+    </header>
+
+    <div class="bento">
+      <article class="bento-card span-2 tall">
+        <div class="bento-tag">Le plus demandé</div>
+        <h3>One-page</h3>
+        <p>Une page unique, claire, qui présente votre activité, votre adresse, vos horaires, un formulaire de contact. Idéal pour les commerces de proximité : boulangeries, salons, garagistes, artisans.</p>
+        <div class="bento-visu visu-onepage" aria-hidden="true">
+          <div class="mini-window">
+            <div class="mini-bar"></div>
+            <div class="mini-h"></div>
+            <div class="mini-p"></div>
+            <div class="mini-cta"></div>
+          </div>
         </div>
-        <aside class="offre-aside reveal" data-reveal-delay="200">
-          <svg viewBox="0 0 240 320" class="offre-illu" aria-hidden="true">
-            <!-- Browser window -->
-            <rect x="20" y="20" width="200" height="280" rx="6" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.5"/>
-            <line x1="20" y1="48" x2="220" y2="48" stroke="#1A1A1A" stroke-width="1.5"/>
-            <circle cx="34" cy="34" r="3" fill="none" stroke="#1A1A1A" stroke-width="1.2"/>
-            <circle cx="46" cy="34" r="3" fill="none" stroke="#1A1A1A" stroke-width="1.2"/>
-            <circle cx="58" cy="34" r="3" fill="none" stroke="#1A1A1A" stroke-width="1.2"/>
-            <rect x="76" y="28" width="120" height="12" rx="2" fill="none" stroke="#1A1A1A" stroke-width="1"/>
-            <!-- Hero text in browser -->
-            <rect x="36" y="68" width="100" height="10" rx="1" fill="#1A1A1A"/>
-            <rect x="36" y="86" width="160" height="4" rx="1" fill="#3D5A4A" opacity="0.5"/>
-            <rect x="36" y="94" width="140" height="4" rx="1" fill="#3D5A4A" opacity="0.5"/>
-            <rect x="36" y="108" width="60" height="20" rx="10" fill="#1A1A1A"/>
-            <!-- Image area -->
-            <rect x="36" y="146" width="168" height="80" rx="4" fill="#F4F1E8" stroke="#3D5A4A" stroke-width="1" stroke-dasharray="3 2"/>
-            <circle cx="120" cy="186" r="14" fill="none" stroke="#3D5A4A" stroke-width="1.2"/>
-            <path d="M120 178 L120 186 L126 190" stroke="#3D5A4A" stroke-width="1.2" stroke-linecap="round" fill="none"/>
-            <!-- Bottom nav -->
-            <line x1="36" y1="244" x2="204" y2="244" stroke="#1A1A1A" stroke-width="0.8"/>
-            <rect x="36" y="256" width="40" height="6" rx="1" fill="#1A1A1A" opacity="0.6"/>
-            <rect x="84" y="256" width="40" height="6" rx="1" fill="#1A1A1A" opacity="0.3"/>
-            <rect x="132" y="256" width="40" height="6" rx="1" fill="#1A1A1A" opacity="0.3"/>
-            <rect x="180" y="256" width="24" height="6" rx="1" fill="#1A1A1A" opacity="0.3"/>
-            <!-- Caption -->
-          </svg>
-          <p class="offre-caption mono">fig. 02 — votre site,</p>
-          <p class="offre-caption">tel qu'il apparaîtra à vos clients</p>
-        </aside>
-      </div>
-    </section>
-
-    <!-- COMMENT -->
-    <section class="comment" id="comment">
-      <div class="container">
-        <p class="section-num">02</p>
-        <h2 class="reveal">Comment ça se passe.</h2>
-
-        <ol class="steps">
-          <li class="step reveal" data-reveal-delay="0">
-            <span class="step-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32" fill="none"><rect x="4" y="6" width="24" height="20" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 12 L28 12 M9 18 L17 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </span>
-            <span class="step-num">01</span>
-            <div>
-              <h3>Vous m'écrivez.</h3>
-              <p>Quelques lignes sur votre activité, votre ville, et si vous avez une idée du site que vous voudriez. Je reviens vers vous sous vingt-quatre heures ouvrées, par e-mail ou par téléphone.</p>
-            </div>
-          </li>
-          <li class="step reveal" data-reveal-delay="100">
-            <span class="step-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="1.5"/><path d="M16 9 L16 16 L21 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </span>
-            <span class="step-num">02</span>
-            <div>
-              <h3>On échange une demi-heure.</h3>
-              <p>En visio ou au téléphone, selon votre préférence. Vous me parlez de votre métier, de vos clients, de ce qui est important pour vous. Je pose des questions, je prends des notes, je ne vous vends rien.</p>
-            </div>
-          </li>
-          <li class="step reveal" data-reveal-delay="200">
-            <span class="step-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32" fill="none"><path d="M6 24 L6 8 L16 4 L26 8 L26 24 Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M11 14 L21 14 M11 18 L21 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </span>
-            <span class="step-num">03</span>
-            <div>
-              <h3>Je construis le site.</h3>
-              <p>Vous recevez une première version en ligne, à une adresse provisoire, deux ou trois jours après l'échange. Vous la montrez à deux ou trois personnes de votre entourage si vous le souhaitez.</p>
-            </div>
-          </li>
-          <li class="step reveal" data-reveal-delay="300">
-            <span class="step-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32" fill="none"><path d="M6 16 L13 23 L26 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <span class="step-num">04</span>
-            <div>
-              <h3>Vous validez, j'ajuste.</h3>
-              <p>Vous me dites ce qui doit changer. J'ajuste. Quand le site vous convient, je le mets en ligne à votre nom de domaine et je vous transmets les accès.</p>
-            </div>
-          </li>
-        </ol>
-
-        <p class="comment-cta">
-          <a href="contact.html" class="link-quiet magnetic">Démarrer →</a>
-        </p>
-      </div>
-    </section>
-
-    <!-- TARIF -->
-    <section class="tarif" id="tarif">
-      <div class="container">
-        <p class="section-num">03</p>
-        <h2 class="reveal">Combien.</h2>
-
-        <p class="tarif-figure reveal" data-reveal-delay="100">
-          <span class="tarif-amount">500</span>
-          <span class="tarif-currency">€</span>
-        </p>
-        <p class="tarif-caption reveal" data-reveal-delay="200">à partir de, tarif fixe communiqué à la fin de l'échange</p>
-
-        <p class="reveal" data-reveal-delay="300">Le tarif exact dépend du nombre de pages et du temps de rédaction. Pas de grille tarifaire à sept colonnes, pas de formule premium qui double la note.</p>
-        <p class="reveal" data-reveal-delay="300">L'hébergement et le nom de domaine la première année sont inclus si vous le souhaitez, ainsi qu'une série d'ajustements après livraison. Au-delà de la première année, l'hébergement tourne autour de quatre-vingts euros par an pour un site de cette taille, à payer directement à l'hébergeur.</p>
-      </div>
-    </section>
-
-    <!-- CE QUE JE NE FAIS PAS -->
-    <section class="ne-fait-pas">
-      <div class="container">
-        <p class="section-num">04</p>
-        <h2 class="reveal">Ce que je ne fais pas.</h2>
-        <p class="reveal">Pour que vous sachiez tout de suite si je suis le bon interlocuteur. Je ne fais pas de référencement payant, je ne vends pas de prestations Google Ads ni de campagnes Meta. Je ne fais pas de site e-commerce, pas de panier, pas de paiement en ligne, pas de gestion de stock. Je ne fais pas d'application mobile. Je ne fais pas de refonte mensuelle, le site est livré une fois et vous le gardez tel quel tant qu'il vous convient.</p>
-        <p class="reveal">Si vous avez besoin d'un site marchand, d'un agenda avec réservation en ligne, d'une plate-forme sur mesure ou d'une application native, il faut un autre type de prestataire, et je vous le dirai franchement à la fin de l'échange si c'est votre cas.</p>
-      </div>
-    </section>
-
-    <!-- QUI -->
-    <section class="qui" id="qui">
-      <div class="container qui-inner">
-        <div class="qui-text">
-          <p class="section-num">05</p>
-          <h2 class="reveal">Qui.</h2>
-          <p class="reveal">Rémi Chevassut, développeur de formation, installé à Grenoble. J'ai passé dix ans à construire des outils web pour des éditeurs de logiciels et des entreprises de service, en équipe, dans des contextes où la qualité du code et la fiabilité avaient de l'importance.</p>
-          <p class="reveal">J'ai créé Quelto parce que les artisans et les petits commerçants de mon entourage me demandaient régulièrement de l'aide pour leur site, et qu'aucune des offres qu'on leur proposait ne me semblait adaptée. Le site vitrine à vingt-neuf euros par mois était laid, le site sur mesure à huit mille euros était cher, et tout le monde voulait vendre un contrat de maintenance.</p>
-          <p class="reveal">Ici, le site vous appartient, vous pouvez le faire héberger où vous voulez, et je ne vends pas de contrat de maintenance. Si vous avez besoin d'aide six mois plus tard, on en discute, mais vous n'êtes pas engagé. Je préfère avoir peu de clients contents que beaucoup de clients verrouillés.</p>
-          <p class="signature reveal">Rémi Chevassut, développeur à Grenoble. Auto-entrepreneur, juillet 2026. SIRET sur demande.</p>
+        <div class="bento-foot">
+          <span class="price">500 €</span>
+          <span class="meta">2-3 jours</span>
         </div>
-        <aside class="qui-aside reveal" data-reveal-delay="200">
-          <svg viewBox="0 0 240 280" class="qui-illu" aria-hidden="true">
-            <!-- Desk silhouette -->
-            <rect x="20" y="180" width="200" height="6" fill="#1A1A1A"/>
-            <rect x="20" y="186" width="200" height="3" fill="#1A1A1A" opacity="0.4"/>
-            <!-- Monitor -->
-            <rect x="80" y="80" width="120" height="80" rx="2" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.5"/>
-            <line x1="80" y1="92" x2="200" y2="92" stroke="#1A1A1A" stroke-width="0.8"/>
-            <circle cx="86" cy="86" r="1.5" fill="#1A1A1A"/>
-            <circle cx="92" cy="86" r="1.5" fill="#1A1A1A"/>
-            <!-- Code lines on monitor -->
-            <line x1="90" y1="100" x2="120" y2="100" stroke="#3D5A4A" stroke-width="1.5"/>
-            <line x1="125" y1="100" x2="155" y2="100" stroke="#1A1A1A" stroke-width="1.5"/>
-            <line x1="95" y1="108" x2="140" y2="108" stroke="#1A1A1A" stroke-width="1.5"/>
-            <line x1="95" y1="116" x2="170" y2="116" stroke="#1A1A1A" stroke-width="1.5"/>
-            <line x1="100" y1="124" x2="135" y2="124" stroke="#1A1A1A" stroke-width="1.5"/>
-            <line x1="100" y1="132" x2="160" y2="132" stroke="#1A1A1A" stroke-width="1.5"/>
-            <line x1="95" y1="140" x2="125" y2="140" stroke="#3D5A4A" stroke-width="1.5"/>
-            <line x1="130" y1="140" x2="170" y2="140" stroke="#1A1A1A" stroke-width="1.5"/>
-            <!-- Stand -->
-            <rect x="135" y="160" width="10" height="14" fill="#1A1A1A"/>
-            <rect x="120" y="174" width="40" height="6" rx="1" fill="#1A1A1A"/>
-            <!-- Coffee cup -->
-            <path d="M40 170 L40 184 Q40 188 44 188 L52 188 Q56 188 56 184 L56 170 Z" fill="none" stroke="#1A1A1A" stroke-width="1.2"/>
-            <path d="M56 174 Q60 174 60 178 Q60 182 56 182" fill="none" stroke="#1A1A1A" stroke-width="1.2"/>
-            <path d="M44 166 Q44 162 46 162 M48 164 Q48 160 50 160 M52 166 Q52 162 54 162" stroke="#1A1A1A" stroke-width="1" fill="none" stroke-linecap="round"/>
-            <!-- Plant -->
-            <rect x="180" y="170" width="20" height="16" fill="none" stroke="#1A1A1A" stroke-width="1.2"/>
-            <path d="M190 170 L190 158 M190 162 Q186 158 184 162 M190 164 Q194 160 196 164" stroke="#3D5A4A" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-            <!-- Person silhouette behind monitor (just head/shoulders) -->
-            <circle cx="140" cy="48" r="14" fill="none" stroke="#1A1A1A" stroke-width="1.5"/>
-            <path d="M120 80 Q120 64 140 64 Q160 64 160 80" fill="none" stroke="#1A1A1A" stroke-width="1.5"/>
-            <!-- Light from monitor on face -->
-            <path d="M130 48 Q140 44 150 48" fill="none" stroke="#3D5A4A" stroke-width="1" opacity="0.6"/>
-          </svg>
-          <p class="qui-caption mono">fig. 03 — l'auteur,</p>
-          <p class="qui-caption">à son bureau, à Grenoble</p>
-        </aside>
-      </div>
-    </section>
+      </article>
 
-    <!-- CONTACT FINAL -->
-    <section class="contact">
-      <div class="contact-pattern" aria-hidden="true"></div>
-      <div class="container">
-        <h2 class="reveal">Si vous voulez qu'on en parle.</h2>
-        <p class="reveal">Écrire prend deux minutes, je réponds vite, et l'échange d'une demi-heure n'engage à rien.</p>
-        <p class="reveal">
-          <a href="contact.html" class="btn-primary btn-primary-light magnetic">Écrire à Quelto</a>
-        </p>
-        <p class="contact-direct reveal">
-          Ou directement&nbsp;: <a href="mailto:bonjour@quelto.fr">bonjour@quelto.fr</a> · <a href="tel:+336****0000">06 00 00 00 00</a>
-        </p>
-      </div>
-    </section>
-  </main>
+      <article class="bento-card">
+        <div class="bento-tag">Vitrine</div>
+        <h3>5 pages</h3>
+        <p>Accueil, services, à propos, galerie, contact. Pour ceux qui ont plus à dire : un métier, plusieurs prestations, une équipe.</p>
+        <div class="bento-foot">
+          <span class="price">900 €</span>
+          <span class="meta">5-7 jours</span>
+        </div>
+      </article>
 
-  <!-- CARTE DE VISITE -->
-  <section class="carte-visite">
-    <div class="container carte-inner">
-      <div class="carte-col">
-        <p class="carte-label">Quelto</p>
-        <p class="carte-value">Sites web pour artisans et commerçants, à partir de 500&nbsp;€.</p>
+      <article class="bento-card">
+        <div class="bento-tag">Sur-mesure</div>
+        <h3>Sur devis</h3>
+        <p>Réservation en ligne, catalogue, blog, espace privé, intégration paiement. On en parle, je chiffre.</p>
+        <div class="bento-foot">
+          <span class="price">—</span>
+          <span class="meta">devis en 48h</span>
+        </div>
+      </article>
+
+      <article class="bento-card">
+        <div class="bento-tag">Maintenance</div>
+        <h3>Entretien</h3>
+        <p>Hébergement, sauvegardes, mises à jour, modifications de texte. 30 €/mois, résiliable à tout moment.</p>
+        <div class="bento-foot">
+          <span class="price">30 €<small>/mois</small></span>
+          <span class="meta">sans engagement</span>
+        </div>
+      </article>
+
+      <article class="bento-card span-2 wide">
+        <div class="bento-visu visu-stack" aria-hidden="true">
+          <div class="ring r1"></div>
+          <div class="ring r2"></div>
+          <div class="ring r3"></div>
+        </div>
+        <div class="bento-tag">Stack</div>
+        <h3>HTML, CSS, JavaScript, c'est tout.</h3>
+        <p>Pas de framework lourd, pas de build, pas de WordPress. Le site se charge en moins d'une seconde, il s'affiche correctement partout, et il vivra 10 ans sans mise à jour imposée.</p>
+      </article>
+    </div>
+  </section>
+
+
+  <!-- SECTION 2 — PROCESS / BENTO -->
+  <section class="section section-alt" id="process">
+    <header class="section-head">
+      <div class="kicker"><span>02</span> Comment</div>
+      <h2>Quatre étapes, pas de surprise.</h2>
+    </header>
+
+    <div class="process-grid">
+      <article class="step">
+        <div class="step-num">01</div>
+        <h3>Échange</h3>
+        <p>30 minutes au téléphone ou en visio. Vous me parlez de votre activité, je vous écoute. Pas de questionnaire à rallonge, pas de formulaire en ligne.</p>
+        <div class="step-ico" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="22" height="22"><path d="M6 8h20v14H12l-6 6V8z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/></svg>
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="step-num">02</div>
+        <h3>Maquette</h3>
+        <p>Je vous envoie une première version en 24 h. Vous me dites ce qui change, on ajuste, on fige. Toujours sur un seul écran, jamais d'aller-retour infini.</p>
+        <div class="step-ico" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="22" height="22"><rect x="5" y="6" width="22" height="16" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M5 10h22" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="8" r=".7" fill="currentColor"/><circle cx="12" cy="8" r=".7" fill="currentColor"/></svg>
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="step-num">03</div>
+        <h3>Production</h3>
+        <p>Je code le site. Vous ne voyez rien, vous n'avez rien à faire. C'est pour ça que vous payez. À la fin, je vous envoie le lien et un PDF d'explication pour le modifier vous-même si vous voulez.</p>
+        <div class="step-ico" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="22" height="22"><path d="M14 6l-9 9 9 9 9-9-9-9z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/><path d="M11 12l-2 2 2 2" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="step-num">04</div>
+        <h3>Livraison</h3>
+        <p>Mise en ligne sur votre nom de domaine, configuration des mails si besoin, indexation Google, fiche Google Maps. Vous êtes visible, je reste joignable.</p>
+        <div class="step-ico" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="22" height="22"><path d="M6 16l8 8 12-14" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </article>
+    </div>
+  </section>
+
+
+  <!-- SECTION 3 — TARIF SIGNATURE -->
+  <section class="section section-tarif" id="tarif">
+    <div class="tarif-inner">
+      <div class="kicker"><span>03</span> Tarif</div>
+      <div class="big-price">
+        <span class="big-num" data-count="500">0</span>
+        <span class="big-cur">€</span>
       </div>
-      <div class="carte-col">
-        <p class="carte-label">Rémi Chevassut</p>
-        <p class="carte-value">Développeur à Grenoble · auto-entrepreneur · juillet 2026</p>
+      <p class="tarif-line">
+        <span>à partir de</span>
+        <span class="sep">·</span>
+        <span>livré en 2-3 jours</span>
+        <span class="sep">·</span>
+        <span>vous gardez la propriété du code</span>
+      </p>
+      <p class="tarif-detail">
+        Pas d'abonnement caché, pas de commission, pas de "frais de mise en service" au 13e mois. Le prix annoncé est le prix payé. Si vous voulez un truc plus gros, je chiffre, vous dites oui ou non.
+      </p>
+      <a href="contact.html" class="btn btn-primary btn-large" data-magnetic>
+        <span>Demander un devis précis</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- SECTION 4 — NE FAIT PAS -->
+  <section class="section section-red" id="ne-fait-pas">
+    <header class="section-head">
+      <div class="kicker kicker-red"><span>04</span> Ce qu'on ne fait pas</div>
+      <h2>Autant le dire maintenant.</h2>
+    </header>
+
+    <div class="no-grid">
+      <article class="no-card">
+        <h3>Pas de SEO magique</h3>
+        <p>Je vous indexe proprement sur Google, je structure vos pages comme il faut, mais je ne vous promets pas la première position sur "plombier Grenoble" en 30 jours. Personne ne peut promettre ça.</p>
+      </article>
+      <article class="no-card">
+        <h3>Pas de publicité payante</h3>
+        <p>Je ne gère pas vos campagnes Google Ads ni Meta Ads. Si vous voulez de la pub, passez par une agence ou un freelance spécialisé — ce n'est pas mon métier.</p>
+      </article>
+      <article class="no-card">
+        <h3>Pas de WordPress, pas de Wix</h3>
+        <p>Je ne fais pas de site sur des plateformes tierces. Vous êtes dépendant d'eux, ils peuvent changer leurs prix ou fermer. Votre site doit vous appartenir vraiment.</p>
+      </article>
+    </div>
+  </section>
+
+
+  <!-- SECTION 5 — QUI -->
+  <section class="section" id="qui">
+    <div class="qui-grid">
+      <div class="qui-visu" aria-hidden="true">
+        <svg viewBox="0 0 240 240" width="100%" height="100%">
+          <!-- desk -->
+          <line x1="20" y1="200" x2="220" y2="200" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <!-- monitor -->
+          <rect x="60" y="80" width="120" height="80" rx="2" stroke="currentColor" stroke-width="1.4" fill="none"/>
+          <line x1="100" y1="200" x2="140" y2="200" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="120" y1="160" x2="120" y2="200" stroke="currentColor" stroke-width="1.4"/>
+          <!-- screen content -->
+          <line x1="70" y1="92" x2="110" y2="92" stroke="#F97316" stroke-width="2" stroke-linecap="round"/>
+          <line x1="70" y1="100" x2="160" y2="100" stroke="currentColor" stroke-width=".7"/>
+          <line x1="70" y1="106" x2="140" y2="106" stroke="currentColor" stroke-width=".7"/>
+          <line x1="70" y1="112" x2="155" y2="112" stroke="currentColor" stroke-width=".7"/>
+          <line x1="70" y1="124" x2="50" y2="124" stroke="#F97316" stroke-width="3" stroke-linecap="round"/>
+          <line x1="70" y1="132" x2="100" y2="132" stroke="currentColor" stroke-width=".7"/>
+          <line x1="70" y1="138" x2="90" y2="138" stroke="currentColor" stroke-width=".7"/>
+          <!-- person silhouette -->
+          <circle cx="195" cy="120" r="14" stroke="currentColor" stroke-width="1.4" fill="none"/>
+          <path d="M175 200 C 175 170, 215 170, 215 200" stroke="currentColor" stroke-width="1.4" fill="none"/>
+          <!-- coffee -->
+          <path d="M30 195 v-15 h12 v15 z" stroke="currentColor" stroke-width="1" fill="none"/>
+          <path d="M42 188 q4 3 0 6" stroke="currentColor" stroke-width="1" fill="none"/>
+        </svg>
       </div>
-      <div class="carte-col">
-        <p class="carte-label">Contact direct</p>
-        <p class="carte-value"><a href="mailto:bonjour@quelto.fr">bonjour@quelto.fr</a><br><a href="tel:+336****0000">06 00 00 00 00</a></p>
+      <div class="qui-text">
+        <div class="kicker"><span>05</span> Qui</div>
+        <h2>Rémi Chevassut, développeur à Grenoble.</h2>
+        <p>
+          J'ai 26 ans, je code depuis que j'ai 14 ans. Avant Quelto, j'ai fait du développement web en agence et en freelance pour des restaurants, des cabinets d'avocats, des start-ups, des associations. J'ai vu trop de gens — artisans, commerçants, professions libérales — payer 2 000, 3 000, 5 000 € pour un site qu'ils n'arrivaient pas à modifier eux-mêmes, hébergé sur une plateforme qui fermait deux ans plus tard.
+        </p>
+        <p>
+          J'ai créé Quelto pour faire l'inverse : un site qui vous appartient vraiment, que vous pouvez ouvrir dans 10 ans sans rien demander à personne. Un site qui ressemble à votre commerce, pas à un template qu'on a vu 800 fois.
+        </p>
+        <p>
+          Je suis auto-entrepreneur, SIRET sur demande, basé à Grenoble, je travaille seul et j'assume tout ce que je livre. Si vous voulez me parler de votre projet, vous tombez sur moi directement, pas sur un commercial.
+        </p>
+        <div class="signature">
+          <span class="sig-name">Rémi Chevassut</span>
+          <span class="sig-loc">Grenoble · juillet 2026</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p class="footer-mark">Quelto</p>
-      <p>© <span id="year">2026</span> · SIRET sur demande</p>
-    </div>
-  </footer>
 
-  <script src="script.js"></script>
-  <script>
-    if (window._queltoEnableThree) {
-      const s = document.createElement('script');
-      s.type = 'module';
-      s.src = 'three-hero.js';
-      document.body.appendChild(s);
-    } else {
-      document.documentElement.dataset.threeDisabled = 'true';
-    }
-  </script>
+  <!-- SECTION 6 — CONTACT -->
+  <section class="section section-contact" id="contact">
+    <div class="contact-inner">
+      <div class="kicker kicker-light"><span>06</span> Contact</div>
+      <h2 class="big-title">On en parle&nbsp;?</h2>
+      <p class="contact-sub">
+        Un mail, un appel, un visio — comme vous voulez. 30 minutes, je vous dis ce que je ferais, vous décidez.
+      </p>
+
+      <div class="contact-grid">
+        <a href="mailto:remi@quelto.fr" class="contact-card" data-magnetic>
+          <div class="cc-label">Mail</div>
+          <div class="cc-value">remi@quelto.fr</div>
+          <div class="cc-foot">réponse en 24h</div>
+        </a>
+        <div class="contact-card">
+          <div class="cc-label">Délai</div>
+          <div class="cc-value">2-3 jours</div>
+          <div class="cc-foot">pour un one-page</div>
+        </div>
+        <div class="contact-card">
+          <div class="cc-label">Localisation</div>
+          <div class="cc-value">Grenoble</div>
+          <div class="cc-foot">interventions France</div>
+        </div>
+      </div>
+
+      <a href="contact.html" class="btn btn-primary btn-large" data-magnetic>
+        <span>Demander mon site</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="foot-inner">
+    <div class="foot-l">
+      <span>© 2026 Quelto</span>
+      <span class="dot-sep">·</span>
+      <span>Rémi Chevassut</span>
+      <span class="dot-sep">·</span>
+      <span>auto-entrepreneur</span>
+      <span class="dot-sep">·</span>
+      <span>Grenoble</span>
+    </div>
+    <div class="foot-r">
+      <a href="mailto:remi@quelto.fr">remi@quelto.fr</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>

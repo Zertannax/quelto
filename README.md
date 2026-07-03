@@ -1,42 +1,40 @@
 # Quelto
 
-Sites web pour artisans, commerces et PME locales. Échange d'une demi-heure, livraison en 2 à 3 jours ouvrés, à partir de 500 €.
-
-## Pages
-
-- **`index.html`** — page d'accueil : pour qui, l'offre, déroulement, tarif, ce qu'on ne fait pas, qui je suis
-- **`contact.html`** — formulaire de contact (validation client + fallback `mailto:`)
+Site vitrine pour Quelto — sites web pour artisans, commerçants et PME locales.
+Développé par Rémi Chevassut, auto-entrepreneur, Grenoble.
 
 ## Stack
 
-HTML / CSS / JS statique pur. Zéro build, zéro dépendance backend, zéro framework.
+- HTML / CSS / JavaScript statique
+- Aucune dépendance npm, aucun build
+- Hébergé sur GitHub Pages
 
-- Typo : [Fraunces](https://fonts.google.com/specimen/Fraunces) (titres, serif variable) + [Inter](https://fonts.google.com/specimen/Inter) (corps)
-- Couleurs : fond crème `#FAFAF7`, encre `#1A1A1A`, gris `#6B6963`
-- Formulaire : validation native HTML5 + `mailto:` fallback (remplacer `contact.js` → `handleSubmit` pour brancher un service tiers type Formspree / Resend)
+## Structure
 
-## Lancer en local
+- `index.html` — page principale
+- `contact.html` — page de contact
+- `style.css` — styles globaux
+- `contact.css` — styles spécifiques au formulaire
+- `script.js` — interactions (cursor, parallax, reveal, count-up, magnetic, menu)
+- `contact.js` — formulaire (mailto fallback)
+- `assets/` — favicon
+
+## Développement local
+
+Le site est statique. Pour le tester :
 
 ```bash
 python3 -m http.server 8000
-# ou
-npx serve .
 ```
 
-Puis ouvrir `http://localhost:8000`.
+Puis ouvrir http://localhost:8000.
 
-## Déployer
+## Déploiement
 
-Site 100 % statique — compatible avec n'importe quel hébergeur :
+Push sur la branche `main` → GitHub Pages redéploie automatiquement.
 
-- **Netlify** : drag & drop du dossier sur [app.netlify.com/drop](https://app.netlify.com/drop)
-- **Vercel** : `vercel deploy` à la racine
-- **GitHub Pages** : déjà activé sur la branche `main`, root `/`
-- **Hostinger / OVH / tout mutualisé** : upload via FTP
-
-## Notes éditoriales
-
-- **Pas de faux témoignages / portfolio** : les sections "réalisations" et "avis clients" n'apparaissent pas tant qu'il n'y a rien de concret à montrer
-- **Pas de promesses chiffrées** sur le retour sur investissement, le SEO, le nombre de clients gagnés. Un site rend visible, il ne transforme pas une activité à lui seul
-- **Pas de formule "premium / standard / light"** : une seule offre, un seul tarif annoncé clairement après l'échange
-- **Ton direct** : pas de bullshit marketing, pas de superlatifs, pas de "votre succès est notre priorité"
+```bash
+git add .
+git commit -m "..."
+git push
+```
