@@ -1,6 +1,5 @@
 /* ============================================================
-   QUELTO — V11 — interactions
-   - Custom cursor
+   QUELTO — V12 — interactions
    - Hero card 3D parallax (requestAnimationFrame, vrai lerp)
    - Magnetic CTAs (subtle)
    - Reveal on scroll
@@ -16,44 +15,6 @@
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
-
-  // --- Custom cursor ------------------------------------------
-  if (!isTouch) {
-    const cursor = $('#cursor');
-    const ring = $('#cursorRing');
-    if (cursor && ring) {
-      let mx = innerWidth / 2, my = innerHeight / 2;
-      let cx = mx, cy = my, rx = mx, ry = my;
-
-      addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, { passive: true });
-
-      const tick = () => {
-        cx += (mx - cx) * 0.35;
-        cy += (my - cy) * 0.35;
-        rx += (mx - rx) * 0.15;
-        ry += (my - ry) * 0.15;
-        cursor.style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
-        ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
-        requestAnimationFrame(tick);
-      };
-      tick();
-
-      // hover state for links & buttons
-      const linkSel = 'a, button, [data-magnetic], .bento-card, .step, .no-card, .contact-card';
-      document.body.addEventListener('mouseover', e => {
-        if (e.target.closest(linkSel)) {
-          cursor.classList.add('is-link');
-          ring.classList.add('is-link');
-        }
-      });
-      document.body.addEventListener('mouseout', e => {
-        if (e.target.closest(linkSel)) {
-          cursor.classList.remove('is-link');
-          ring.classList.remove('is-link');
-        }
-      });
-    }
-  }
 
   // --- Header shrink on scroll --------------------------------
   const header = $('#siteHeader');

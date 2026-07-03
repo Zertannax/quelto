@@ -11,19 +11,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"/>
 <link rel="stylesheet" href="style.css"/>
-<script type="importmap">
-{
-  "imports": {
-    "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
-  }
-}
-</script>
 </head>
 <body>
-
-<!-- Custom cursor (desktop only) -->
-<div class="cursor" id="cursor" aria-hidden="true"></div>
-<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 
 <!-- Header -->
 <header class="site-header" id="siteHeader">
@@ -63,25 +52,6 @@
     <div class="hero-bg" aria-hidden="true">
       <div class="hero-grid"></div>
       <div class="hero-glow"></div>
-    </div>
-
-    <div class="hero-canvas-wrap" id="heroCanvasWrap" aria-hidden="true">
-      <canvas id="heroCanvas"></canvas>
-      <div class="hero-canvas-fallback" id="heroCanvasFallback">
-        <!-- SVG fallback for no-WebGL users -->
-        <svg viewBox="0 0 600 600" width="100%" height="100%">
-          <g fill="none" stroke="currentColor" stroke-width="1" opacity=".6">
-            <ellipse cx="300" cy="300" rx="220" ry="80" transform="rotate(0 300 300)"/>
-            <ellipse cx="300" cy="300" rx="220" ry="80" transform="rotate(60 300 300)"/>
-            <ellipse cx="300" cy="300" rx="220" ry="80" transform="rotate(120 300 300)"/>
-          </g>
-          <g fill="#F97316">
-            <circle cx="300" cy="220" r="4"/>
-            <circle cx="490" cy="350" r="3"/>
-            <circle cx="110" cy="350" r="3"/>
-          </g>
-        </svg>
-      </div>
     </div>
 
     <div class="hero-inner">
@@ -282,9 +252,6 @@
 
   <!-- SECTION 3 — TARIF SIGNATURE -->
   <section class="section section-tarif" id="tarif">
-    <div class="tarif-canvas-wrap" id="tarifCanvasWrap" aria-hidden="true">
-      <canvas id="tarifCanvas"></canvas>
-    </div>
     <div class="tarif-inner">
       <div class="kicker"><span>03</span> Tarif</div>
       <div class="big-price">
@@ -557,8 +524,5 @@
 </footer>
 
 <script src="script.js"></script>
-<script src="constellation.js"></script>
-<script type="module" src="three-hero.js"></script>
-<script type="module" src="three-tarif.js"></script>
 </body>
 </html>
