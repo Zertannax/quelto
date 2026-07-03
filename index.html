@@ -11,6 +11,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"/>
 <link rel="stylesheet" href="style.css"/>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -238,8 +245,8 @@
         <div class="step-num">01</div>
         <h3>Échange</h3>
         <p>30 minutes au téléphone ou en visio. Vous me parlez de votre activité, je vous écoute. Pas de questionnaire à rallonge, pas de formulaire en ligne.</p>
-        <div class="step-ico" aria-hidden="true">
-          <svg viewBox="0 0 32 32" width="22" height="22"><path d="M6 8h20v14H12l-6 6V8z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/></svg>
+        <div class="step-illu">
+          <img src="assets/illustrations/chatting_2yvo.svg" alt="Deux personnes qui échangent" loading="lazy" width="120" height="120"/>
         </div>
       </article>
 
@@ -247,8 +254,8 @@
         <div class="step-num">02</div>
         <h3>Maquette</h3>
         <p>Je vous envoie une première version en 24 h. Vous me dites ce qui change, on ajuste, on fige. Toujours sur un seul écran, jamais d'aller-retour infini.</p>
-        <div class="step-ico" aria-hidden="true">
-          <svg viewBox="0 0 32 32" width="22" height="22"><rect x="5" y="6" width="22" height="16" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M5 10h22" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="8" r=".7" fill="currentColor"/><circle cx="12" cy="8" r=".7" fill="currentColor"/></svg>
+        <div class="step-illu">
+          <img src="assets/illustrations/wireframing_nxyi.svg" alt="Wireframe sur écran" loading="lazy" width="120" height="120"/>
         </div>
       </article>
 
@@ -256,8 +263,8 @@
         <div class="step-num">03</div>
         <h3>Production</h3>
         <p>Je code le site. Vous ne voyez rien, vous n'avez rien à faire. C'est pour ça que vous payez. À la fin, je vous envoie le lien et un PDF d'explication pour le modifier vous-même si vous voulez.</p>
-        <div class="step-ico" aria-hidden="true">
-          <svg viewBox="0 0 32 32" width="22" height="22"><path d="M14 6l-9 9 9 9 9-9-9-9z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/><path d="M11 12l-2 2 2 2" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="step-illu">
+          <img src="assets/illustrations/coding_6mjf.svg" alt="Code sur écran" loading="lazy" width="120" height="120"/>
         </div>
       </article>
 
@@ -265,8 +272,8 @@
         <div class="step-num">04</div>
         <h3>Livraison</h3>
         <p>Mise en ligne sur votre nom de domaine, configuration des mails si besoin, indexation Google, fiche Google Maps. Vous êtes visible, je reste joignable.</p>
-        <div class="step-ico" aria-hidden="true">
-          <svg viewBox="0 0 32 32" width="22" height="22"><path d="M6 16l8 8 12-14" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="step-illu">
+          <img src="assets/illustrations/maker_launch_crhe.svg" alt="Lancement du projet" loading="lazy" width="120" height="120"/>
         </div>
       </article>
     </div>
@@ -551,7 +558,7 @@
 
 <script src="script.js"></script>
 <script src="constellation.js"></script>
-<script src="three-hero.js"></script>
-<script src="three-tarif.js"></script>
+<script type="module" src="three-hero.js"></script>
+<script type="module" src="three-tarif.js"></script>
 </body>
 </html>

@@ -67,6 +67,17 @@
   border-radius: var(--r-lg);
   padding: 36px;
 }
+.contact-illu {
+  width: 100%;
+  max-width: 220px;
+  margin: 0 auto 8px;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0.85;
+}
+.contact-illu img {
+  width: 100%; height: auto;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.4));
+}
 .field {
   display: flex; flex-direction: column; gap: 8px;
 }

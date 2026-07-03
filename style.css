@@ -668,13 +668,22 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: non
   color: var(--text-2);
   line-height: 1.55;
 }
-.step-ico {
-  margin-top: 24px;
-  width: 44px; height: 44px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
+.step-illu {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 140px;
   display: flex; align-items: center; justify-content: center;
-  color: var(--orange);
+  position: relative;
+  opacity: 0.85;
+  transition: opacity .3s var(--ease), transform .3s var(--ease);
+}
+.step-illu img {
+  width: 100%; height: auto;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.4));
+}
+.step:hover .step-illu {
+  opacity: 1;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 900px) {

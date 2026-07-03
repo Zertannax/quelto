@@ -101,6 +101,22 @@
   box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6);
   transform: perspective(800px) rotateY(-4deg) rotateX(2deg);
 }
+.project-illu {
+  width: 100%;
+  max-width: 420px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.project-illu img {
+  width: 100%;
+  height: auto;
+  max-width: 420px;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.5));
+  transition: transform .5s var(--ease);
+}
+.project-detail:hover .project-illu img {
+  transform: translateY(-6px) scale(1.02);
+}
 .pvf-bar {
   display: flex; align-items: center; gap: 4px;
   padding: 8px 10px;
@@ -242,14 +258,8 @@
     <article class="project-detail">
       <div class="project-visu">
         <span class="project-visu-label">fig. 01</span>
-        <div class="project-visu-frame">
-          <div class="pvf-bar"><span></span><span></span><span></span></div>
-          <div class="pvf-body">
-            <div class="pvf-h"></div>
-            <div class="pvf-p"></div>
-            <div class="pvf-grid"><span></span><span></span><span></span></div>
-            <div class="pvf-cta"></div>
-          </div>
+        <div class="project-illu">
+          <img src="assets/illustrations/co-workers_ujs6.svg" alt="Illustration de deux personnes au comptoir" loading="lazy" width="420" height="420"/>
         </div>
       </div>
       <div class="project-info">
@@ -276,14 +286,8 @@
     <article class="project-detail reverse">
       <div class="project-visu">
         <span class="project-visu-label">fig. 02</span>
-        <div class="project-visu-frame">
-          <div class="pvf-bar"><span></span><span></span><span></span></div>
-          <div class="pvf-body">
-            <div class="pvf-h"></div>
-            <div class="pvf-p"></div>
-            <div class="pvf-p"></div>
-            <div class="pvf-cta"></div>
-          </div>
+        <div class="project-illu">
+          <img src="assets/illustrations/Meditation_o89g.svg" alt="Illustration d'une personne en méditation, posture d'ostéopathe" loading="lazy" width="420" height="420"/>
         </div>
       </div>
       <div class="project-info">
@@ -310,14 +314,8 @@
     <article class="project-detail">
       <div class="project-visu">
         <span class="project-visu-label">fig. 03</span>
-        <div class="project-visu-frame">
-          <div class="pvf-bar"><span></span><span></span><span></span></div>
-          <div class="pvf-body">
-            <div class="pvf-h"></div>
-            <div class="pvf-grid"><span></span><span></span><span></span><span></span><span></span><span></span></div>
-            <div class="pvf-p"></div>
-            <div class="pvf-cta"></div>
-          </div>
+        <div class="project-illu">
+          <img src="assets/illustrations/community_8nwl.svg" alt="Illustration d'un groupe de personnes, association" loading="lazy" width="420" height="420"/>
         </div>
       </div>
       <div class="project-info">
@@ -344,17 +342,8 @@
     <article class="project-detail reverse">
       <div class="project-visu">
         <span class="project-visu-label">fig. 04</span>
-        <div class="project-visu-frame">
-          <div class="pvf-bar"><span></span><span></span><span></span></div>
-          <div class="pvf-body">
-            <div style="display:flex; align-items:center; gap:8px; margin-bottom: 12px;">
-              <span style="font-size:11px; color: var(--muted); font-family: 'JetBrains Mono', monospace;">AVANT</span>
-              <span style="font-size:11px; color: var(--orange); font-family: 'JetBrains Mono', monospace;">APRÈS</span>
-            </div>
-            <div class="pvf-h"></div>
-            <div class="pvf-p"></div>
-            <div class="pvf-cta"></div>
-          </div>
+        <div class="project-illu">
+          <img src="assets/illustrations/by_my_car_ttge.svg" alt="Illustration d'une personne près d'une voiture, garagiste" loading="lazy" width="420" height="420"/>
         </div>
       </div>
       <div class="project-info">
