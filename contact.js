@@ -1,9 +1,3 @@
-/* =========================================================
-   QUELTO — Contact form handler (sobre)
-   - Validation client (nom/email/message)
-   - Fallback mailto + confirmation visuelle
-   ========================================================= */
-
 (function () {
   'use strict';
 
@@ -46,14 +40,13 @@
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Envoi…';
-
     window.location.href = `mailto:bonjour@quelto.fr?subject=${subject}&body=${body}`;
 
     setTimeout(() => {
       successBox.hidden = false;
       form.reset();
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Envoyer le message';
+      submitBtn.textContent = 'Envoyer →';
       successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }, 600);
   });

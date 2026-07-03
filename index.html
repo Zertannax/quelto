@@ -3,325 +3,97 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quelto — Sites web pour artisans, commerces et PME locales</title>
-  <meta name="description" content="Sites web professionnels pour artisans, commerces et PME locales. Échange de 30 minutes, livraison en 2 à 3 jours ouvrés, à partir de 500 €. Pas de jargon.">
-  <meta name="theme-color" content="#FAFAF7">
-  <meta property="og:title" content="Quelto — Sites web pour artisans, commerces et PME locales">
-  <meta property="og:description" content="Sites web professionnels livrés en 2 à 3 jours, à partir de 500 €.">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="fr_FR">
+  <title>Quelto — sites web pour artisans, commerçants, professions libérales</title>
+  <meta name="description" content="Je fais des sites web pour des artisans, des commerçants et des professions libérales. Un échange d'une demi-heure, un site livré en deux ou trois jours, à partir de 500 euros.">
+  <meta name="theme-color" content="#FFFFFF">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..700,0..100,0..1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 </head>
 <body>
-  <a href="#main" class="skip-link">Aller au contenu</a>
-
-  <!-- ============== HEADER ============== -->
-  <header class="site-header" id="siteHeader">
+  <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="brand" aria-label="Quelto — accueil">
-        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
-          <rect x="2" y="2" width="28" height="28" rx="6" fill="#1A1A1A"/>
-          <path d="M11 21 L16 11 L21 21" stroke="#FAFAF7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-        <span class="brand-name">Quelto</span>
-      </a>
-      <nav class="primary-nav" aria-label="Navigation principale">
+      <a href="index.html" class="brand">Quelto</a>
+      <nav class="primary-nav">
         <a href="#offre">L'offre</a>
-        <a href="#deroulement">Déroulement</a>
         <a href="#tarif">Tarif</a>
+        <a href="#qui">Qui</a>
         <a href="contact.html">Contact</a>
       </nav>
-      <a href="contact.html" class="btn btn-primary btn-sm header-cta">Demander mon site</a>
-      <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" id="navToggle">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-    <div class="mobile-menu" id="mobileMenu" hidden>
-      <a href="#offre">L'offre</a>
-      <a href="#deroulement">Déroulement</a>
-      <a href="#tarif">Tarif</a>
-      <a href="contact.html">Contact</a>
-      <a href="contact.html" class="btn btn-primary btn-sm">Demander mon site</a>
+      <a href="contact.html" class="header-link">Écrire →</a>
     </div>
   </header>
 
-  <main id="main">
-    <!-- ============== HERO ============== -->
+  <main>
     <section class="hero">
       <div class="container">
-        <p class="hero-eyebrow">Sites web pour artisans, commerces et PME locales</p>
-        <h1 class="hero-title">
-          Un site professionnel, livré en deux à trois jours.
-        </h1>
-        <p class="hero-lead">
-          Vous nous parlez de votre activité pendant un échange d'une demi-heure, on s'occupe du reste. Site clair, textes rédigés, design sobre. Pas de jargon, pas d'options dans l'absurde, pas de « refonte dans six mois ». Juste un site qui fait le travail.
-        </p>
-        <div class="hero-cta">
-          <a href="contact.html" class="btn btn-primary">Demander mon site</a>
-          <a href="#offre" class="btn btn-link">Voir comment ça se passe →</a>
-        </div>
-        <p class="hero-foot">
-          Réponse sous 24 heures · Sans engagement · Tarif fixe communiqué après l'échange
-        </p>
+        <p>Rémi, développeur à Grenoble. Je fais des sites web pour des artisans, des commerçants et des professions libérales. Un échange d'une demi-heure, un site livré en deux ou trois jours, à partir de 500&nbsp;euros.</p>
+        <p><a href="contact.html">Écrire pour démarrer →</a></p>
       </div>
     </section>
 
-    <!-- ============== PROMESSE ============== -->
-    <section class="band">
-      <div class="container band-inner">
-        <div class="band-item">
-          <span class="band-label">Délai</span>
-          <span class="band-value">2 à 3 jours ouvrés</span>
-        </div>
-        <div class="band-item">
-          <span class="band-label">Tarif</span>
-          <span class="band-value">à partir de 500 €</span>
-        </div>
-        <div class="band-item">
-          <span class="band-label">Format</span>
-          <span class="band-value">4 à 5 pages sur mesure</span>
-        </div>
-        <div class="band-item">
-          <span class="band-label">Échange</span>
-          <span class="band-value">30 minutes, en visio ou téléphone</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============== POUR QUI ============== -->
-    <section class="for-whom">
-      <div class="container two-col">
-        <div>
-          <h2 class="section-title">Pour qui&nbsp;?</h2>
-        </div>
-        <div class="for-whom-body">
-          <p>
-            Pour les artisans, commerçants, restaurateurs, professions libérales et indépendants qui veulent un site Internet correct, sans avoir à choisir entre quinze formules et trois niveaux de « premium ».
-          </p>
-          <p>
-            Pas de Drupal, pas de site « clé en main » avec votre logo pixellisé sur un template WordPress. On part d'une page blanche, on écrit les textes à partir de ce que vous nous dites, et on vous livre un site que vous pouvez relier à votre nom de domaine et montrer à vos clients.
-          </p>
-          <p>
-            Si vous avez besoin d'un site de e-commerce complet, d'un agenda avec paiement en ligne, ou d'une plate-forme sur mesure, on n'est probablement pas le bon interlocuteur. Pour tout le reste, oui.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============== CE QUI EST INCLUT ============== -->
     <section class="offre" id="offre">
       <div class="container">
-        <h2 class="section-title">Ce qui est inclus.</h2>
-        <p class="section-lead">
-          Une seule offre, un seul tarif, un seul livrable. Pas de grille tarifaire à sept colonnes.
-        </p>
-
-        <ol class="offre-list">
-          <li>
-            <span class="offre-num">01</span>
-            <div>
-              <h3>Quatre à cinq pages sur mesure</h3>
-              <p>Accueil, prestations ou catalogue, à propos, contact, et selon votre activité une page réalisations, un menu, des horaires, une carte. On en discute pendant l'échange.</p>
-            </div>
-          </li>
-          <li>
-            <span class="offre-num">02</span>
-            <div>
-              <h3>Textes rédigés à partir de votre activité</h3>
-              <p>Vous nous expliquez ce que vous faites et pour qui, on rédige. Pas de questionnaire à remplir à minuit, pas de blocs « Lorem ipsum » à compléter vous-même. Les textes vous sont soumis pour validation.</p>
-            </div>
-          </li>
-          <li>
-            <span class="offre-num">03</span>
-            <div>
-              <h3>Design sobre, lisible, adapté à votre métier</h3>
-              <p>Métiers manuels, commerce, restauration, libéral — on choisit une typographie et une palette qui conviennent à votre secteur. Le site est lisible sur téléphone comme sur ordinateur, et rapide à charger.</p>
-            </div>
-          </li>
-          <li>
-            <span class="offre-num">04</span>
-            <div>
-              <h3>Formulaire de contact fonctionnel</h3>
-              <p>Les demandes arrivent par e-mail. Pas de CRM, pas de « tunnel de conversion », pas de pixel Meta. Vous répondez directement, comme à un appel téléphonique.</p>
-            </div>
-          </li>
-          <li>
-            <span class="offre-num">05</span>
-            <div>
-              <h3>Mise en ligne et raccordement au nom de domaine</h3>
-              <p>On vous explique comment acheter votre nom de domaine (ou on le fait pour vous), on met le site en ligne, on vous transmet les accès. Vous êtes autonome après la livraison.</p>
-            </div>
-          </li>
-          <li>
-            <span class="offre-num">06</span>
-            <div>
-              <h3>Une série d'ajustements après livraison</h3>
-              <p>Une fois le site en ligne, vous avez quinze jours pour demander des ajustements de textes, d'images, de détails. Tout est inclus. Passé ce délai, on peut continuer à intervenir, mais sur devis.</p>
-            </div>
-          </li>
-        </ol>
+        <h2>Ce que je fais.</h2>
+        <p>Un site de quatre ou cinq pages. Accueil, à propos, prestations ou catalogue, contact, et selon votre activité une page réalisations, des horaires, une carte. On en parle pendant l'échange, je m'adapte à votre métier plutôt que l'inverse.</p>
+        <p>Les textes, c'est moi qui les écris, à partir de ce que vous me dites. Pas de questionnaire à remplir en ligne, pas de blocs vides à compléter vous-même. Je vous soumets les textes pour validation avant la mise en ligne.</p>
+        <p>Le design est sobre, lisible, adapté à votre secteur. Le site s'affiche correctement sur téléphone et sur ordinateur, et il est rapide à charger. Vous pouvez le relier à votre nom de domaine et le montrer à vos clients sans rougir.</p>
+        <p>Le formulaire de contact envoie les demandes sur votre adresse e-mail. Pas de CRM, pas de pixel Meta, pas de tunnel de conversion. Vous répondez directement, comme à un appel téléphonique.</p>
+        <p>Une fois le site en ligne, vous avez quinze jours pour me demander des ajustements de textes ou d'images. Au-delà, je peux continuer à intervenir, mais sur devis, au temps passé. Le site vous appartient, vous pouvez le faire héberger où vous voulez et changer de prestataire si ça ne se passe pas bien avec moi.</p>
       </div>
     </section>
 
-    <!-- ============== DÉROULEMENT ============== -->
-    <section class="deroulement" id="deroulement">
-      <div class="container">
-        <h2 class="section-title">Comment ça se passe.</h2>
-        <p class="section-lead">
-          Quatre étapes, par e-mail et téléphone. Pas de rétroplanning partagé, pas de Slack, pas de « daily standup ».
-        </p>
-
-        <ol class="steps">
-          <li class="step">
-            <span class="step-num">01</span>
-            <h3>Vous nous écrivez</h3>
-            <p>Quelques lignes sur votre activité, ce que vous voulez montrer, vos coordonnées. On revient vers vous sous vingt-quatre heures ouvrées.</p>
-          </li>
-          <li class="step">
-            <span class="step-num">02</span>
-            <h3>On échange une demi-heure</h3>
-            <p>En visio ou au téléphone. Vous nous parlez de votre métier, de vos clients, de ce qui est important pour vous. On prend des notes, on pose des questions, on ne vous vend rien.</p>
-          </li>
-          <li class="step">
-            <span class="step-num">03</span>
-            <h3>On construit le site</h3>
-            <p>Vous recevez une première version du site en ligne, à une adresse provisoire. Vous la montrez à deux ou trois personnes de votre entourage si vous le souhaitez.</p>
-          </li>
-          <li class="step">
-            <span class="step-num">04</span>
-            <h3>Vous validez, on ajuste</h3>
-            <p>Vous nous dites ce qui doit changer. On ajuste. Quand le site vous convient, on le met en ligne à votre nom de domaine et on vous transmet les accès.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ============== TARIF ============== -->
     <section class="tarif" id="tarif">
       <div class="container">
-        <h2 class="section-title">Combien ça coûte.</h2>
-
-        <div class="tarif-card">
-          <p class="tarif-label">Une seule offre, un seul tarif.</p>
-          <p class="tarif-amount">
-            <span class="tarif-currency">à partir de</span>
-            <span class="tarif-number">500</span>
-            <span class="tarif-unit">€</span>
-          </p>
-          <p class="tarif-detail">
-            Le tarif exact dépend du nombre de pages et du temps de rédaction. Il est annoncé clairement à la fin de l'échange de trente minutes, avant tout engagement. Pas de « devis personnalisé à partir de », pas de « sur demande » pour les options standards.
-          </p>
-          <ul class="tarif-includes">
-            <li>Tout ce qui est décrit ci-dessus, sans option supplémentaire</li>
-            <li>Hébergement et nom de domaine la première année, si vous le souhaitez</li>
-            <li>Une série d'ajustements après livraison</li>
-          </ul>
-          <a href="contact.html" class="btn btn-primary">Demander mon site</a>
-        </div>
+        <h2>Combien.</h2>
+        <p>500 euros, tarif fixe. Pas de grille tarifaire à sept colonnes, pas de formule premium qui double la note. Le tarif exact dépend du nombre de pages et du temps de rédaction, et il est annoncé à la fin de l'échange d'une demi-heure, avant tout engagement.</p>
+        <p>L'hébergement et le nom de domaine la première année sont inclus si vous le souhaitez, ainsi qu'une série d'ajustements après livraison. Au-delà de la première année, l'hébergement tourne autour de quatre-vingts euros par an pour un site de cette taille, à payer directement à l'hébergeur.</p>
       </div>
     </section>
 
-    <!-- ============== CE QU'ON NE FAIT PAS ============== -->
-    <section class="hedging">
+    <section class="ce-que-je-ne-fais-pas">
       <div class="container">
-        <h2 class="section-title">Ce qu'on ne fait pas.</h2>
-        <p class="section-lead">
-          Pour que vous sachiez tout de suite si on est le bon interlocuteur, voici ce qui n'est pas dans notre périmètre.
-        </p>
-        <ul class="hedging-list">
-          <li>
-            <strong>Pas de référencement payant.</strong>
-            On ne vend pas de prestations Google Ads, de campagnes Meta, ni de « pack visibilité ».
-          </li>
-          <li>
-            <strong>Pas de site e-commerce.</strong>
-            Pas de panier, pas de paiement en ligne, pas de gestion de stock. Pour cela il faut un vrai site marchand, et un autre type de prestataire.
-          </li>
-          <li>
-            <strong>Pas d'application mobile.</strong>
-            On fait des sites web, qui s'affichent correctement sur téléphone.
-          </li>
-          <li>
-            <strong>Pas de refonte mensuelle.</strong>
-            Le site est livré une fois, vous le gardez tel quel tant qu'il vous convient. Les modifications ultérieures sont sur devis, au temps passé.
-          </li>
-          <li>
-            <strong>Pas d'engagement de résultat sur le chiffre d'affaires.</strong>
-            Un site rend votre activité visible, il ne la transforme pas. Si quelqu'un vous promet un retour sur investissement chiffré avant même d'avoir compris votre activité, fuyez.
-          </li>
-        </ul>
+        <h2>Ce que je ne fais pas.</h2>
+        <p>Pour que vous sachiez tout de suite si je suis le bon interlocuteur. Je ne fais pas de référencement payant, je ne vends pas de prestations Google Ads ni de campagnes Meta. Je ne fais pas de site e-commerce, pas de panier, pas de paiement en ligne, pas de gestion de stock. Je ne fais pas d'application mobile. Je ne fais pas de refonte mensuelle, le site est livré une fois et vous le gardez tel quel tant qu'il vous convient.</p>
+        <p>Si vous avez besoin d'un site marchand, d'un agenda avec réservation en ligne, d'une plate-forme sur mesure ou d'une application native, il faut un autre type de prestataire, et je vous le dirai franchement à la fin de l'échange si c'est votre cas.</p>
       </div>
     </section>
 
-    <!-- ============== QUI ============== -->
-    <section class="qui">
-      <div class="container two-col">
-        <div>
-          <h2 class="section-title">Qui.</h2>
-        </div>
-        <div class="qui-body">
-          <p>
-            Quelto est tenu par Rémi Chevassut. Développeur de formation, installé à Grenoble, qui a passé dix ans à construire des outils web pour des éditeurs de logiciels et des entreprises de service.
-          </p>
-          <p>
-            J'ai créé Quelto parce que les artisans et les petits commerçants de mon entourage me demandaient régulièrement de l'aide pour leur site, et qu'aucune des offres qu'on leur proposait ne me semblait adaptée. Le « site vitrine à 29 €/mois » était laid, le « site sur mesure à 8&nbsp;000 € » était cher, et tout le monde voulait les vendre sur la maintenance.
-          </p>
-          <p>
-            Ici, le site vous appartient, vous pouvez le faire héberger où vous voulez, et je ne vends pas de contrat de maintenance. Si vous avez besoin d'aide six mois plus tard, on en discute, mais vous n'êtes pas engagé.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============== CTA FINAL ============== -->
-    <section class="cta-final">
+    <section class="comment">
       <div class="container">
-        <h2 class="section-title">Si vous voulez qu'on en parle.</h2>
-        <p class="section-lead">
-          Écrire prend deux minutes, on répond vite, et l'échange de trente minutes n'engage à rien.
-        </p>
-        <p>
-          <a href="contact.html" class="btn btn-primary btn-lg">Écrire à Quelto</a>
-        </p>
+        <h2>Comment ça se passe.</h2>
+        <p>Vous m'écrivez quelques lignes sur votre activité, votre ville, et si vous avez une idée du site que vous voudriez. Je reviens vers vous sous vingt-quatre heures ouvrées, par e-mail ou par téléphone, pour proposer un créneau d'échange d'une demi-heure, en visio ou au téléphone selon votre préférence.</p>
+        <p>L'échange dure trente minutes. Vous me parlez de votre métier, de vos clients, de ce qui est important pour vous. Je pose des questions, je prends des notes, je ne vous vends rien. À la fin, je vous envoie un récapitulatif par e-mail avec le tarif exact et le délai.</p>
+        <p>Si ça vous convient, je démarre. Sinon, on s'est bien entendus, et vous avez les éléments pour décider sans pression. Vous n'êtes engagé à rien tant que vous n'avez pas répondu à ce récapitulatif.</p>
+      </div>
+    </section>
+
+    <section class="qui" id="qui">
+      <div class="container">
+        <h2>Qui.</h2>
+        <p>Rémi Chevassut, développeur de formation, installé à Grenoble. J'ai passé dix ans à construire des outils web pour des éditeurs de logiciels et des entreprises de service, en équipe, dans des contextes où la qualité du code et la fiabilité avaient de l'importance.</p>
+        <p>J'ai créé Quelto parce que les artisans et les petits commerçants de mon entourage me demandaient régulièrement de l'aide pour leur site, et qu'aucune des offres qu'on leur proposait ne me semblait adaptée. Le site vitrine à vingt-neuf euros par mois était laid, le site sur mesure à huit mille euros était cher, et tout le monde voulait vendre un contrat de maintenance.</p>
+        <p>Ici, le site vous appartient, vous pouvez le faire héberger où vous voulez, et je ne vends pas de contrat de maintenance. Si vous avez besoin d'aide six mois plus tard, on en discute, mais vous n'êtes pas engagé. Je préfère avoir peu de clients contents que beaucoup de clients verrouillés.</p>
+        <p class="signature">Rémi Chevassut, juillet 2026. Auto-entrepreneur, SIRET sur demande.</p>
+      </div>
+    </section>
+
+    <section class="contact">
+      <div class="container">
+        <h2>Si vous voulez qu'on en parle.</h2>
+        <p>Écrire prend deux minutes, je réponds vite, et l'échange d'une demi-heure n'engage à rien.</p>
+        <p><a href="contact.html">Écrire à Quelto →</a></p>
+        <p>Ou directement&nbsp;: <a href="mailto:bonjour@quelto.fr">bonjour@quelto.fr</a> · <a href="tel:+336****0000">06 00 00 00 00</a></p>
       </div>
     </section>
   </main>
 
-  <!-- ============== FOOTER ============== -->
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-col">
-        <a href="index.html" class="brand">
-          <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
-            <rect x="2" y="2" width="28" height="28" rx="6" fill="#1A1A1A"/>
-            <path d="M11 21 L16 11 L21 21" stroke="#FAFAF7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          </svg>
-          <span class="brand-name">Quelto</span>
-        </a>
-        <p class="footer-tag">Sites web pour artisans, commerces et PME locales.</p>
-        <p class="footer-loc">Grenoble, France</p>
-      </div>
-      <nav class="footer-col" aria-label="Navigation pied de page">
-        <p class="footer-h">Sur le site</p>
-        <a href="#offre">L'offre</a>
-        <a href="#deroulement">Déroulement</a>
-        <a href="#tarif">Tarif</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <nav class="footer-col" aria-label="Contact direct">
-        <p class="footer-h">Contact direct</p>
-        <a href="mailto:bonjour@quelto.fr">bonjour@quelto.fr</a>
-        <a href="tel:+33600000000">06 00 00 00 00</a>
-        <p class="footer-meta">Réponse sous 24 h ouvrées</p>
-      </nav>
-    </div>
-    <div class="container footer-bottom">
-      <p>© <span id="year">2026</span> Quelto. Tous droits réservés.</p>
-      <p>Site tenu par Rémi Chevassut, auto-entrepreneur, SIRET&nbsp;XXX&nbsp;XXX&nbsp;XXX&nbsp;XXXXX.</p>
+    <div class="container">
+      <p>Quelto, Rémi Chevassut, Grenoble. © <span id="year">2026</span>.</p>
+      <p>Auto-entrepreneur · SIRET sur demande · <a href="mailto:bonjour@quelto.fr">bonjour@quelto.fr</a></p>
     </div>
   </footer>
 
