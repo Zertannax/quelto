@@ -1,11 +1,12 @@
 /* =========================================================
-   QUELTO — interactions (dark refresh)
+   QUELTO — interactions
    - Custom cursor (desktop)
    - Magnetic CTAs
    - Scroll reveal with stagger
    - Count-up on hero numbers
    - Header scrolled state
    - Mobile menu
+   - Parallax scroll (data-parallax attribute)
    ========================================================= */
 
 (function () {
@@ -21,10 +22,9 @@
   const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   if (cursor && cursorDot && isFinePointer) {
-    let cx = 0, cy = 0; // current
-    let tx = 0, ty = 0; // target
-    const dotSpeed = 1; // dot follows instantly
-    const ringSpeed = 0.18; // ring lags
+    let cx = 0, cy = 0;
+    let tx = 0, ty = 0;
+    const ringSpeed = 0.18;
 
     document.body.classList.add('cursor-ready');
     document.addEventListener('mousemove', (e) => {
@@ -41,7 +41,6 @@
     }
     tickRing();
 
-    // Hover state
     const interactiveSel = 'a, button, .magnetic, .tag-tech, [role="button"]';
     document.querySelectorAll(interactiveSel).forEach((el) => {
       el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
@@ -142,6 +141,59 @@
     counters.forEach((c) => cio.observe(c));
   } else {
     counters.forEach((c) => (c.textContent = c.dataset.count));
+  }
+
+  // ----- Parallax on data-parallax elements -----
+  // Each element gets transform: translateY(scrollDelta * factor)
+  // factor ranges from 0.05 to 0.3, slower than scroll for "depth" feel
+  const parallaxEls = document.querySelectorAll('[data-parallax]');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (parallaxEls.length && !prefersReducedMotion) {
+    let scrollY = window.scrollY;
+    let ticking = false;
+
+    const updateParallax = () => {
+      parallaxEls.forEach((el) => {
+        const factor = parseFloat(el.dataset.parallax) || 0.1;
+        const rect = el.getBoundingClientRect();
+        const elCenter = rect.top + rect.height / 2;
+        const viewportCenter = window.innerHeight / 2;
+        const distance = elCenter - viewportCenter;
+        // Translate opposite to scroll for "depth"
+        const offset = distance * factor * -0.1;
+        el.style.transform = `translate3d(0, ${offset.toFixed(2)}px, 0)`;
+      });
+      ticking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      scrollY = window.scrollY;
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateParallax();
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Initial
+    updateParallax();
+  }
+
+  // ----- Scroll-driven 3D hero rotation (rotation sent via custom event) -----
+  if (!prefersReducedMotion) {
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+      let lastScrollY = 0;
+      window.addEventListener('scroll', () => {
+        const rect = heroSection.getBoundingClientRect();
+        const progress = Math.max(0, Math.min(1, -rect.top / rect.height));
+        // Dispatch custom event for three-hero.js to pick up
+        window.dispatchEvent(new CustomEvent('heroScroll', { detail: { progress } }));
+        lastScrollY = window.scrollY;
+      }, { passive: true });
+    }
   }
 
   // ----- Smooth anchor scroll with header offset -----

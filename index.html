@@ -23,7 +23,6 @@
   }
   </script>
   <script>
-    // WebGL check + reduced motion check BEFORE three-hero.js loads
     window._queltoEnableThree = (function () {
       try {
         const c = document.createElement('canvas');
@@ -59,6 +58,7 @@
       <nav class="primary-nav" aria-label="Navigation principale">
         <a href="#offre">Offre</a>
         <a href="#process">Comment ça marche</a>
+        <a href="#exemples">Exemples</a>
         <a href="realisations.html">Réalisations</a>
         <a href="contact.html">Contact</a>
       </nav>
@@ -72,6 +72,7 @@
     <div class="mobile-menu" id="mobileMenu" hidden>
       <a href="#offre">Offre</a>
       <a href="#process">Comment ça marche</a>
+      <a href="#exemples">Exemples</a>
       <a href="realisations.html">Réalisations</a>
       <a href="contact.html">Contact</a>
       <a href="contact.html" class="btn btn-primary btn-sm">Demander mon site</a>
@@ -81,11 +82,11 @@
   <main>
     <!-- ============== HERO ============== -->
     <section class="hero">
-      <!-- Mesh gradient background -->
+      <!-- Parallax mesh gradients -->
       <div class="hero-bg" aria-hidden="true">
-        <div class="mesh mesh-1"></div>
-        <div class="mesh mesh-2"></div>
-        <div class="mesh mesh-3"></div>
+        <div class="mesh mesh-1" data-parallax="0.18"></div>
+        <div class="mesh mesh-2" data-parallax="0.12"></div>
+        <div class="mesh mesh-3" data-parallax="0.25"></div>
         <div class="hero-grid"></div>
         <div class="hero-noise"></div>
       </div>
@@ -109,11 +110,19 @@
             </a>
             <a href="#process" class="btn btn-ghost btn-lg">Voir comment ça marche</a>
           </div>
+          <div class="hero-trust">
+            <div class="hero-trust-avatars">
+              <span class="avatar avatar-1">A</span>
+              <span class="avatar avatar-2">M</span>
+              <span class="avatar avatar-3">S</span>
+              <span class="avatar avatar-4">+</span>
+            </div>
+            <span class="hero-trust-text">Échanges <span class="mono accent">20–30 min</span> · devis sous 24h</span>
+          </div>
         </div>
 
         <div class="hero-visual reveal" data-reveal-delay="200" aria-hidden="true">
           <canvas id="heroCanvas"></canvas>
-          <!-- SVG fallback (visible if WebGL fails or reduced motion) -->
           <svg class="hero-fallback" viewBox="0 0 200 200" aria-hidden="true">
             <defs>
               <linearGradient id="fbGrad" x1="0" y1="0" x2="1" y2="1">
@@ -127,7 +136,6 @@
             </defs>
             <circle cx="100" cy="100" r="90" fill="url(#fbGlow)"/>
             <g stroke="url(#fbGrad)" stroke-width="1.4" fill="none" stroke-linecap="round">
-              <!-- icosahedron edges simplified -->
               <path d="M100 30 L160 75 L160 125 L100 170 L40 125 L40 75 Z"/>
               <path d="M100 30 L100 170 M40 75 L160 125 M40 125 L160 75"/>
               <circle cx="100" cy="30" r="3" fill="#00E5FF" stroke="none"/>
@@ -155,24 +163,44 @@
           </div>
         </div>
       </div>
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <span class="mono">scroll</span>
+        <span class="scroll-line"></span>
+      </div>
+    </section>
+
+    <!-- ============== MARQUEE — types d'activités ============== -->
+    <section class="marquee-section" aria-label="Activités servies">
+      <div class="marquee">
+        <div class="marquee-track">
+          <span class="marquee-item"><svg class="mi" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-6 9 6v11a2 2 0 0 1-2 2h-3v-7H8v7H5a2 2 0 0 1-2-2V9z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg> Artisans</span>
+          <span class="marquee-item"><svg class="mi" viewBox="0 0 24 24" fill="none"><path d="M3 7h18l-1.5 12a2 2 0 0 1-2 1.7H6.5a2 2 0 0 1-2-1.7L3 7zm5 0a4 4 0 0 1 8 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Commerces</span>
+          <span class="marquee-item"><svg class="mi" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M3 21c0-3 2.7-5 6-5s6 2 6 5M16 4l2 2-2 2M18 12l2 2-2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Restaurateurs</span>
+          <span class="marquee-item"><svg class="mi" viewBox="0 0 24 24" fill="none"><path d="M6 4l2 4-2 2 2 4-2 2 2 4M18 4l-2 4 2 2-2 4 2 2-2 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Coiffeurs</span>
+          <span class="marquee-item"><svg class="mi" viewBox="0 0 24 24" fill="none"><path d="M3 7l9-4 9 4-9 4-9-4zm0 5l9 4 9-4M3 17l9 4 9-4" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg> Indépendants</span>
+          <span class="marquee-item"><svg class="mi" viewBox="0 0 24 24" fill="none"><path d="M4 7h16v13H4zM4 7l8-4 8 4" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg> Agences</span>
+          <span class="marquee-item"><svg class="mi" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M9 9h6M9 13h6M9 17h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Professions libérales</span>
+          <span class="marquee-item"><svg class="mi" viewBox="0 0 24 24" fill="none"><path d="M5 4h14l-2 16H7L5 4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg> Boutiques</span>
+        </div>
+      </div>
     </section>
 
     <!-- ============== BANDE DE PREUVE ============== -->
     <section class="proof">
       <div class="container proof-inner">
         <div class="proof-item reveal">
-          <strong class="mono"><span data-count="2">0</span>–<span data-count="3">0</span></strong>
-          <span>jours pour livrer votre site</span>
+          <strong class="mono"><span data-count="2">0</span>–<span data-count="3">0</span> <span class="proof-unit">jours</span></strong>
+          <span>pour livrer votre site</span>
         </div>
         <div class="proof-divider" aria-hidden="true"></div>
         <div class="proof-item reveal" data-reveal-delay="100">
-          <strong class="mono"><span data-count="100">0</span>%</strong>
-          <span>sur-mesure, aucun template générique</span>
+          <strong class="mono"><span data-count="100">0</span>% <span class="proof-unit">sur-mesure</span></strong>
+          <span>aucun template générique</span>
         </div>
         <div class="proof-divider" aria-hidden="true"></div>
         <div class="proof-item reveal" data-reveal-delay="200">
-          <strong class="mono"><span data-count="0">0</span></strong>
-          <span>jargon — on vous explique tout simplement</span>
+          <strong class="mono"><span data-count="0">0</span> <span class="proof-unit">jargon</span></strong>
+          <span>on vous explique tout simplement</span>
         </div>
       </div>
     </section>
@@ -190,14 +218,124 @@
       </div>
     </section>
 
+    <!-- ============== EXEMPLES — mockups de sites ============== -->
+    <section class="exemples" id="exemples">
+      <div class="container">
+        <div class="exemples-header reveal">
+          <span class="eyebrow"><span class="eyebrow-dot"></span>Exemples de sites livrés</span>
+          <h2 class="section-title">
+            Un site qui <span class="gradient-text">vous ressemble</span>,<br>
+            <span class="text-muted">pas un template générique.</span>
+          </h2>
+        </div>
+
+        <div class="mockup-grid">
+          <!-- Mockup 1: Artisan / Boulanger -->
+          <article class="mockup-card reveal" data-reveal-delay="0">
+            <div class="mockup-frame">
+              <div class="mockup-chrome">
+                <span></span><span></span><span></span>
+                <div class="mockup-url mono">boulangerie-morin.fr</div>
+              </div>
+              <div class="mockup-screen mockup-artisan">
+                <div class="ms-bar"><div class="ms-burger"></div><div class="ms-logo">Boulangerie Morin</div><div class="ms-cta">Contact</div></div>
+                <div class="ms-hero">
+                  <div class="ms-tag">DEPUIS 1987</div>
+                  <div class="ms-h1">Le pain qui<br>réveille votre<br>matin.</div>
+                  <div class="ms-p">Pains au levain · Viennoiseries · Pâtisseries</div>
+                  <div class="ms-btn">Voir nos pains →</div>
+                </div>
+                <div class="ms-grid3">
+                  <div class="ms-tile ms-tile-1"><span>Levain</span></div>
+                  <div class="ms-tile ms-tile-2"><span>Bio</span></div>
+                  <div class="ms-tile ms-tile-3"><span>Local</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="mockup-meta">
+              <span class="mockup-type">Artisan</span>
+              <h3 class="mockup-name">Boulangerie Morin</h3>
+              <p class="mockup-desc">Vitrine chaleureuse pour une boulangerie de quartier, avec menu du jour et horaires.</p>
+            </div>
+          </article>
+
+          <!-- Mockup 2: Restaurant -->
+          <article class="mockup-card mockup-card-featured reveal" data-reveal-delay="150">
+            <div class="mockup-frame">
+              <div class="mockup-chrome">
+                <span></span><span></span><span></span>
+                <div class="mockup-url mono">chez-amelie.fr</div>
+              </div>
+              <div class="mockup-screen mockup-restaurant">
+                <div class="ms-bar ms-bar-dark">
+                  <div class="ms-burger"></div>
+                  <div class="ms-logo ms-logo-serif">Chez Amélie</div>
+                  <div class="ms-cta ms-cta-ghost">Réserver</div>
+                </div>
+                <div class="ms-hero-split">
+                  <div class="ms-left">
+                    <div class="ms-tag ms-tag-light">BISTROT GOURMAND</div>
+                    <div class="ms-h1 ms-h1-serif">Une cuisine<br>de saison,<br>façon maison.</div>
+                    <div class="ms-p">Produits frais · Producteurs locaux</div>
+                    <div class="ms-btn-row">
+                      <div class="ms-btn ms-btn-light">Réserver une table</div>
+                      <div class="ms-btn ms-btn-text">Voir la carte →</div>
+                    </div>
+                  </div>
+                  <div class="ms-right">
+                    <div class="ms-photo ms-photo-1"></div>
+                    <div class="ms-photo ms-photo-2"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mockup-meta">
+              <span class="mockup-type">Restaurant</span>
+              <h3 class="mockup-name">Chez Amélie</h3>
+              <p class="mockup-desc">Site vitrine élégant avec carte éditable et formulaire de réservation intégré.</p>
+            </div>
+          </article>
+
+          <!-- Mockup 3: Commerce / Fleuriste -->
+          <article class="mockup-card reveal" data-reveal-delay="300">
+            <div class="mockup-frame">
+              <div class="mockup-chrome">
+                <span></span><span></span><span></span>
+                <div class="mockup-url mono">fleurs-de-lila.fr</div>
+              </div>
+              <div class="mockup-screen mockup-commerce">
+                <div class="ms-bar ms-bar-pink">
+                  <div class="ms-burger"></div>
+                  <div class="ms-logo">Fleurs de Lila</div>
+                  <div class="ms-cta ms-cta-pink">Panier (0)</div>
+                </div>
+                <div class="ms-hero ms-hero-pink">
+                  <div class="ms-tag ms-tag-pink">LIVRAISON OFFERTE</div>
+                  <div class="ms-h1">Des fleurs qui<br>parlent d'elles-mêmes.</div>
+                  <div class="ms-p">Bouquets · Compositions · Abonnements</div>
+                </div>
+                <div class="ms-products">
+                  <div class="ms-product"><div class="ms-pp pp-1"></div><div class="ms-pl mono">Bouquet Lila · 35€</div></div>
+                  <div class="ms-product"><div class="ms-pp pp-2"></div><div class="ms-pl mono">Saison · 28€</div></div>
+                  <div class="ms-product"><div class="ms-pp pp-3"></div><div class="ms-pl mono">Champêtre · 42€</div></div>
+                </div>
+              </div>
+            </div>
+            <div class="mockup-meta">
+              <span class="mockup-type">Commerce</span>
+              <h3 class="mockup-name">Fleurs de Lila</h3>
+              <p class="mockup-desc">Boutique en ligne simple avec catalogue saisonnier et commande par formulaire.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- ============== OFFRE ============== -->
     <section class="offer" id="offre">
       <div class="container">
         <div class="offer-header reveal">
-          <span class="eyebrow">
-            <span class="eyebrow-dot"></span>
-            L'offre Quelto
-          </span>
+          <span class="eyebrow"><span class="eyebrow-dot"></span>L'offre Quelto</span>
           <h2 class="section-title">
             Un site professionnel,<br>
             <span class="gradient-text">sans les complications.</span>
@@ -348,14 +486,11 @@
 
   <script src="script.js"></script>
   <script>
-    // Conditionally inject three-hero only when WebGL is available.
-    // (The feature check is in the head — _queltoEnableThree is set there.)
     if (window._queltoEnableThree) {
       const s = document.createElement('script');
       s.type = 'module';
       s.src = 'three-hero.js';
       s.id = 'threeModule';
-      // Inject at end of body (we're in body) to start the import
       document.body.appendChild(s);
     } else {
       document.documentElement.dataset.threeDisabled = 'true';
