@@ -1,18 +1,68 @@
 /* =========================================================
-   QUELTO — interactions
-   - Scroll reveal (IntersectionObserver)
+   QUELTO — interactions (dark refresh)
+   - Custom cursor (desktop)
+   - Magnetic CTAs
+   - Scroll reveal with stagger
+   - Count-up on hero numbers
    - Header scrolled state
-   - Mobile menu toggle
-   - Count-up animation for the hero tags
-   - Footer year
+   - Mobile menu
    ========================================================= */
 
 (function () {
   'use strict';
 
-  // ----- Year in footer -----
+  // ----- Year -----
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // ----- Custom cursor (desktop) -----
+  const cursor = document.getElementById('cursor');
+  const cursorDot = document.getElementById('cursorDot');
+  const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  if (cursor && cursorDot && isFinePointer) {
+    let cx = 0, cy = 0; // current
+    let tx = 0, ty = 0; // target
+    const dotSpeed = 1; // dot follows instantly
+    const ringSpeed = 0.18; // ring lags
+
+    document.body.classList.add('cursor-ready');
+    document.addEventListener('mousemove', (e) => {
+      tx = e.clientX;
+      ty = e.clientY;
+      cursorDot.style.transform = `translate(${tx}px, ${ty}px) translate(-50%, -50%)`;
+    });
+
+    function tickRing() {
+      cx += (tx - cx) * ringSpeed;
+      cy += (ty - cy) * ringSpeed;
+      cursor.style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
+      requestAnimationFrame(tickRing);
+    }
+    tickRing();
+
+    // Hover state
+    const interactiveSel = 'a, button, .magnetic, .tag-tech, [role="button"]';
+    document.querySelectorAll(interactiveSel).forEach((el) => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+  }
+
+  // ----- Magnetic CTAs -----
+  if (isFinePointer) {
+    document.querySelectorAll('.magnetic').forEach((el) => {
+      el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        el.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+      });
+      el.addEventListener('mouseleave', () => {
+        el.style.transform = '';
+      });
+    });
+  }
 
   // ----- Header scrolled state -----
   const header = document.getElementById('siteHeader');
@@ -37,7 +87,6 @@
         mobileMenu.removeAttribute('hidden');
       }
     });
-    // Close on link click
     mobileMenu.querySelectorAll('a').forEach((a) => {
       a.addEventListener('click', () => {
         navToggle.setAttribute('aria-expanded', 'false');
@@ -46,7 +95,7 @@
     });
   }
 
-  // ----- Reveal on scroll (with stagger) -----
+  // ----- Reveal on scroll -----
   const reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(
@@ -67,7 +116,7 @@
     reveals.forEach((el) => el.classList.add('is-visible'));
   }
 
-  // ----- Count-up on hero numbers -----
+  // ----- Count-up -----
   const counters = document.querySelectorAll('[data-count]');
   if ('IntersectionObserver' in window && counters.length) {
     const cio = new IntersectionObserver(
@@ -76,9 +125,9 @@
           if (!entry.isIntersecting) return;
           const el = entry.target;
           const target = parseInt(el.dataset.count, 10);
-          const duration = 1200;
+          const duration = 1400;
           const start = performance.now();
-          const ease = (t) => 1 - Math.pow(1 - t, 3); // easeOutCubic
+          const ease = (t) => 1 - Math.pow(1 - t, 3);
           const step = (now) => {
             const p = Math.min((now - start) / duration, 1);
             el.textContent = Math.round(ease(p) * target).toString();

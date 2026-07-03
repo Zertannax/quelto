@@ -1,24 +1,28 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Réalisations — Quelto</title>
   <meta name="description" content="Les premiers sites livrés par Quelto. Bientôt vos futurs clients y trouveront de vraies réalisations.">
-  <meta name="theme-color" content="#1E40AF">
+  <meta name="theme-color" content="#08090A">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="realisations.css">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 </head>
 <body>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
   <header class="site-header scrolled" id="siteHeader">
     <div class="container header-inner">
       <a href="index.html" class="brand" aria-label="Quelto — accueil">
         <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
-          <rect x="2" y="2" width="28" height="28" rx="8" fill="#1E40AF"/>
+          <defs><linearGradient id="brandGradR" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#5B6CFF"/><stop offset="100%" stop-color="#A78BFA"/></linearGradient></defs>
+          <rect x="2" y="2" width="28" height="28" rx="8" fill="url(#brandGradR)"/>
           <path d="M11 20 L16 10 L21 20" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
           <circle cx="16" cy="22.5" r="1.4" fill="white"/>
         </svg>
@@ -46,10 +50,19 @@
 
   <main class="real-page">
     <section class="real-hero">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="mesh mesh-1"></div>
+        <div class="mesh mesh-3"></div>
+        <div class="hero-noise"></div>
+      </div>
       <div class="container">
-        <span class="eyebrow reveal">Nos réalisations</span>
-        <h1 class="real-title reveal" data-reveal-delay="100">Ça commence <span class="text-accent">juste maintenant.</span></h1>
-        <p class="lead reveal" data-reveal-delay="200">Quelto démarre tout juste. Vos futurs clients y trouveront bientôt les premiers sites livrés — peut-être le vôtre, en première position.</p>
+        <span class="eyebrow reveal"><span class="eyebrow-dot"></span>Nos réalisations</span>
+        <h1 class="real-title reveal" data-reveal-delay="100">
+          Ça commence <span class="gradient-text">juste maintenant.</span>
+        </h1>
+        <p class="lead reveal" data-reveal-delay="200">
+          Quelto démarre tout juste. Vos futurs clients y trouveront bientôt les premiers sites livrés — peut-être le vôtre, en première position.
+        </p>
       </div>
     </section>
 
@@ -58,19 +71,28 @@
         <div class="empty-card reveal">
           <div class="empty-illu" aria-hidden="true">
             <svg viewBox="0 0 200 140">
-              <rect x="10" y="20" width="180" height="110" rx="10" fill="white" stroke="#E5E8EF" stroke-width="2"/>
-              <rect x="20" y="32" width="40" height="6" rx="2" fill="#1E40AF"/>
-              <rect x="20" y="48" width="160" height="4" rx="2" fill="#E5E8EF"/>
-              <rect x="20" y="58" width="140" height="4" rx="2" fill="#E5E8EF"/>
-              <rect x="20" y="80" width="48" height="36" rx="6" fill="#EAF0FF"/>
-              <rect x="76" y="80" width="48" height="36" rx="6" fill="#FFF3EA"/>
-              <rect x="132" y="80" width="48" height="36" rx="6" fill="#E0F4F1"/>
+              <defs>
+                <linearGradient id="emptyGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#5B6CFF" stop-opacity="0.2"/>
+                  <stop offset="100%" stop-color="#A78BFA" stop-opacity="0.2"/>
+                </linearGradient>
+              </defs>
+              <rect x="10" y="20" width="180" height="110" rx="10" fill="var(--c-bg-2)" stroke="var(--c-line-strong)" stroke-width="1.5"/>
+              <rect x="20" y="32" width="40" height="6" rx="2" fill="#5B6CFF"/>
+              <rect x="20" y="48" width="160" height="4" rx="2" fill="var(--c-line-strong)"/>
+              <rect x="20" y="58" width="140" height="4" rx="2" fill="var(--c-line-strong)"/>
+              <rect x="20" y="80" width="48" height="36" rx="6" fill="url(#emptyGrad)"/>
+              <rect x="76" y="80" width="48" height="36" rx="6" fill="rgba(0,229,255,0.15)"/>
+              <rect x="132" y="80" width="48" height="36" rx="6" fill="rgba(240,255,77,0.12)"/>
             </svg>
           </div>
           <h2>Bientôt, vos futurs clients y trouveront les premiers sites livrés.</h2>
           <p>Pas de faux projets, pas de captures volées. On attend d'avoir de vrais retours avant d'afficher quoi que ce soit — c'est une question d'honnêteté envers les clients qui nous font confiance.</p>
           <div class="empty-cta">
-            <a href="contact.html" class="btn btn-primary">Être le premier →</a>
+            <a href="contact.html" class="btn btn-primary btn-lg magnetic">
+              Être le premier
+              <svg class="btn-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10m-4-4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </a>
           </div>
         </div>
       </div>
@@ -80,17 +102,17 @@
       <div class="container">
         <div class="promise-grid">
           <div class="promise-item reveal">
-            <div class="promise-num">01</div>
+            <div class="promise-num mono">01</div>
             <h3>On ne triche pas</h3>
             <p>Pas de captures d'écran de sites qui ne sont pas les nôtres. Pas de "design d'exemple" présenté comme une livraison. Ce que vous voyez ici sera livré, point.</p>
           </div>
           <div class="promise-item reveal" data-reveal-delay="100">
-            <div class="promise-num">02</div>
+            <div class="promise-num mono">02</div>
             <h3>On documente tout</h3>
             <p>Chaque site livré sera présenté avec l'avant/après, le brief du client, et un retour écrit (vrai, pas lissé) — pour que vous sachiez exactement à quoi vous attendre.</p>
           </div>
           <div class="promise-item reveal" data-reveal-delay="200">
-            <div class="promise-num">03</div>
+            <div class="promise-num mono">03</div>
             <h3>On reste accessible</h3>
             <p>Les premiers clients bénéficient du tarif de lancement. En contrepartie, ils acceptent qu'on utilise leur site comme référence — toujours en leur demandant, jamais sans leur accord.</p>
           </div>
@@ -104,7 +126,8 @@
       <div class="footer-brand">
         <a href="index.html" class="brand">
           <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
-            <rect x="2" y="2" width="28" height="28" rx="8" fill="#1E40AF"/>
+            <defs><linearGradient id="brandGradRF" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#5B6CFF"/><stop offset="100%" stop-color="#A78BFA"/></linearGradient></defs>
+            <rect x="2" y="2" width="28" height="28" rx="8" fill="url(#brandGradRF)"/>
             <path d="M11 20 L16 10 L21 20" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
             <circle cx="16" cy="22.5" r="1.4" fill="white"/>
           </svg>
