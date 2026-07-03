@@ -6,13 +6,36 @@
   <title>Quelto — sites web pour artisans et commerçants, à partir de 500&nbsp;€</title>
   <meta name="description" content="Rémi, développeur à Grenoble. Je fais des sites web pour des artisans, des commerçants et des professions libérales. Un échange d'une demi-heure, un site livré en deux ou trois jours, à partir de 500 euros.">
   <meta name="theme-color" content="#FAFAF7">
+  <meta property="og:title" content="Quelto — sites web pour artisans et commerçants, à partir de 500 €">
+  <meta property="og:description" content="Rémi, développeur à Grenoble. Sites web livrés en 2-3 jours, à partir de 500 €.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+    }
+  }
+  </script>
+  <script>
+    // Feature check before loading three (so headless / no-WebGL skips the import)
+    window._queltoEnableThree = (function () {
+      try {
+        const c = document.createElement('canvas');
+        const hasWebGL = !!(window.WebGLRenderingContext && (c.getContext('webgl') || c.getContext('experimental-webgl')));
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        return hasWebGL && !reducedMotion;
+      } catch (e) { return false; }
+    })();
+  </script>
 </head>
 <body>
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="brand" aria-label="Quelto — accueil">
@@ -26,37 +49,56 @@
         <a href="#tarif">Tarif</a>
         <a href="#qui">Qui</a>
       </nav>
-      <a href="contact.html" class="nav-cta">Écrire <span class="arrow">→</span></a>
+      <a href="contact.html" class="nav-cta magnetic">Écrire <span class="arrow">→</span></a>
     </div>
   </header>
 
   <main>
     <!-- ============================================================
-         HERO
+         HERO — 3D clock object + content
          ============================================================ -->
     <section class="hero">
-      <div class="container">
-        <p class="hero-eyebrow">Grenoble · depuis 2026</p>
-        <h1>Je fais des sites web pour des artisans et des commerçants.</h1>
-        <p class="hero-sub">Rémi, développeur. Un échange d'une demi-heure, un site livré en deux ou trois jours, à partir de 500&nbsp;euros. Le site vous appartient, vous pouvez le faire héberger où vous voulez.</p>
-        <p class="hero-cta">
-          <a href="contact.html" class="btn-primary">Écrire pour démarrer</a>
-          <a href="#offre" class="link-quiet">Voir comment ça se passe</a>
-        </p>
-        <dl class="hero-stats">
-          <div>
-            <dt>500 €</dt>
-            <dd>tarif fixe, annoncé après l'échange</dd>
-          </div>
-          <div>
-            <dt>2–3 j</dt>
-            <dd>de la première discussion à la mise en ligne</dd>
-          </div>
-          <div>
-            <dt>30 min</dt>
-            <dd>d'échange, en visio ou téléphone</dd>
-          </div>
-        </dl>
+      <div class="hero-grain" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <p class="hero-eyebrow">Grenoble · depuis 2026</p>
+          <h1>Je fais des sites web pour des artisans et des commerçants.</h1>
+          <p class="hero-sub">Rémi, développeur. Un échange d'une demi-heure, un site livré en deux ou trois jours, à partir de 500&nbsp;euros. Le site vous appartient, vous pouvez le faire héberger où vous voulez.</p>
+          <p class="hero-cta">
+            <a href="contact.html" class="btn-primary magnetic">Écrire pour démarrer</a>
+            <a href="#offre" class="link-quiet">Voir comment ça se passe</a>
+          </p>
+          <dl class="hero-stats">
+            <div>
+              <dt class="counter" data-count="500">0</dt>
+              <dd>tarif fixe, annoncé après l'échange</dd>
+            </div>
+            <div>
+              <dt><span class="counter" data-count="2">0</span>–<span class="counter" data-count="3">0</span></dt>
+              <dd>jours de la première discussion à la mise en ligne</dd>
+            </div>
+            <div>
+              <dt><span class="counter" data-count="30">0</span> min</dt>
+              <dd>d'échange, en visio ou téléphone</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="hero-3d">
+          <canvas id="heroCanvas" aria-hidden="true"></canvas>
+          <svg class="hero-fallback" viewBox="0 0 200 200" aria-hidden="true">
+            <g stroke="#1A1A1A" stroke-width="1.4" stroke-linecap="round" fill="none">
+              <circle cx="100" cy="100" r="78"/>
+              <line x1="100" y1="100" x2="100" y2="50"/>
+              <line x1="100" y1="100" x2="138" y2="100"/>
+              <circle cx="100" cy="100" r="3" fill="#1A1A1A" stroke="none"/>
+              <line x1="100" y1="22" x2="100" y2="30"/>
+              <line x1="100" y1="170" x2="100" y2="178"/>
+              <line x1="22" y1="100" x2="30" y2="100"/>
+              <line x1="170" y1="100" x2="178" y2="100"/>
+            </g>
+            <text x="100" y="195" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#6B6963">2–3 jours</text>
+          </svg>
+        </div>
       </div>
     </section>
 
@@ -66,46 +108,46 @@
     <section class="offre" id="offre">
       <div class="container">
         <p class="section-num">01</p>
-        <h2>Ce que je fais.</h2>
-        <p>Un site de quatre ou cinq pages. Accueil, à propos, prestations ou catalogue, contact, et selon votre activité une page réalisations, des horaires, une carte. On en parle pendant l'échange, je m'adapte à votre métier plutôt que l'inverse.</p>
-        <p>Les textes, c'est moi qui les écris, à partir de ce que vous me dites. Pas de questionnaire à remplir en ligne, pas de blocs vides à compléter vous-même. Je vous soumets les textes pour validation avant la mise en ligne.</p>
-        <p>Le design est sobre, lisible, adapté à votre secteur. Le site s'affiche correctement sur téléphone et sur ordinateur, et il est rapide à charger. Vous pouvez le relier à votre nom de domaine et le montrer à vos clients sans rougir.</p>
-        <p>Le formulaire de contact envoie les demandes sur votre adresse e-mail. Pas de CRM, pas de pixel Meta, pas de tunnel de conversion. Vous répondez directement, comme à un appel téléphonique.</p>
-        <p>Une fois le site en ligne, vous avez quinze jours pour me demander des ajustements de textes ou d'images. Au-delà, je peux continuer à intervenir, mais sur devis, au temps passé. Le site vous appartient, vous pouvez le faire héberger où vous voulez et changer de prestataire si ça ne se passe pas bien avec moi.</p>
+        <h2 class="reveal">Ce que je fais.</h2>
+        <p class="reveal">Un site de quatre ou cinq pages. Accueil, à propos, prestations ou catalogue, contact, et selon votre activité une page réalisations, des horaires, une carte. On en parle pendant l'échange, je m'adapte à votre métier plutôt que l'inverse.</p>
+        <p class="reveal">Les textes, c'est moi qui les écris, à partir de ce que vous me dites. Pas de questionnaire à remplir en ligne, pas de blocs vides à compléter vous-même. Je vous soumets les textes pour validation avant la mise en ligne.</p>
+        <p class="reveal">Le design est sobre, lisible, adapté à votre secteur. Le site s'affiche correctement sur téléphone et sur ordinateur, et il est rapide à charger. Vous pouvez le relier à votre nom de domaine et le montrer à vos clients sans rougir.</p>
+        <p class="reveal">Le formulaire de contact envoie les demandes sur votre adresse e-mail. Pas de CRM, pas de pixel Meta, pas de tunnel de conversion. Vous répondez directement, comme à un appel téléphonique.</p>
+        <p class="reveal">Une fois le site en ligne, vous avez quinze jours pour me demander des ajustements de textes ou d'images. Au-delà, je peux continuer à intervenir, mais sur devis, au temps passé. Le site vous appartient, vous pouvez le faire héberger où vous voulez et changer de prestataire si ça ne se passe pas bien avec moi.</p>
       </div>
     </section>
 
     <!-- ============================================================
-         COMMENT
+         COMMENT — process with revealed steps
          ============================================================ -->
     <section class="comment" id="comment">
       <div class="container">
         <p class="section-num">02</p>
-        <h2>Comment ça se passe.</h2>
+        <h2 class="reveal">Comment ça se passe.</h2>
 
         <ol class="steps">
-          <li>
+          <li class="step reveal" data-reveal-delay="0">
             <span class="step-num">01</span>
             <div>
               <h3>Vous m'écrivez.</h3>
               <p>Quelques lignes sur votre activité, votre ville, et si vous avez une idée du site que vous voudriez. Je reviens vers vous sous vingt-quatre heures ouvrées, par e-mail ou par téléphone.</p>
             </div>
           </li>
-          <li>
+          <li class="step reveal" data-reveal-delay="100">
             <span class="step-num">02</span>
             <div>
               <h3>On échange une demi-heure.</h3>
               <p>En visio ou au téléphone, selon votre préférence. Vous me parlez de votre métier, de vos clients, de ce qui est important pour vous. Je pose des questions, je prends des notes, je ne vous vends rien.</p>
             </div>
           </li>
-          <li>
+          <li class="step reveal" data-reveal-delay="200">
             <span class="step-num">03</span>
             <div>
               <h3>Je construis le site.</h3>
               <p>Vous recevez une première version en ligne, à une adresse provisoire, deux ou trois jours après l'échange. Vous la montrez à deux ou trois personnes de votre entourage si vous le souhaitez.</p>
             </div>
           </li>
-          <li>
+          <li class="step reveal" data-reveal-delay="300">
             <span class="step-num">04</span>
             <div>
               <h3>Vous validez, j'ajuste.</h3>
@@ -115,7 +157,7 @@
         </ol>
 
         <p class="comment-cta">
-          <a href="contact.html" class="link-quiet">Démarrer →</a>
+          <a href="contact.html" class="link-quiet magnetic">Démarrer →</a>
         </p>
       </div>
     </section>
@@ -126,16 +168,16 @@
     <section class="tarif" id="tarif">
       <div class="container">
         <p class="section-num">03</p>
-        <h2>Combien.</h2>
+        <h2 class="reveal">Combien.</h2>
 
-        <p class="tarif-figure">
+        <p class="tarif-figure reveal" data-reveal-delay="100">
           <span class="tarif-amount">500</span>
           <span class="tarif-currency">€</span>
         </p>
-        <p class="tarif-caption">à partir de, tarif fixe communiqué à la fin de l'échange</p>
+        <p class="tarif-caption reveal" data-reveal-delay="200">à partir de, tarif fixe communiqué à la fin de l'échange</p>
 
-        <p>Le tarif exact dépend du nombre de pages et du temps de rédaction. Pas de grille tarifaire à sept colonnes, pas de formule premium qui double la note.</p>
-        <p>L'hébergement et le nom de domaine la première année sont inclus si vous le souhaitez, ainsi qu'une série d'ajustements après livraison. Au-delà de la première année, l'hébergement tourne autour de quatre-vingts euros par an pour un site de cette taille, à payer directement à l'hébergeur.</p>
+        <p class="reveal" data-reveal-delay="300">Le tarif exact dépend du nombre de pages et du temps de rédaction. Pas de grille tarifaire à sept colonnes, pas de formule premium qui double la note.</p>
+        <p class="reveal" data-reveal-delay="300">L'hébergement et le nom de domaine la première année sont inclus si vous le souhaitez, ainsi qu'une série d'ajustements après livraison. Au-delà de la première année, l'hébergement tourne autour de quatre-vingts euros par an pour un site de cette taille, à payer directement à l'hébergeur.</p>
       </div>
     </section>
 
@@ -145,9 +187,9 @@
     <section class="ne-fait-pas">
       <div class="container">
         <p class="section-num">04</p>
-        <h2>Ce que je ne fais pas.</h2>
-        <p>Pour que vous sachiez tout de suite si je suis le bon interlocuteur. Je ne fais pas de référencement payant, je ne vends pas de prestations Google Ads ni de campagnes Meta. Je ne fais pas de site e-commerce, pas de panier, pas de paiement en ligne, pas de gestion de stock. Je ne fais pas d'application mobile. Je ne fais pas de refonte mensuelle, le site est livré une fois et vous le gardez tel quel tant qu'il vous convient.</p>
-        <p>Si vous avez besoin d'un site marchand, d'un agenda avec réservation en ligne, d'une plate-forme sur mesure ou d'une application native, il faut un autre type de prestataire, et je vous le dirai franchement à la fin de l'échange si c'est votre cas.</p>
+        <h2 class="reveal">Ce que je ne fais pas.</h2>
+        <p class="reveal">Pour que vous sachiez tout de suite si je suis le bon interlocuteur. Je ne fais pas de référencement payant, je ne vends pas de prestations Google Ads ni de campagnes Meta. Je ne fais pas de site e-commerce, pas de panier, pas de paiement en ligne, pas de gestion de stock. Je ne fais pas d'application mobile. Je ne fais pas de refonte mensuelle, le site est livré une fois et vous le gardez tel quel tant qu'il vous convient.</p>
+        <p class="reveal">Si vous avez besoin d'un site marchand, d'un agenda avec réservation en ligne, d'une plate-forme sur mesure ou d'une application native, il faut un autre type de prestataire, et je vous le dirai franchement à la fin de l'échange si c'est votre cas.</p>
       </div>
     </section>
 
@@ -157,25 +199,26 @@
     <section class="qui" id="qui">
       <div class="container">
         <p class="section-num">05</p>
-        <h2>Qui.</h2>
-        <p>Rémi Chevassut, développeur de formation, installé à Grenoble. J'ai passé dix ans à construire des outils web pour des éditeurs de logiciels et des entreprises de service, en équipe, dans des contextes où la qualité du code et la fiabilité avaient de l'importance.</p>
-        <p>J'ai créé Quelto parce que les artisans et les petits commerçants de mon entourage me demandaient régulièrement de l'aide pour leur site, et qu'aucune des offres qu'on leur proposait ne me semblait adaptée. Le site vitrine à vingt-neuf euros par mois était laid, le site sur mesure à huit mille euros était cher, et tout le monde voulait vendre un contrat de maintenance.</p>
-        <p>Ici, le site vous appartient, vous pouvez le faire héberger où vous voulez, et je ne vends pas de contrat de maintenance. Si vous avez besoin d'aide six mois plus tard, on en discute, mais vous n'êtes pas engagé. Je préfère avoir peu de clients contents que beaucoup de clients verrouillés.</p>
-        <p class="signature">Rémi Chevassut, développeur à Grenoble. Auto-entrepreneur, juillet 2026. SIRET sur demande.</p>
+        <h2 class="reveal">Qui.</h2>
+        <p class="reveal">Rémi Chevassut, développeur de formation, installé à Grenoble. J'ai passé dix ans à construire des outils web pour des éditeurs de logiciels et des entreprises de service, en équipe, dans des contextes où la qualité du code et la fiabilité avaient de l'importance.</p>
+        <p class="reveal">J'ai créé Quelto parce que les artisans et les petits commerçants de mon entourage me demandaient régulièrement de l'aide pour leur site, et qu'aucune des offres qu'on leur proposait ne me semblait adaptée. Le site vitrine à vingt-neuf euros par mois était laid, le site sur mesure à huit mille euros était cher, et tout le monde voulait vendre un contrat de maintenance.</p>
+        <p class="reveal">Ici, le site vous appartient, vous pouvez le faire héberger où vous voulez, et je ne vends pas de contrat de maintenance. Si vous avez besoin d'aide six mois plus tard, on en discute, mais vous n'êtes pas engagé. Je préfère avoir peu de clients contents que beaucoup de clients verrouillés.</p>
+        <p class="signature reveal">Rémi Chevassut, développeur à Grenoble. Auto-entrepreneur, juillet 2026. SIRET sur demande.</p>
       </div>
     </section>
 
     <!-- ============================================================
-         CONTACT FINAL
+         CONTACT FINAL — section signature
          ============================================================ -->
     <section class="contact">
+      <div class="contact-grain" aria-hidden="true"></div>
       <div class="container">
-        <h2>Si vous voulez qu'on en parle.</h2>
-        <p>Écrire prend deux minutes, je réponds vite, et l'échange d'une demi-heure n'engage à rien.</p>
-        <p>
-          <a href="contact.html" class="btn-primary btn-primary-light">Écrire à Quelto</a>
+        <h2 class="reveal">Si vous voulez qu'on en parle.</h2>
+        <p class="reveal">Écrire prend deux minutes, je réponds vite, et l'échange d'une demi-heure n'engage à rien.</p>
+        <p class="reveal">
+          <a href="contact.html" class="btn-primary btn-primary-light magnetic">Écrire à Quelto</a>
         </p>
-        <p class="contact-direct">
+        <p class="contact-direct reveal">
           Ou directement&nbsp;: <a href="mailto:bonjour@quelto.fr">bonjour@quelto.fr</a> · <a href="tel:+336****0000">06 00 00 00 00</a>
         </p>
       </div>
@@ -191,5 +234,16 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    // Conditionally inject three-hero
+    if (window._queltoEnableThree) {
+      const s = document.createElement('script');
+      s.type = 'module';
+      s.src = 'three-hero.js';
+      document.body.appendChild(s);
+    } else {
+      document.documentElement.dataset.threeDisabled = 'true';
+    }
+  </script>
 </body>
 </html>

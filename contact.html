@@ -14,6 +14,8 @@
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 </head>
 <body>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+
   <header class="site-header scrolled">
     <div class="container header-inner">
       <a href="index.html" class="brand" aria-label="Quelto — accueil">
@@ -33,13 +35,14 @@
 
   <main>
     <section class="contact-page">
+      <div class="hero-grain" aria-hidden="true"></div>
       <div class="container">
         <p class="hero-eyebrow">Contact</p>
-        <h1>Écrire à Quelto.</h1>
-        <p class="lead">Quelques lignes sur votre activité, votre ville, et si vous avez une idée du site que vous voudriez. Je reviens vers vous sous vingt-quatre heures ouvrées, par e-mail ou par téléphone, pour proposer un créneau d'échange d'une demi-heure.</p>
-        <p class="direct">Si vous préférez écrire directement&nbsp;: <a href="mailto:bonjour@quelto.fr">bonjour@quelto.fr</a>. Ou téléphoner&nbsp;: <a href="tel:+336****0000">06 00 00 00 00</a>.</p>
+        <h1 class="reveal">Écrire à Quelto.</h1>
+        <p class="lead reveal">Quelques lignes sur votre activité, votre ville, et si vous avez une idée du site que vous voudriez. Je reviens vers vous sous vingt-quatre heures ouvrées, par e-mail ou par téléphone, pour proposer un créneau d'échange d'une demi-heure.</p>
+        <p class="direct reveal">Si vous préférez écrire directement&nbsp;: <a href="mailto:bonjour@quelto.fr">bonjour@quelto.fr</a>. Ou téléphoner&nbsp;: <a href="tel:+336****0000">06 00 00 00 00</a>.</p>
 
-        <form class="contact-form" id="contactForm" novalidate>
+        <form class="contact-form reveal" id="contactForm" novalidate>
           <div class="form-row">
             <div class="field">
               <label for="name">Nom et prénom</label>
@@ -65,7 +68,7 @@
             <textarea id="message" name="message" rows="8" required placeholder="Quelques mots sur votre activité, votre ville, et si vous avez une idée du site que vous voudriez. Si vous n'en avez pas, dites-le, on en discutera."></textarea>
           </div>
           <p class="form-foot">
-            <button type="submit" class="btn-primary" id="submitBtn">Envoyer →</button>
+            <button type="submit" class="btn-primary magnetic" id="submitBtn">Envoyer →</button>
             <span class="form-note">En envoyant ce formulaire, vous acceptez que je vous réponde au sujet de votre demande. Pas de newsletter, pas de relance commerciale.</span>
           </p>
           <div class="form-success" id="formSuccess" hidden>

@@ -1,10 +1,11 @@
 /* =========================================================
-   QUELTO — sobre mais qui claque
-   - Hiérarchie typographique FORTE
-   - Numéro de section (01, 02...) en mono
-   - H1 80px, signature visuelle
-   - Un seul accent orange (CTAs + signature)
-   - Sections clairement séparées, pas d'alternance gratuite
+   QUELTO — design final
+   - Editorial sobre + 3D + animations subtiles
+   - H1 impact, sections numérotées, accent orange unique
+   - 3D clock dans le hero (pas icosahedron random)
+   - Reveal au scroll (fade-up doux, pas agressif)
+   - Magnetic léger sur les CTA (10% max)
+   - Grain SVG noise très subtil en background
    ========================================================= */
 
 :root {
@@ -18,6 +19,11 @@
   --c-accent: #D97706;
   --ff-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --ff-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur: 380ms;
+  --dur-slow: 700ms;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -58,11 +64,33 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 
 .container {
   width: 100%;
-  max-width: 720px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 24px;
 }
 @media (min-width: 720px) { .container { padding: 0 32px; } }
+
+/* =========================================================
+   Custom cursor — small dot, grows on interactive
+   ========================================================= */
+.cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 8px; height: 8px;
+  background: var(--c-ink);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 100;
+  transform: translate(-50%, -50%);
+  transition: width 200ms var(--ease-out), height 200ms var(--ease-out), background 200ms ease;
+  opacity: 0;
+}
+body.cursor-ready .cursor { opacity: 1; }
+.cursor.hover {
+  width: 24px; height: 24px;
+  background: var(--c-accent);
+}
+@media (hover: none), (max-width: 900px) { .cursor { display: none; } }
 
 /* =========================================================
    Header
@@ -95,11 +123,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   text-decoration: none;
   letter-spacing: -0.01em;
 }
-.brand-mark {
-  width: 28px; height: 28px;
-  color: var(--c-ink);
-  flex-shrink: 0;
-}
+.brand-mark { width: 28px; height: 28px; color: var(--c-ink); flex-shrink: 0; }
 .brand:hover .brand-name { text-decoration: underline; text-underline-offset: 4px; }
 .brand:hover { text-decoration: none; }
 
@@ -118,21 +142,48 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  transition: transform 200ms var(--ease-out);
 }
-.nav-cta .arrow { transition: transform 150ms ease; }
+.nav-cta .arrow { transition: transform 200ms var(--ease-out); }
 .nav-cta:hover { text-decoration: underline; text-underline-offset: 4px; }
-.nav-cta:hover .arrow { transform: translateX(2px); }
+.nav-cta:hover .arrow { transform: translateX(3px); }
+.magnetic { transition: transform 250ms var(--ease-out); }
 
 @media (min-width: 720px) { .primary-nav { display: flex; } }
 
 /* =========================================================
-   HERO — claque fort
+   HERO — split: content + 3D clock
    ========================================================= */
 .hero {
-  padding: 80px 0 96px;
+  position: relative;
+  padding: 64px 0 96px;
   background: var(--c-bg);
   border-bottom: 1px solid var(--c-line);
+  overflow: hidden;
 }
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.1  0 0 0 0 0.1  0 0 0 0.04 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.6;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+@media (min-width: 900px) {
+  .hero-inner {
+    grid-template-columns: 1.3fr 1fr;
+    gap: 80px;
+  }
+}
+.hero-content { max-width: 640px; }
 .hero-eyebrow {
   font-family: var(--ff-mono);
   font-size: 13px;
@@ -148,9 +199,14 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   width: 6px; height: 6px;
   background: var(--c-accent);
   border-radius: 50%;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
 }
 .hero h1 {
-  font-size: clamp(40px, 6.4vw, 76px);
+  font-size: clamp(40px, 6vw, 68px);
   font-weight: 600;
   line-height: 1.02;
   letter-spacing: -0.035em;
@@ -158,8 +214,8 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   max-width: 14ch;
 }
 .hero-sub {
-  font-size: clamp(18px, 1.5vw, 21px);
-  line-height: 1.5;
+  font-size: clamp(18px, 1.4vw, 20px);
+  line-height: 1.55;
   color: var(--c-ink-2);
   margin-bottom: 40px;
   max-width: 56ch;
@@ -179,11 +235,15 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   color: var(--c-bg);
   background: var(--c-ink);
   text-decoration: none;
-  padding: 12px 22px;
+  padding: 13px 22px;
   border-radius: 6px;
-  transition: background-color 150ms ease, transform 150ms ease;
+  transition: background-color 200ms ease, transform 200ms var(--ease-out), box-shadow 200ms ease;
 }
-.btn-primary:hover { background: #000; transform: translateY(-1px); }
+.btn-primary:hover {
+  background: #000;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.3);
+}
 .btn-primary-light {
   background: var(--c-bg);
   color: var(--c-ink);
@@ -197,10 +257,10 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  transition: gap 200ms var(--ease-out);
 }
-.link-quiet::after { content: "→"; transition: transform 150ms ease; }
-.link-quiet:hover { text-decoration: underline; text-underline-offset: 4px; }
-.link-quiet:hover::after { transform: translateX(2px); }
+.link-quiet::after { content: "→"; }
+.link-quiet:hover { text-decoration: underline; text-underline-offset: 4px; gap: 8px; }
 
 .hero-stats {
   display: grid;
@@ -211,15 +271,12 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   border-top: 1px solid var(--c-line);
 }
 @media (min-width: 600px) {
-  .hero-stats {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-  }
+  .hero-stats { grid-template-columns: repeat(3, 1fr); gap: 32px; }
 }
 .hero-stats div { display: flex; flex-direction: column; gap: 6px; }
 .hero-stats dt {
   font-family: var(--ff-mono);
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 500;
   color: var(--c-ink);
   letter-spacing: -0.01em;
@@ -229,6 +286,35 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   color: var(--c-muted);
   margin: 0;
   line-height: 1.4;
+}
+
+/* 3D clock container */
+.hero-3d {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+}
+#heroCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1;
+}
+.hero-fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  animation: floatSvg 8s ease-in-out infinite;
+}
+.hero-3d.has-webgl .hero-fallback { display: none; }
+@keyframes floatSvg {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 
 /* =========================================================
@@ -248,12 +334,19 @@ section + section { padding-top: 64px; }
 }
 
 h2 {
-  font-size: clamp(28px, 3.8vw, 40px);
+  font-size: clamp(28px, 3.6vw, 40px);
   font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.15;
   margin-bottom: 32px;
   color: var(--c-ink);
+}
+
+.offre, .comment, .tarif, .ne-fait-pas, .qui {
+  background: var(--c-bg);
+}
+.tarif, .ne-fait-pas {
+  background: var(--c-bg-2);
 }
 
 .offre p, .tarif p, .ne-fait-pas p, .comment p, .qui p, .contact p {
@@ -271,7 +364,7 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 0;
-  margin-top: 32px;
+  margin-top: 40px;
   border-top: 1px solid var(--c-line);
 }
 .steps li {
@@ -280,7 +373,18 @@ h2 {
   gap: 24px;
   padding: 28px 0;
   border-bottom: 1px solid var(--c-line);
+  position: relative;
 }
+.steps li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 28px;
+  width: 0;
+  height: 1px;
+  background: var(--c-accent);
+  transition: width 800ms var(--ease-out);
+}
+.steps li.is-visible::before { width: 28px; }
 .step-num {
   font-family: var(--ff-mono);
   font-size: 14px;
@@ -350,13 +454,13 @@ h2 {
 }
 
 /* =========================================================
-   CONTACT — bandeau noir signature
+   CONTACT — section signature
    ========================================================= */
 .contact {
+  position: relative;
   background: var(--c-ink);
   color: var(--c-bg);
   margin-top: 32px;
-  position: relative;
   overflow: hidden;
 }
 .contact::before {
@@ -364,6 +468,15 @@ h2 {
   position: absolute;
   top: 0; left: 0; right: 0; height: 4px;
   background: var(--c-accent);
+  z-index: 1;
+}
+.contact-grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.7;
+  mix-blend-mode: screen;
+  pointer-events: none;
 }
 .contact h2 {
   color: var(--c-bg);
@@ -381,9 +494,6 @@ h2 {
   text-decoration-color: rgba(250, 250, 247, 0.3);
 }
 .contact a:hover { text-decoration-color: var(--c-bg); }
-.contact .btn-primary-light {
-  margin-top: 8px;
-}
 .contact-direct {
   margin-top: 32px;
   font-size: 15px;
@@ -392,7 +502,7 @@ h2 {
 .contact-direct a { color: var(--c-bg); }
 
 /* =========================================================
-   Footer — signature finale
+   Footer
    ========================================================= */
 .site-footer {
   background: var(--c-bg);
@@ -414,3 +524,22 @@ h2 {
 }
 .footer-inner a { color: var(--c-muted); }
 .footer-inner a:hover { color: var(--c-ink); }
+
+/* =========================================================
+   Reveal animations — fade up + stagger
+   ========================================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 800ms var(--ease-out), transform 800ms var(--ease-out);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .hero-eyebrow::before, .hero-fallback { animation: none; }
+  html { scroll-behavior: auto; }
+  .cursor { display: none; }
+}
