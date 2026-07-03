@@ -5,33 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Écrire à Quelto</title>
   <meta name="description" content="Formulaire de contact Quelto. Réponse sous vingt-quatre heures ouvrées, sans engagement.">
-  <meta name="theme-color" content="#FFFFFF">
+  <meta name="theme-color" content="#FAFAF7">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="contact.css">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 </head>
 <body>
-  <header class="site-header">
+  <header class="site-header scrolled">
     <div class="container header-inner">
       <a href="index.html" class="brand">Quelto</a>
       <nav class="primary-nav">
         <a href="index.html#offre">L'offre</a>
         <a href="index.html#tarif">Tarif</a>
         <a href="index.html#qui">Qui</a>
-        <a href="contact.html">Contact</a>
       </nav>
-      <a href="contact.html" class="header-link">Écrire →</a>
+      <a href="contact.html" class="nav-cta">Écrire →</a>
     </div>
   </header>
 
   <main>
     <section class="contact-page">
       <div class="container">
-        <p>Quelques lignes sur votre activité, votre ville, et si vous avez une idée du site que vous voudriez. Je reviens vers vous sous vingt-quatre heures ouvrées, par e-mail ou par téléphone, pour proposer un créneau d'échange d'une demi-heure.</p>
-        <p>Si vous préférez écrire directement&nbsp;: <a href="mailto:bonjour@quelto.fr">bonjour@quelto.fr</a>. Ou téléphoner&nbsp;: <a href="tel:+336****0000">06 00 00 00 00</a>.</p>
+        <h1>Écrire à Quelto.</h1>
+        <p class="lead">Quelques lignes sur votre activité, votre ville, et si vous avez une idée du site que vous voudriez. Je reviens vers vous sous vingt-quatre heures ouvrées, par e-mail ou par téléphone, pour proposer un créneau d'échange d'une demi-heure.</p>
+        <p class="direct">Si vous préférez écrire directement&nbsp;: <a href="mailto:bonjour@quelto.fr">bonjour@quelto.fr</a>. Ou téléphoner&nbsp;: <a href="tel:+336****0000">06 00 00 00 00</a>.</p>
 
         <form class="contact-form" id="contactForm" novalidate>
           <div class="form-row">
@@ -59,7 +59,7 @@
             <textarea id="message" name="message" rows="8" required placeholder="Quelques mots sur votre activité, votre ville, et si vous avez une idée du site que vous voudriez. Si vous n'en avez pas, dites-le, on en discutera."></textarea>
           </div>
           <p class="form-foot">
-            <button type="submit" class="btn-send" id="submitBtn">Envoyer →</button>
+            <button type="submit" class="btn-primary" id="submitBtn">Envoyer →</button>
             <span class="form-note">En envoyant ce formulaire, vous acceptez que je vous réponde au sujet de votre demande. Pas de newsletter, pas de relance commerciale.</span>
           </p>
           <div class="form-success" id="formSuccess" hidden>
@@ -73,7 +73,7 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">
+    <div class="container footer-inner">
       <p>Quelto, Rémi Chevassut, Grenoble. © <span id="year">2026</span>.</p>
       <p>Auto-entrepreneur · SIRET sur demande · <a href="mailto:bonjour@quelto.fr">bonjour@quelto.fr</a></p>
     </div>

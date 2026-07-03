@@ -1,19 +1,19 @@
 /* =========================================================
-   QUELTO — zero AI slop
-   - One font (Inter, 3 weights max)
-   - One bg (#FFFFFF), one text (#000), one muted (#666)
-   - No border-radius anywhere
-   - No eyebrow, no divider, no two-column title/body
-   - Max width 640px for text
-   - No animations, no hover effects, no transitions
-   - No pill buttons, no glass, no shadows
+   QUELTO — sobre mais pas pauvre
+   - Hiérarchie typographique claire (H1 très gros, H2 medium, body 17)
+   - Fond crème #FAFAF7 (chaud, lisible, pas blanc clinique)
+   - Bouton primaire simple (pas pill, pas gradient)
+   - Pas d'animation, pas de decoration
+   - 1 seule couleur d'accent (noir)
    ========================================================= */
 
 :root {
-  --c-bg: #FFFFFF;
-  --c-ink: #000000;
-  --c-muted: #666666;
-  --c-line: #E5E5E5;
+  --c-bg: #FAFAF7;
+  --c-bg-2: #F2F0E9;
+  --c-ink: #1A1A1A;
+  --c-ink-2: #2B2B28;
+  --c-muted: #6B6963;
+  --c-line: #D9D6CC;
   --ff-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 }
 
@@ -23,107 +23,175 @@ body {
   margin: 0;
   font-family: var(--ff-sans);
   font-size: 17px;
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--c-ink);
   background: var(--c-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 img, svg { display: block; max-width: 100%; }
 a {
   color: var(--c-ink);
   text-decoration: underline;
+  text-decoration-color: var(--c-line);
   text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 150ms ease;
 }
-a:hover { text-decoration-thickness: 2px; }
+a:hover { text-decoration-color: var(--c-ink); }
 h1, h2, h3, h4 {
   margin: 0;
   font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: 0;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   color: var(--c-ink);
 }
 p { margin: 0; }
 ul, ol { padding: 0; margin: 0; list-style: none; }
 button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
-:focus-visible { outline: 2px solid var(--c-ink); outline-offset: 2px; }
+:focus-visible { outline: 2px solid var(--c-ink); outline-offset: 3px; }
 ::selection { background: var(--c-ink); color: var(--c-bg); }
 
 .container {
   width: 100%;
-  max-width: 640px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 0 24px;
 }
+@media (min-width: 720px) { .container { padding: 0 32px; } }
 
 /* =========================================================
    Header
    ========================================================= */
 .site-header {
-  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(250, 250, 247, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 200ms ease;
 }
+.site-header.scrolled { border-bottom-color: var(--c-line); }
 .header-inner {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 16px;
-  flex-wrap: wrap;
+  height: 64px;
 }
 .brand {
-  font-weight: 600;
   font-size: 19px;
-  letter-spacing: -0.01em;
+  font-weight: 600;
   color: var(--c-ink);
   text-decoration: none;
+  letter-spacing: -0.01em;
 }
 .primary-nav {
   display: none;
-  gap: 24px;
+  gap: 32px;
   font-size: 15px;
 }
 .primary-nav a { color: var(--c-ink); text-decoration: none; }
-.primary-nav a:hover { text-decoration: underline; text-underline-offset: 3px; }
-.header-link {
+.primary-nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.nav-cta {
   font-size: 15px;
+  font-weight: 500;
   color: var(--c-ink);
   text-decoration: none;
 }
-.header-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.nav-cta:hover { text-decoration: underline; text-underline-offset: 4px; }
 
-@media (min-width: 640px) {
+@media (min-width: 720px) {
   .primary-nav { display: flex; }
 }
 
 /* =========================================================
    Sections
    ========================================================= */
-section { padding: 48px 0; }
-section + section { padding-top: 16px; }
-section p + p { margin-top: 16px; }
+section { padding: 64px 0; }
+section + section { padding-top: 0; }
 
-.hero { padding-top: 24px; padding-bottom: 64px; }
-.hero p { font-size: 19px; line-height: 1.5; }
-.hero p + p { margin-top: 24px; }
-.hero a { font-weight: 500; }
-
-h2 {
-  font-size: 17px;
-  font-weight: 600;
-  letter-spacing: 0;
-  margin-bottom: 16px;
-  color: var(--c-ink);
-  text-transform: none;
+.hero {
+  padding: 80px 0 96px;
+  background: var(--c-bg);
+  border-bottom: 1px solid var(--c-line);
 }
 
-/* No background alternation, no dividers, no border, no margin tricks */
+.hero h1 {
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 24px;
+  max-width: 16ch;
+}
+.hero-sub {
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--c-ink-2);
+  margin-bottom: 32px;
+  max-width: 56ch;
+}
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+.btn-primary {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--c-bg);
+  background: var(--c-ink);
+  text-decoration: none;
+  padding: 11px 20px;
+  border-radius: 6px;
+  transition: background-color 150ms ease;
+}
+.btn-primary:hover { background: #000; }
+.link-quiet {
+  font-size: 15px;
+  color: var(--c-ink-2);
+  text-decoration: none;
+}
+.link-quiet:hover { color: var(--c-ink); text-decoration: underline; text-underline-offset: 4px; }
 
-.tarif p,
-.offre p,
-.qui p,
-.comment p,
-.ce-que-je-ne-fais-pas p,
-.contact p { color: var(--c-ink); }
+/* Standard section headings + body */
+h2 {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: var(--c-ink);
+}
+.offre p, .tarif p, .ne-fait-pas p, .comment p, .qui p, .contact p {
+  color: var(--c-ink-2);
+  font-size: 17px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.offre p:last-child, .tarif p:last-child, .ne-fait-pas p:last-child,
+.comment p:last-child, .qui p:last-child, .contact p:last-child { margin-bottom: 0; }
+
+.tarif {
+  background: var(--c-bg-2);
+}
+.tarif-figure {
+  margin-top: 24px;
+  font-size: 16px;
+  color: var(--c-muted);
+}
+.tarif-figure strong {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--c-ink);
+  margin-left: 4px;
+}
 
 .signature {
   margin-top: 32px;
@@ -131,21 +199,40 @@ h2 {
   color: var(--c-muted);
 }
 
-/* =========================================================
-   Contact section (last in body)
-   ========================================================= */
-.contact a { font-weight: 500; }
+.contact {
+  background: var(--c-ink);
+  color: var(--c-bg);
+}
+.contact h2, .contact p { color: var(--c-bg); }
+.contact a { color: var(--c-bg); text-decoration-color: rgba(250, 250, 247, 0.3); }
+.contact a:hover { text-decoration-color: var(--c-bg); }
+.contact .btn-primary {
+  background: var(--c-bg);
+  color: var(--c-ink);
+}
+.contact .btn-primary:hover { background: #fff; }
+.contact-direct {
+  margin-top: 20px;
+  font-size: 15px;
+  color: rgba(250, 250, 247, 0.7);
+}
+.contact-direct a { color: var(--c-bg); }
 
 /* =========================================================
    Footer
    ========================================================= */
 .site-footer {
-  margin-top: 64px;
-  padding: 32px 0 48px;
+  background: var(--c-bg);
   border-top: 1px solid var(--c-line);
+  padding: 32px 0;
+}
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
   font-size: 14px;
   color: var(--c-muted);
 }
-.site-footer p + p { margin-top: 4px; }
-.site-footer a { color: var(--c-muted); }
-.site-footer a:hover { color: var(--c-ink); }
+.footer-inner a { color: var(--c-muted); }
+.footer-inner a:hover { color: var(--c-ink); }
