@@ -107,10 +107,9 @@
     const animate = el => {
       const target = parseFloat(el.dataset.count);
       const suffix = el.dataset.suffix || '';
-      const dur = 1200;
+      const dur = 1400;
       const start = performance.now();
       const fmt = v => {
-        // integer if target is int, else 1 decimal
         return Number.isInteger(target) ? Math.round(v).toString() : v.toFixed(1);
       };
       const step = now => {
@@ -120,6 +119,16 @@
         if (t < 1) requestAnimationFrame(step);
       };
       requestAnimationFrame(step);
+      // Optional: fade in a sibling currency/follow-up element once count finishes
+      const followSel = el.dataset.follow;
+      if (followSel) {
+        const follow = document.querySelector(followSel);
+        if (follow) {
+          follow.style.opacity = '0';
+          follow.style.transition = 'opacity .5s var(--ease)';
+          setTimeout(() => { follow.style.opacity = '1'; }, dur);
+        }
+      }
     };
     const io2 = new IntersectionObserver(entries => {
       entries.forEach(e => {

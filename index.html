@@ -30,6 +30,7 @@
     <a href="#offre">Offre</a>
     <a href="#process">Process</a>
     <a href="#tarif">Tarif</a>
+    <a href="realisations.html">Réalisations</a>
     <a href="#qui">Qui</a>
     <a href="contact.html" class="nav-cta">Contact</a>
   </nav>
@@ -43,6 +44,7 @@
   <a href="#offre">Offre</a>
   <a href="#process">Process</a>
   <a href="#tarif">Tarif</a>
+  <a href="realisations.html">Réalisations</a>
   <a href="#qui">Qui</a>
   <a href="contact.html">Contact</a>
 </nav>
@@ -60,7 +62,7 @@
       <div class="hero-text">
         <div class="eyebrow">
           <span class="dot"></span>
-          <span>Grenoble · auto-entrepreneur · juillet 2026</span>
+          <span>Grenoble · développeur indépendant · juillet 2026</span>
         </div>
 
         <h1 class="hero-title">
@@ -77,7 +79,7 @@
             <span>Demander mon site</span>
             <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="#offre" class="btn btn-ghost" data-magnetic>
+          <a href="#offre" class="btn btn-ghost">
             <span>Voir l'offre</span>
           </a>
         </div>
@@ -99,18 +101,30 @@
           </div>
           <div class="card-body">
             <div class="card-row">
-              <div class="card-thumb"></div>
+              <div class="card-thumb">
+                <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M5 4h6l2 2h6v12H5z" fill="none" stroke="#0A0A0B" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="13" r="2.5" fill="#0A0A0B"/></svg>
+              </div>
               <div class="card-lines">
                 <div class="l w80"></div>
                 <div class="l w60"></div>
                 <div class="l w40"></div>
               </div>
             </div>
-            <div class="card-grid-mini">
-              <span></span><span></span><span></span>
-              <span></span><span></span><span></span>
+            <div class="card-sections">
+              <div class="card-sec">
+                <span class="sec-num">01</span>
+                <span class="sec-bar" style="width:60%"></span>
+              </div>
+              <div class="card-sec">
+                <span class="sec-num">02</span>
+                <span class="sec-bar" style="width:80%"></span>
+              </div>
+              <div class="card-sec">
+                <span class="sec-num">03</span>
+                <span class="sec-bar" style="width:45%"></span>
+              </div>
             </div>
-            <div class="card-cta">Demander un devis</div>
+            <div class="card-cta">Demander un devis →</div>
           </div>
         </div>
         <div class="card-glow" aria-hidden="true"></div>
@@ -246,7 +260,7 @@
     <div class="tarif-inner">
       <div class="kicker"><span>03</span> Tarif</div>
       <div class="big-price">
-        <span class="big-num" data-count="500">0</span>
+        <span class="big-num" data-count="500" data-follow=".big-cur">0</span>
         <span class="big-cur">€</span>
       </div>
       <p class="tarif-line">
@@ -302,7 +316,7 @@
           <rect x="60" y="80" width="120" height="80" rx="2" stroke="currentColor" stroke-width="1.4" fill="none"/>
           <line x1="100" y1="200" x2="140" y2="200" stroke="currentColor" stroke-width="1.4"/>
           <line x1="120" y1="160" x2="120" y2="200" stroke="currentColor" stroke-width="1.4"/>
-          <!-- screen content -->
+          <!-- screen content (orange accents = current activity) -->
           <line x1="70" y1="92" x2="110" y2="92" stroke="#F97316" stroke-width="2" stroke-linecap="round"/>
           <line x1="70" y1="100" x2="160" y2="100" stroke="currentColor" stroke-width=".7"/>
           <line x1="70" y1="106" x2="140" y2="106" stroke="currentColor" stroke-width=".7"/>
@@ -310,12 +324,20 @@
           <line x1="70" y1="124" x2="50" y2="124" stroke="#F97316" stroke-width="3" stroke-linecap="round"/>
           <line x1="70" y1="132" x2="100" y2="132" stroke="currentColor" stroke-width=".7"/>
           <line x1="70" y1="138" x2="90" y2="138" stroke="currentColor" stroke-width=".7"/>
+          <line x1="70" y1="146" x2="130" y2="146" stroke="currentColor" stroke-width=".7"/>
+          <!-- caret blink -->
+          <line x1="135" y1="142" x2="135" y2="150" stroke="#F97316" stroke-width="1.4" stroke-linecap="round"/>
           <!-- person silhouette -->
           <circle cx="195" cy="120" r="14" stroke="currentColor" stroke-width="1.4" fill="none"/>
           <path d="M175 200 C 175 170, 215 170, 215 200" stroke="currentColor" stroke-width="1.4" fill="none"/>
-          <!-- coffee -->
+          <!-- coffee (steam) -->
           <path d="M30 195 v-15 h12 v15 z" stroke="currentColor" stroke-width="1" fill="none"/>
-          <path d="M42 188 q4 3 0 6" stroke="currentColor" stroke-width="1" fill="none"/>
+          <path d="M33 180 q3 -3 0 -6" stroke="currentColor" stroke-width="1" fill="none" opacity=".6"/>
+          <path d="M40 180 q3 -3 0 -6" stroke="currentColor" stroke-width="1" fill="none" opacity=".4"/>
+          <!-- mouse -->
+          <ellipse cx="160" cy="195" rx="8" ry="5" stroke="currentColor" stroke-width="1" fill="none"/>
+          <!-- keyboard -->
+          <rect x="80" y="190" width="50" height="6" rx="1" stroke="currentColor" stroke-width="1" fill="none"/>
         </svg>
       </div>
       <div class="qui-text">
@@ -330,12 +352,126 @@
         <p>
           Je suis auto-entrepreneur, SIRET sur demande, basé à Grenoble, je travaille seul et j'assume tout ce que je livre. Si vous voulez me parler de votre projet, vous tombez sur moi directement, pas sur un commercial.
         </p>
+
+        <div class="qui-stats">
+          <div class="qui-stat">
+            <span class="qs-num">12+</span>
+            <span class="qs-lbl">ans à coder</span>
+          </div>
+          <div class="qui-stat">
+            <span class="qs-num">2026</span>
+            <span class="qs-lbl">fondation de Quelto</span>
+          </div>
+          <div class="qui-stat">
+            <span class="qs-num">1</span>
+            <span class="qs-lbl">seul interlocuteur</span>
+          </div>
+        </div>
+
         <div class="signature">
           <span class="sig-name">Rémi Chevassut</span>
           <span class="sig-loc">Grenoble · juillet 2026</span>
         </div>
       </div>
     </div>
+  </section>
+
+
+  <!-- SECTION 5.5 — PROJETS / EXEMPLES -->
+  <section class="section section-alt" id="projets">
+    <header class="section-head">
+      <div class="kicker"><span>05b</span> Projets types</div>
+      <h2>Quelques exemples de ce que je code <em>en une journée</em>.</h2>
+      <p class="section-sub">
+        Pas de portfolio clients (les sites de mes clients leur appartiennent, je ne les expose pas sans accord).<br/>
+        Voici des projets-types, refaits à neuf pour la démo — code open, vous pouvez ouvrir.
+      </p>
+    </header>
+
+    <div class="bento">
+      <!-- Projet 1 : Boulangerie (one-page) -->
+      <article class="bento-card span-2">
+        <div class="bento-visu visu-mockup" aria-hidden="true">
+          <div class="mockup-window">
+            <div class="mockup-bar"></div>
+            <div class="mockup-h1"></div>
+            <div class="mockup-h2"></div>
+            <div class="mockup-grid">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="mockup-cta"></div>
+          </div>
+        </div>
+        <div class="bento-tag">One-page · boulangerie</div>
+        <h3>Le Pain du Coin</h3>
+        <p>Page unique pour une boulangerie de quartier : horaires, plan d'accès, trois photos, formulaire de contact. Livré en 2 jours, hébergé sur Pages, 38 ko total.</p>
+        <div class="bento-foot">
+          <span class="price">500 €</span>
+          <span class="meta-stack">HTML · CSS · JS</span>
+        </div>
+      </article>
+
+      <!-- Projet 2 : Migration Wix → statique -->
+      <article class="bento-card">
+        <div class="bento-visu visu-arrow" aria-hidden="true">
+          <div class="from">
+            <span class="src-name">Wix</span>
+          </div>
+          <div class="arr">
+            <svg viewBox="0 0 32 12" width="40" height="12"><path d="M0 6h28M24 1l5 5-5 5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="to">
+            <span class="src-name accent">statique</span>
+          </div>
+        </div>
+        <div class="bento-tag">Migration</div>
+        <h3>Wix → statique</h3>
+        <p>Reprise d'un site Wix obsolète, recodé à la main, conservé le nom de domaine. -80% de poids, +3× plus rapide, le client peut modifier les textes lui-même.</p>
+        <div class="bento-foot">
+          <span class="price">600 €</span>
+          <span class="meta-stack">migré en 1 jour</span>
+        </div>
+      </article>
+
+      <!-- Projet 3 : Calendrier de réservation -->
+      <article class="bento-card">
+        <div class="bento-visu visu-cal" aria-hidden="true">
+          <div class="cal-h">
+            <span></span><span class="accent"></span><span></span>
+          </div>
+          <div class="cal-g">
+            <span></span><span></span><span></span><span></span>
+            <span class="busy"></span><span class="busy"></span><span></span>
+            <span></span><span class="busy"></span><span></span><span></span>
+            <span></span><span></span><span class="busy"></span><span class="busy"></span>
+          </div>
+        </div>
+        <div class="bento-tag">Réservation</div>
+        <h3>Calendrier en ligne</h3>
+        <p>Intégration d'un créneau de réservation Cal.com dans une page vitrine, avec confirmation mail automatique. Pour un ostéo, un coiffeur, un coach.</p>
+        <div class="bento-foot">
+          <span class="price">400 €</span>
+          <span class="meta-stack">plugin tierce</span>
+        </div>
+      </article>
+
+      <!-- Projet 4 : Site association -->
+      <article class="bento-card span-2">
+        <div class="bento-tag">Vitrine 5 pages · asso</div>
+        <h3>AssoXYZ — qui nous sommes, ce qu'on fait, comment nous aider</h3>
+        <p>Site complet pour une association : équipe, événements passés, dons, contact. 5 pages, maqueté en 2 jours, livré en une semaine, modifiable par les bénévoles sans dépendre de moi.</p>
+        <div class="bento-foot">
+          <span class="price">900 €</span>
+          <span class="meta-stack">5 pages · 1 semaine</span>
+        </div>
+      </article>
+    </div>
+
+    <p class="section-foot-note">
+      ⚠ Ces projets-types sont des démos techniques, pas des clients réels. Le portfolio public arrive après les premiers signés.
+      <br/>
+      <a href="realisations.html" style="color: var(--orange); text-decoration: underline; text-underline-offset: 3px;">Voir la page dédiée avec les 4 projets détaillés →</a>
+    </p>
   </section>
 
 
@@ -349,7 +485,7 @@
       </p>
 
       <div class="contact-grid">
-        <a href="mailto:remi@quelto.fr" class="contact-card" data-magnetic>
+        <a href="mailto:remi@quelto.fr" class="contact-card">
           <div class="cc-label">Mail</div>
           <div class="cc-value">remi@quelto.fr</div>
           <div class="cc-foot">réponse en 24h</div>
