@@ -224,6 +224,54 @@
     });
   }
 
+  // --- 3D tilt on bento/step/no cards -------------------------
+  if (!reduceMotion && !isTouch) {
+    const tiltMax = 6; // degrees
+    const tiltEls = $$('.bento-card, .step, .no-card, .project-detail');
+    tiltEls.forEach(el => {
+      // Set up perspective on parent
+      el.style.transformStyle = 'preserve-3d';
+      el.style.transition = 'transform .15s var(--ease), border-color .25s var(--ease), background .25s var(--ease)';
+      el.style.willChange = 'transform';
+
+      // Inject a shine element
+      const shine = document.createElement('div');
+      shine.className = 'tilt-shine';
+      shine.style.cssText = 'position:absolute; inset:0; border-radius: inherit; pointer-events:none; opacity:0; background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(249,115,22,0.15) 0%, transparent 50%); transition: opacity .3s var(--ease); z-index: 0;';
+      el.style.position = el.style.position || 'relative';
+      el.style.overflow = 'hidden';
+      el.appendChild(shine);
+
+      let tx = 0, ty = 0, cx = 0, cy = 0, mx = 50, my = 50;
+
+      const onMove = e => {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width;
+        const y = (e.clientY - r.top) / r.height;
+        tx = (y - 0.5) * -tiltMax;  // rotateX
+        ty = (x - 0.5) *  tiltMax;  // rotateY
+        mx = x * 100;
+        my = y * 100;
+        el.style.setProperty('--mx', `${mx}%`);
+        el.style.setProperty('--my', `${my}%`);
+        shine.style.opacity = '1';
+      };
+      const onLeave = () => {
+        tx = 0; ty = 0;
+        shine.style.opacity = '0';
+      };
+      const tick = () => {
+        cx += (tx - cx) * 0.12;
+        cy += (ty - cy) * 0.12;
+        el.style.transform = `perspective(800px) rotateX(${cx}deg) rotateY(${cy}deg) translateY(${cx !== 0 || cy !== 0 ? -2 : 0}px)`;
+        requestAnimationFrame(tick);
+      };
+      el.addEventListener('mousemove', onMove);
+      el.addEventListener('mouseleave', onLeave);
+      tick();
+    });
+  }
+
   // --- Smooth scroll for in-page anchors -----------------------
   $$('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {

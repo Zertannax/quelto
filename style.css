@@ -190,13 +190,39 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: non
   100% { transform: scale(1.15) translate(-40px, 40px); opacity: 1; }
 }
 
+/* Hero 3D canvas — full-bleed background scene */
+.hero-canvas-wrap {
+  position: absolute;
+  top: 0; right: 0;
+  width: 60%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-canvas-wrap canvas {
+  display: block;
+  width: 100%; height: 100%;
+}
+.hero-canvas-fallback {
+  display: none;
+  width: 100%; max-width: 600px;
+  color: var(--line-2);
+  opacity: 0.4;
+}
+.hero-canvas-fallback svg { width: 100%; height: 100%; }
+
 .hero-inner {
-  position: relative; z-index: 1;
+  position: relative; z-index: 2;
   max-width: 1280px; margin: 0 auto; width: 100%;
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 80px;
   align-items: center;
+}
+.hero-text {
+  position: relative;
+  z-index: 3;
 }
 
 .eyebrow {
@@ -672,6 +698,25 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: non
   background: radial-gradient(ellipse at center, rgba(249,115,22,0.15) 0%, transparent 50%);
   pointer-events: none;
 }
+.tarif-canvas-wrap {
+  position: absolute;
+  top: 50%; right: 8%;
+  transform: translateY(-50%);
+  width: 380px; height: 380px;
+  z-index: 0;
+  pointer-events: none;
+  display: flex; align-items: center; justify-content: center;
+}
+.tarif-canvas-wrap canvas {
+  display: block;
+  width: 100%; height: 100%;
+}
+@media (max-width: 900px) {
+  .tarif-canvas-wrap { width: 240px; height: 240px; right: 5%; opacity: 0.5; }
+}
+@media (max-width: 600px) {
+  .tarif-canvas-wrap { display: none; }
+}
 .tarif-inner {
   max-width: 800px; margin: 0 auto;
   position: relative;
@@ -1009,9 +1054,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: non
 
 /* Footer ----------------------------------------------------- */
 .site-foot {
+  position: relative;
+  z-index: 2;
   border-top: 1px solid var(--line);
   padding: 32px;
-  background: var(--bg);
+  background: rgba(10,10,11,0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 .foot-inner {
   max-width: 1280px; margin: 0 auto;
