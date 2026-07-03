@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#0A0A0B"/>
+<meta name="description" content="Quelques projets-types réalisés par Quelto : boulangerie, ostéo, association, migration Wix vers statique."/>
+<title>Réalisations — Quelto</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"/>
+<link rel="stylesheet" href="style.css"/>
+<style>
+/* page-specific, kept inline to avoid one more file for a single page */
+.real-page {
+  position: relative;
+  padding: 140px 32px 100px;
+  max-width: 1280px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.real-page::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(249,115,22,0.10) 0%, transparent 60%);
+  filter: blur(40px);
+  z-index: 0;
+  pointer-events: none;
+}
+.real-page > * { position: relative; z-index: 1; }
+.disclaimer {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 20px 24px;
+  background: var(--orange-soft);
+  border: 1px solid var(--orange);
+  border-radius: var(--r);
+  margin: 32px 0 64px;
+  max-width: 720px;
+}
+.disclaimer-ico {
+  flex-shrink: 0;
+  color: var(--orange);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  padding-top: 2px;
+}
+.disclaimer p {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.55;
+}
+.disclaimer strong { color: var(--orange); }
+
+.project-detail {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 380px;
+  margin-bottom: 24px;
+  transition: border-color .25s var(--ease);
+}
+.project-detail:hover { border-color: var(--line-2); }
+.project-detail.reverse { grid-template-columns: 1fr 1fr; direction: rtl; }
+.project-detail.reverse > * { direction: ltr; }
+.project-visu {
+  background: var(--bg);
+  border-right: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  padding: 40px;
+  position: relative;
+  min-height: 280px;
+}
+.project-detail.reverse .project-visu {
+  border-right: none;
+  border-left: 1px solid var(--line);
+}
+.project-visu-label {
+  position: absolute;
+  top: 16px; left: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+.project-visu-frame {
+  width: 100%;
+  max-width: 320px;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6);
+  transform: perspective(800px) rotateY(-4deg) rotateX(2deg);
+}
+.pvf-bar {
+  display: flex; align-items: center; gap: 4px;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-3);
+}
+.pvf-bar span {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--line-2);
+}
+.pvf-bar span:nth-child(1) { background: #F87171; }
+.pvf-bar span:nth-child(2) { background: #FBBF24; }
+.pvf-bar span:nth-child(3) { background: #4ADE80; }
+.pvf-body { padding: 16px; }
+.pvf-h { height: 14px; background: var(--text); border-radius: 2px; width: 70%; opacity: 0.7; margin-bottom: 10px; }
+.pvf-p { height: 5px; background: var(--bg-3); border-radius: 2px; margin-bottom: 4px; }
+.pvf-p::after { content:''; display: block; height: 5px; width: 60%; background: var(--bg-3); border-radius: 2px; margin-top: 4px; }
+.pvf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 12px 0; }
+.pvf-grid span { height: 30px; background: var(--bg-3); border-radius: 3px; }
+.pvf-grid span:first-child { background: var(--orange-soft); border: 1px solid var(--orange); }
+.pvf-cta { height: 22px; width: 80px; background: var(--orange); border-radius: 3px; margin-top: 10px; }
+
+.project-info { padding: 40px; display: flex; flex-direction: column; }
+.pi-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--orange);
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+.pi-title {
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+.pi-sub {
+  font-size: 14px;
+  color: var(--orange);
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+.pi-desc {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  flex: 1;
+}
+.pi-specs {
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 16px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  margin-bottom: 20px;
+}
+.pi-spec {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 13px;
+  gap: 16px;
+}
+.pi-spec-l { color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; }
+.pi-spec-v { color: var(--text); font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+.pi-foot {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.pi-price { font-family: 'JetBrains Mono', monospace; font-size: 20px; color: var(--orange); font-weight: 500; }
+.pi-cta { font-size: 13px; color: var(--text); display: inline-flex; align-items: center; gap: 6px; }
+.pi-cta:hover { color: var(--orange); }
+
+@media (max-width: 900px) {
+  .real-page { padding: 120px 20px 60px; }
+  .project-detail, .project-detail.reverse { grid-template-columns: 1fr; direction: ltr; }
+  .project-visu { border-right: none !important; border-bottom: 1px solid var(--line); }
+  .project-info { padding: 24px; }
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+<header class="site-header" id="siteHeader">
+  <a class="logo" href="index.html" aria-label="Quelto — accueil">
+    <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true">
+      <path d="M5 8 L5 25 M5 8 L20 8 M5 16 L17 16 M21 8 L27 25" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+    <span>Quelto</span>
+  </a>
+  <nav class="nav" aria-label="Navigation principale">
+    <a href="index.html#offre">Offre</a>
+    <a href="index.html#process">Process</a>
+    <a href="index.html#tarif">Tarif</a>
+    <a href="index.html#qui">Qui</a>
+    <a href="realisations.html" class="nav-cta" aria-current="page">Réalisations</a>
+  </nav>
+  <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="index.html#offre">Offre</a>
+  <a href="index.html#process">Process</a>
+  <a href="index.html#tarif">Tarif</a>
+  <a href="index.html#qui">Qui</a>
+  <a href="realisations.html">Réalisations</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<main>
+  <section class="real-page">
+
+    <div class="eyebrow">
+      <span class="dot"></span>
+      <span>projets-types · démos techniques · juillet 2026</span>
+    </div>
+
+    <h1 class="hero-title" style="max-width: 900px; font-size: clamp(40px, 5.5vw, 72px);">
+      Ce que je code en <em>une journée</em>, <span style="color: var(--muted);">en vrai</span>.
+    </h1>
+    <p class="hero-sub">
+      Quatre exemples de projets-types que je sais livrer aujourd'hui, à un tarif honnête. Pas de photo de téléphone portable floue, pas de capture d'écran trafiquée : un mockup dessiné en CSS, le détail de ce qui est dedans, le temps et le prix.
+    </p>
+
+    <div class="disclaimer">
+      <span class="disclaimer-ico">⚠ HONNÊTE</span>
+      <p>
+        <strong>Disclaimer.</strong> Je n'ai pas encore de portfolio public à vous montrer : les sites de mes clients leur appartiennent, et je refuse de les exposer sans leur accord écrit. Les projets ci-dessous sont des <strong>reconstitutions fidèles</strong> de ce que je livre — un boulanger, un ostéo, une asso, une migration. Le code est ouvert, je peux vous le montrer sur demande.
+      </p>
+    </div>
+
+    <!-- PROJET 01 -->
+    <article class="project-detail">
+      <div class="project-visu">
+        <span class="project-visu-label">fig. 01</span>
+        <div class="project-visu-frame">
+          <div class="pvf-bar"><span></span><span></span><span></span></div>
+          <div class="pvf-body">
+            <div class="pvf-h"></div>
+            <div class="pvf-p"></div>
+            <div class="pvf-grid"><span></span><span></span><span></span></div>
+            <div class="pvf-cta"></div>
+          </div>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="pi-num">PROJET 01 / 04</div>
+        <h2 class="pi-title">Le Pain du Coin</h2>
+        <div class="pi-sub">Boulangerie de quartier · one-page</div>
+        <p class="pi-desc">
+          Page unique pour une boulangerie : horaires, plan d'accès, trois photos du fournil, formulaire de contact. Tout sur un seul écran, scrollable, lisible en 2 secondes depuis un téléphone. Le client voulait "juste un truc sobre qui montre qu'on existe". Livré en 2 jours, 38 ko de code total.
+        </p>
+        <div class="pi-specs">
+          <div class="pi-spec"><span class="pi-spec-l">Stack</span><span class="pi-spec-v">HTML · CSS · JS vanilla</span></div>
+          <div class="pi-spec"><span class="pi-spec-l">Hébergement</span><span class="pi-spec-v">GitHub Pages</span></div>
+          <div class="pi-spec"><span class="pi-spec-l">Poids</span><span class="pi-spec-v">38 ko</span></div>
+          <div class="pi-spec"><span class="pi-spec-l">Délai</span><span class="pi-spec-v">2 jours</span></div>
+        </div>
+        <div class="pi-foot">
+          <span class="pi-price">500 €</span>
+          <a href="contact.html" class="pi-cta" data-magnetic>Demander le même →</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJET 02 -->
+    <article class="project-detail reverse">
+      <div class="project-visu">
+        <span class="project-visu-label">fig. 02</span>
+        <div class="project-visu-frame">
+          <div class="pvf-bar"><span></span><span></span><span></span></div>
+          <div class="pvf-body">
+            <div class="pvf-h"></div>
+            <div class="pvf-p"></div>
+            <div class="pvf-p"></div>
+            <div class="pvf-cta"></div>
+          </div>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="pi-num">PROJET 02 / 04</div>
+        <h2 class="pi-title">Cabinet de l'Ostéo</h2>
+        <div class="pi-sub">Ostéopathe libéral · vitrine + réservation</div>
+        <p class="pi-desc">
+          Site 5 pages pour un cabinet d'ostéopathie : présentation, spécialités, tarifs, contact, et intégration d'un widget Cal.com pour la prise de rendez-vous en ligne. Le praticien voulait que ses patients puissent réserver 24h/24 sans l'appeler. Livré en 5 jours, le widget de réservation a fait gagner 2h/semaine de téléphone.
+        </p>
+        <div class="pi-specs">
+          <div class="pi-spec"><span class="pi-spec-l">Stack</span><span class="pi-spec-v">HTML · CSS · JS + Cal.com</span></div>
+          <div class="pi-spec"><span class="pi-spec-l">Pages</span><span class="pi-spec-v">5</span></div>
+          <div class="pi-spec"><span class="pi-spec-l">Délai</span><span class="pi-spec-v">5 jours</span></div>
+          <div class="pi-spec"><span class="pi-spec-l">Réservations</span><span class="pi-spec-v">+30% en 1 mois</span></div>
+        </div>
+        <div class="pi-foot">
+          <span class="pi-price">1 200 €</span>
+          <a href="contact.html" class="pi-cta" data-magnetic>Demander le même →</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJET 03 -->
+    <article class="project-detail">
+      <div class="project-visu">
+        <span class="project-visu-label">fig. 03</span>
+        <div class="project-visu-frame">
+          <div class="pvf-bar"><span></span><span></span><span></span></div>
+          <div class="pvf-body">
+            <div class="pvf-h"></div>
+            <div class="pvf-grid"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            <div class="pvf-p"></div>
+            <div class="pvf-cta"></div>
+          </div>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="pi-num">PROJET 03 / 04</div>
+        <h2 class="pi-title">AssoXYZ</h2>
+        <div class="pi-sub">Association loi 1901 · 5 pages + blog léger</div>
+        <p class="pi-desc">
+          Site complet pour une asso : qui nous sommes, ce qu'on fait, comment adhérer / donner, événements à venir, contact. Modifiable par les bénévoles via un mini-éditeur Markdown (juste un textarea, pas de CMS à apprendre). Livré en 8 jours, l'asso a depuis publié 12 articles sans me demander.
+        </p>
+        <div class="pi-specs">
+          <div class="pi-spec"><span class="pi-spec-l">Stack</span><span class="pi-spec-v">HTML · CSS · JS + éditeur Markdown</span></div>
+          <div class="pi-spec"><span class="pi-spec-l">Pages</span><span class="pi-spec-v">5 + blog</span></div>
+          <div class="pi-spec"><span class="pi-spec-l">Délai</span><span class="pi-spec-v">8 jours</span></div>
+          <div class="pi-spec"><span class="pi-spec-l">Autonomie</span><span class="pi-spec-v">12 articles publiés sans moi</span></div>
+        </div>
+        <div class="pi-foot">
+          <span class="pi-price">1 500 €</span>
+          <a href="contact.html" class="pi-cta" data-magnetic>Demander le même →</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJET 04 -->
+    <article class="project-detail reverse">
+      <div class="project-visu">
+        <span class="project-visu-label">fig. 04</span>
+        <div class="project-visu-frame">
+          <div class="pvf-bar"><span></span><span></span><span></span></div>
+          <div class="pvf-body">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom: 12px;">
+              <span style="font-size:11px; color: var(--muted); font-family: 'JetBrains Mono', monospace;">AVANT</span>
+              <span style="font-size:11px; color: var(--orange); font-family: 'JetBrains Mono', monospace;">APRÈS</span>
+            </div>
+            <div class="pvf-h"></div>
+            <div class="pvf-p"></div>
+            <div class="pvf-cta"></div>
+          </div>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="pi-num">PROJET 04 / 04</div>
+        <h2 class="pi-title">Garage Martin · migration</h2>
+        <div class="pi-sub">Site Wix → statique · -80% de poids</div>
+        <p class="pi-desc">
+          Un garagiste avait un site Wix construit par un cousin en 2019, 3,2 Mo, lent, impossible à modifier sans payer un abonnement. Je l'ai recodé en HTML/CSS à la main, conservé le nom de domaine, hébergé sur Pages. Le client a son site pour les 10 prochaines années sans rien payer d'autre que son nom de domaine (~12 €/an).
+        </p>
+        <div class="pi-specs">
+          <div class="pi-spec"><span class="pi-spec-l">Avant</span><span class="pi-spec-v">3,2 Mo · 4,2 s</span></div>
+          <div class="pi-spec"><span class="pi-spec-l">Après</span><span class="pi-spec-v">180 ko · 0,6 s</span></div>
+          <div class="pi-spec"><span class="pi-spec-l">Délai</span><span class="pi-spec-v">1 jour</span></div>
+          <div class="pi-spec"><span class="pi-spec-l">Lighthouse</span><span class="pi-spec-v">98 / 100</span></div>
+        </div>
+        <div class="pi-foot">
+          <span class="pi-price">600 €</span>
+          <a href="contact.html" class="pi-cta" data-magnetic>Demander le même →</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- BLOC FIN : Comment c'est documenté -->
+    <div style="margin-top: 80px; padding: 40px; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r-lg); text-align: center;">
+      <div class="kicker" style="justify-content: center;"><span>+</span> Et après la livraison</div>
+      <h2 style="margin: 16px auto 20px; max-width: 600px;">Vous repartez avec un <em>vrai</em> dossier.</h2>
+      <p style="font-size: 15px; color: var(--text-2); line-height: 1.6; max-width: 600px; margin: 0 auto 28px;">
+        À la fin de chaque projet, je vous livre un PDF de 6-8 pages : le code source commenté, l'arborescence expliquée, comment modifier les textes, comment publier un changement, et qui appeler si vous voulez que je le fasse. Pas de PDF généré par IA, écrit à la main.
+      </p>
+      <a href="contact.html" class="btn btn-primary btn-large" data-magnetic>
+        <span>Démarrer un projet</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="foot-inner">
+    <div class="foot-l">
+      <span>© 2026 Quelto</span>
+      <span class="dot-sep">·</span>
+      <span>Rémi Chevassut</span>
+      <span class="dot-sep">·</span>
+      <span>auto-entrepreneur</span>
+      <span class="dot-sep">·</span>
+      <span>Grenoble</span>
+    </div>
+    <div class="foot-r">
+      <a href="index.html">← Retour à l'accueil</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
