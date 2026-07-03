@@ -1,10 +1,10 @@
 /* =========================================================
-   QUELTO — sobre mais pas pauvre
-   - Hiérarchie typographique claire (H1 très gros, H2 medium, body 17)
-   - Fond crème #FAFAF7 (chaud, lisible, pas blanc clinique)
-   - Bouton primaire simple (pas pill, pas gradient)
-   - Pas d'animation, pas de decoration
-   - 1 seule couleur d'accent (noir)
+   QUELTO — sobre mais qui claque
+   - Hiérarchie typographique FORTE
+   - Numéro de section (01, 02...) en mono
+   - H1 80px, signature visuelle
+   - Un seul accent orange (CTAs + signature)
+   - Sections clairement séparées, pas d'alternance gratuite
    ========================================================= */
 
 :root {
@@ -14,7 +14,10 @@
   --c-ink-2: #2B2B28;
   --c-muted: #6B6963;
   --c-line: #D9D6CC;
+  --c-line-soft: #E6E3DA;
+  --c-accent: #D97706;
   --ff-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --ff-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -43,8 +46,8 @@ a:hover { text-decoration-color: var(--c-ink); }
 h1, h2, h3, h4 {
   margin: 0;
   font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
   color: var(--c-ink);
 }
 p { margin: 0; }
@@ -80,15 +83,26 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  height: 64px;
+  height: 68px;
 }
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-size: 19px;
   font-weight: 600;
   color: var(--c-ink);
   text-decoration: none;
   letter-spacing: -0.01em;
 }
+.brand-mark {
+  width: 28px; height: 28px;
+  color: var(--c-ink);
+  flex-shrink: 0;
+}
+.brand:hover .brand-name { text-decoration: underline; text-underline-offset: 4px; }
+.brand:hover { text-decoration: none; }
+
 .primary-nav {
   display: none;
   gap: 32px;
@@ -101,138 +115,302 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   font-weight: 500;
   color: var(--c-ink);
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
+.nav-cta .arrow { transition: transform 150ms ease; }
 .nav-cta:hover { text-decoration: underline; text-underline-offset: 4px; }
+.nav-cta:hover .arrow { transform: translateX(2px); }
 
-@media (min-width: 720px) {
-  .primary-nav { display: flex; }
-}
+@media (min-width: 720px) { .primary-nav { display: flex; } }
 
 /* =========================================================
-   Sections
+   HERO — claque fort
    ========================================================= */
-section { padding: 64px 0; }
-section + section { padding-top: 0; }
-
 .hero {
   padding: 80px 0 96px;
   background: var(--c-bg);
   border-bottom: 1px solid var(--c-line);
 }
-
+.hero-eyebrow {
+  font-family: var(--ff-mono);
+  font-size: 13px;
+  color: var(--c-muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-eyebrow::before {
+  content: "";
+  width: 6px; height: 6px;
+  background: var(--c-accent);
+  border-radius: 50%;
+}
 .hero h1 {
-  font-size: clamp(36px, 5vw, 52px);
+  font-size: clamp(40px, 6.4vw, 76px);
   font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-  margin-bottom: 24px;
-  max-width: 16ch;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  margin-bottom: 32px;
+  max-width: 14ch;
 }
 .hero-sub {
-  font-size: 19px;
+  font-size: clamp(18px, 1.5vw, 21px);
   line-height: 1.5;
   color: var(--c-ink-2);
-  margin-bottom: 32px;
+  margin-bottom: 40px;
   max-width: 56ch;
 }
 .hero-cta {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 16px;
+  gap: 16px 24px;
+  margin-bottom: 64px;
 }
 .btn-primary {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   font-size: 15px;
   font-weight: 500;
   color: var(--c-bg);
   background: var(--c-ink);
   text-decoration: none;
-  padding: 11px 20px;
+  padding: 12px 22px;
   border-radius: 6px;
-  transition: background-color 150ms ease;
+  transition: background-color 150ms ease, transform 150ms ease;
 }
-.btn-primary:hover { background: #000; }
-.link-quiet {
-  font-size: 15px;
-  color: var(--c-ink-2);
-  text-decoration: none;
-}
-.link-quiet:hover { color: var(--c-ink); text-decoration: underline; text-underline-offset: 4px; }
-
-/* Standard section headings + body */
-h2 {
-  font-size: 26px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-  margin-bottom: 20px;
+.btn-primary:hover { background: #000; transform: translateY(-1px); }
+.btn-primary-light {
+  background: var(--c-bg);
   color: var(--c-ink);
 }
+.btn-primary-light:hover { background: #fff; }
+
+.link-quiet {
+  font-size: 15px;
+  color: var(--c-ink);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.link-quiet::after { content: "→"; transition: transform 150ms ease; }
+.link-quiet:hover { text-decoration: underline; text-underline-offset: 4px; }
+.link-quiet:hover::after { transform: translateX(2px); }
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin: 0;
+  padding-top: 32px;
+  border-top: 1px solid var(--c-line);
+}
+@media (min-width: 600px) {
+  .hero-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+}
+.hero-stats div { display: flex; flex-direction: column; gap: 6px; }
+.hero-stats dt {
+  font-family: var(--ff-mono);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--c-ink);
+  letter-spacing: -0.01em;
+}
+.hero-stats dd {
+  font-size: 14px;
+  color: var(--c-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* =========================================================
+   Generic sections — number + heading + body
+   ========================================================= */
+section { padding: 80px 0; }
+section + section { padding-top: 64px; }
+
+.section-num {
+  font-family: var(--ff-mono);
+  font-size: 13px;
+  color: var(--c-accent);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
+  display: block;
+}
+
+h2 {
+  font-size: clamp(28px, 3.8vw, 40px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin-bottom: 32px;
+  color: var(--c-ink);
+}
+
 .offre p, .tarif p, .ne-fait-pas p, .comment p, .qui p, .contact p {
   color: var(--c-ink-2);
   font-size: 17px;
-  line-height: 1.6;
+  line-height: 1.65;
   margin-bottom: 16px;
+  max-width: 64ch;
 }
 .offre p:last-child, .tarif p:last-child, .ne-fait-pas p:last-child,
 .comment p:last-child, .qui p:last-child, .contact p:last-child { margin-bottom: 0; }
 
-.tarif {
-  background: var(--c-bg-2);
+/* Steps */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 32px;
+  border-top: 1px solid var(--c-line);
 }
-.tarif-figure {
-  margin-top: 24px;
-  font-size: 16px;
+.steps li {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 24px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--c-line);
+}
+.step-num {
+  font-family: var(--ff-mono);
+  font-size: 14px;
   color: var(--c-muted);
+  padding-top: 4px;
 }
-.tarif-figure strong {
-  font-size: 22px;
+.steps h3 {
+  font-size: 20px;
   font-weight: 600;
-  color: var(--c-ink);
-  margin-left: 4px;
+  letter-spacing: -0.015em;
+  margin-bottom: 8px;
+}
+.steps p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--c-ink-2);
+  margin: 0;
+}
+.comment-cta {
+  margin-top: 40px;
+  font-size: 16px;
 }
 
+/* =========================================================
+   TARIF — chiffre signature
+   ========================================================= */
+.tarif-figure {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin: 8px 0 16px;
+  line-height: 1;
+}
+.tarif-amount {
+  font-family: var(--ff-sans);
+  font-size: clamp(96px, 14vw, 160px);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  color: var(--c-ink);
+  line-height: 0.9;
+}
+.tarif-currency {
+  font-family: var(--ff-sans);
+  font-size: clamp(56px, 8vw, 88px);
+  font-weight: 500;
+  color: var(--c-accent);
+  line-height: 1;
+}
+.tarif-caption {
+  font-family: var(--ff-mono);
+  font-size: 13px;
+  color: var(--c-muted);
+  margin-bottom: 40px;
+  margin-top: 0;
+}
+
+/* =========================================================
+   Signature
+   ========================================================= */
 .signature {
-  margin-top: 32px;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--c-line);
   font-size: 15px;
   color: var(--c-muted);
+  line-height: 1.6;
 }
 
+/* =========================================================
+   CONTACT — bandeau noir signature
+   ========================================================= */
 .contact {
   background: var(--c-ink);
   color: var(--c-bg);
+  margin-top: 32px;
+  position: relative;
+  overflow: hidden;
 }
-.contact h2, .contact p { color: var(--c-bg); }
-.contact a { color: var(--c-bg); text-decoration-color: rgba(250, 250, 247, 0.3); }
+.contact::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 4px;
+  background: var(--c-accent);
+}
+.contact h2 {
+  color: var(--c-bg);
+  font-size: clamp(32px, 4.4vw, 48px);
+  margin-bottom: 20px;
+}
+.contact p {
+  color: rgba(250, 250, 247, 0.8);
+  font-size: 18px;
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+.contact a {
+  color: var(--c-bg);
+  text-decoration-color: rgba(250, 250, 247, 0.3);
+}
 .contact a:hover { text-decoration-color: var(--c-bg); }
-.contact .btn-primary {
-  background: var(--c-bg);
-  color: var(--c-ink);
+.contact .btn-primary-light {
+  margin-top: 8px;
 }
-.contact .btn-primary:hover { background: #fff; }
 .contact-direct {
-  margin-top: 20px;
+  margin-top: 32px;
   font-size: 15px;
-  color: rgba(250, 250, 247, 0.7);
+  color: rgba(250, 250, 247, 0.6);
 }
 .contact-direct a { color: var(--c-bg); }
 
 /* =========================================================
-   Footer
+   Footer — signature finale
    ========================================================= */
 .site-footer {
   background: var(--c-bg);
   border-top: 1px solid var(--c-line);
-  padding: 32px 0;
+  padding: 40px 0;
 }
 .footer-inner {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
   gap: 8px;
   font-size: 14px;
   color: var(--c-muted);
+}
+.footer-mark {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--c-ink);
+  margin-bottom: 8px;
 }
 .footer-inner a { color: var(--c-muted); }
 .footer-inner a:hover { color: var(--c-ink); }

@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#FAFAF7">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="contact.css">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -16,19 +16,25 @@
 <body>
   <header class="site-header scrolled">
     <div class="container header-inner">
-      <a href="index.html" class="brand">Quelto</a>
+      <a href="index.html" class="brand" aria-label="Quelto — accueil">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M4 6 L4 26 M4 6 L20 6 M4 16 L16 16 M20 6 L28 26" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <span class="brand-name">Quelto</span>
+      </a>
       <nav class="primary-nav">
         <a href="index.html#offre">L'offre</a>
         <a href="index.html#tarif">Tarif</a>
         <a href="index.html#qui">Qui</a>
       </nav>
-      <a href="contact.html" class="nav-cta">Écrire →</a>
+      <a href="contact.html" class="nav-cta">Écrire <span class="arrow">→</span></a>
     </div>
   </header>
 
   <main>
     <section class="contact-page">
       <div class="container">
+        <p class="hero-eyebrow">Contact</p>
         <h1>Écrire à Quelto.</h1>
         <p class="lead">Quelques lignes sur votre activité, votre ville, et si vous avez une idée du site que vous voudriez. Je reviens vers vous sous vingt-quatre heures ouvrées, par e-mail ou par téléphone, pour proposer un créneau d'échange d'une demi-heure.</p>
         <p class="direct">Si vous préférez écrire directement&nbsp;: <a href="mailto:bonjour@quelto.fr">bonjour@quelto.fr</a>. Ou téléphoner&nbsp;: <a href="tel:+336****0000">06 00 00 00 00</a>.</p>
@@ -74,7 +80,8 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>Quelto, Rémi Chevassut, Grenoble. © <span id="year">2026</span>.</p>
+      <p class="footer-mark">Quelto</p>
+      <p>Rémi Chevassut · Grenoble · juillet 2026</p>
       <p>Auto-entrepreneur · SIRET sur demande · <a href="mailto:bonjour@quelto.fr">bonjour@quelto.fr</a></p>
     </div>
   </footer>
