@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quelto — sites web pour artisans et commerçants, à partir de 500&nbsp;€</title>
   <meta name="description" content="Rémi, développeur à Grenoble. Je fais des sites web pour des artisans, des commerçants et des professions libérales. Un échange d'une demi-heure, un site livré en deux ou trois jours, à partir de 500 euros.">
-  <meta name="theme-color" content="#FAFAF7">
+  <meta name="theme-color" content="#F4F1E8">
   <meta property="og:title" content="Quelto — sites web pour artisans et commerçants, à partir de 500 €">
   <meta property="og:description" content="Rémi, développeur à Grenoble. Sites web livrés en 2-3 jours, à partir de 500 €.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <script type="importmap">
@@ -33,6 +33,7 @@
 </head>
 <body>
   <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="page-grain" aria-hidden="true"></div>
 
   <header class="site-header">
     <div class="container header-inner">
@@ -54,10 +55,10 @@
   <main>
     <!-- HERO -->
     <section class="hero">
-      <div class="hero-grain" aria-hidden="true"></div>
+      <div class="hero-pattern" aria-hidden="true"></div>
       <div class="container hero-inner">
         <div class="hero-content">
-          <p class="hero-eyebrow">Grenoble · depuis 2026</p>
+          <p class="hero-eyebrow"><span class="dot"></span>Grenoble · depuis 2026</p>
           <h1>Je fais des sites web pour des artisans et des commerçants.</h1>
           <p class="hero-sub">Rémi, développeur. Un échange d'une demi-heure, un site livré en deux ou trois jours, à partir de 500&nbsp;euros. Le site vous appartient, vous pouvez le faire héberger où vous voulez.</p>
           <p class="hero-cta">
@@ -80,6 +81,10 @@
           </dl>
         </div>
         <div class="hero-3d">
+          <div class="hero-3d-label">
+            <span class="mono">fig. 01</span>
+            <span>l'horloge du projet</span>
+          </div>
           <canvas id="heroCanvas" aria-hidden="true"></canvas>
           <svg class="hero-fallback" viewBox="0 0 200 200" aria-hidden="true">
             <g stroke="#1A1A1A" stroke-width="1.4" stroke-linecap="round" fill="none">
@@ -92,7 +97,7 @@
               <line x1="22" y1="100" x2="30" y2="100"/>
               <line x1="170" y1="100" x2="178" y2="100"/>
             </g>
-            <text x="100" y="195" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#6B6963">2–3 jours</text>
+            <text x="100" y="195" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#3D5A4A">2–3 jours</text>
           </svg>
         </div>
       </div>
@@ -100,14 +105,45 @@
 
     <!-- OFFRE -->
     <section class="offre" id="offre">
-      <div class="container">
-        <p class="section-num">01</p>
-        <h2 class="reveal">Ce que je fais.</h2>
-        <p class="reveal">Un site de quatre ou cinq pages. Accueil, à propos, prestations ou catalogue, contact, et selon votre activité une page réalisations, des horaires, une carte. On en parle pendant l'échange, je m'adapte à votre métier plutôt que l'inverse.</p>
-        <p class="reveal">Les textes, c'est moi qui les écris, à partir de ce que vous me dites. Pas de questionnaire à remplir en ligne, pas de blocs vides à compléter vous-même. Je vous soumets les textes pour validation avant la mise en ligne.</p>
-        <p class="reveal">Le design est sobre, lisible, adapté à votre secteur. Le site s'affiche correctement sur téléphone et sur ordinateur, et il est rapide à charger. Vous pouvez le relier à votre nom de domaine et le montrer à vos clients sans rougir.</p>
-        <p class="reveal">Le formulaire de contact envoie les demandes sur votre adresse e-mail. Pas de CRM, pas de pixel Meta, pas de tunnel de conversion. Vous répondez directement, comme à un appel téléphonique.</p>
-        <p class="reveal">Une fois le site en ligne, vous avez quinze jours pour me demander des ajustements de textes ou d'images. Au-delà, je peux continuer à intervenir, mais sur devis, au temps passé. Le site vous appartient, vous pouvez le faire héberger où vous voulez et changer de prestataire si ça ne se passe pas bien avec moi.</p>
+      <div class="container offre-inner">
+        <div class="offre-text">
+          <p class="section-num">01</p>
+          <h2 class="reveal">Ce que je fais.</h2>
+          <p class="reveal">Un site de quatre ou cinq pages. Accueil, à propos, prestations ou catalogue, contact, et selon votre activité une page réalisations, des horaires, une carte. On en parle pendant l'échange, je m'adapte à votre métier plutôt que l'inverse.</p>
+          <p class="reveal">Les textes, c'est moi qui les écris, à partir de ce que vous me dites. Pas de questionnaire à remplir en ligne, pas de blocs vides à compléter vous-même. Je vous soumets les textes pour validation avant la mise en ligne.</p>
+          <p class="reveal">Le design est sobre, lisible, adapté à votre secteur. Le site s'affiche correctement sur téléphone et sur ordinateur, et il est rapide à charger. Vous pouvez le relier à votre nom de domaine et le montrer à vos clients sans rougir.</p>
+          <p class="reveal">Le formulaire de contact envoie les demandes sur votre adresse e-mail. Pas de CRM, pas de pixel Meta, pas de tunnel de conversion. Vous répondez directement, comme à un appel téléphonique.</p>
+          <p class="reveal">Une fois le site en ligne, vous avez quinze jours pour me demander des ajustements de textes ou d'images. Au-delà, je peux continuer à intervenir, mais sur devis, au temps passé. Le site vous appartient, vous pouvez le faire héberger où vous voulez et changer de prestataire si ça ne se passe pas bien avec moi.</p>
+        </div>
+        <aside class="offre-aside reveal" data-reveal-delay="200">
+          <svg viewBox="0 0 240 320" class="offre-illu" aria-hidden="true">
+            <!-- Browser window -->
+            <rect x="20" y="20" width="200" height="280" rx="6" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.5"/>
+            <line x1="20" y1="48" x2="220" y2="48" stroke="#1A1A1A" stroke-width="1.5"/>
+            <circle cx="34" cy="34" r="3" fill="none" stroke="#1A1A1A" stroke-width="1.2"/>
+            <circle cx="46" cy="34" r="3" fill="none" stroke="#1A1A1A" stroke-width="1.2"/>
+            <circle cx="58" cy="34" r="3" fill="none" stroke="#1A1A1A" stroke-width="1.2"/>
+            <rect x="76" y="28" width="120" height="12" rx="2" fill="none" stroke="#1A1A1A" stroke-width="1"/>
+            <!-- Hero text in browser -->
+            <rect x="36" y="68" width="100" height="10" rx="1" fill="#1A1A1A"/>
+            <rect x="36" y="86" width="160" height="4" rx="1" fill="#3D5A4A" opacity="0.5"/>
+            <rect x="36" y="94" width="140" height="4" rx="1" fill="#3D5A4A" opacity="0.5"/>
+            <rect x="36" y="108" width="60" height="20" rx="10" fill="#1A1A1A"/>
+            <!-- Image area -->
+            <rect x="36" y="146" width="168" height="80" rx="4" fill="#F4F1E8" stroke="#3D5A4A" stroke-width="1" stroke-dasharray="3 2"/>
+            <circle cx="120" cy="186" r="14" fill="none" stroke="#3D5A4A" stroke-width="1.2"/>
+            <path d="M120 178 L120 186 L126 190" stroke="#3D5A4A" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+            <!-- Bottom nav -->
+            <line x1="36" y1="244" x2="204" y2="244" stroke="#1A1A1A" stroke-width="0.8"/>
+            <rect x="36" y="256" width="40" height="6" rx="1" fill="#1A1A1A" opacity="0.6"/>
+            <rect x="84" y="256" width="40" height="6" rx="1" fill="#1A1A1A" opacity="0.3"/>
+            <rect x="132" y="256" width="40" height="6" rx="1" fill="#1A1A1A" opacity="0.3"/>
+            <rect x="180" y="256" width="24" height="6" rx="1" fill="#1A1A1A" opacity="0.3"/>
+            <!-- Caption -->
+          </svg>
+          <p class="offre-caption mono">fig. 02 — votre site,</p>
+          <p class="offre-caption">tel qu'il apparaîtra à vos clients</p>
+        </aside>
       </div>
     </section>
 
@@ -119,6 +155,9 @@
 
         <ol class="steps">
           <li class="step reveal" data-reveal-delay="0">
+            <span class="step-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none"><rect x="4" y="6" width="24" height="20" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 12 L28 12 M9 18 L17 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
             <span class="step-num">01</span>
             <div>
               <h3>Vous m'écrivez.</h3>
@@ -126,6 +165,9 @@
             </div>
           </li>
           <li class="step reveal" data-reveal-delay="100">
+            <span class="step-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="1.5"/><path d="M16 9 L16 16 L21 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
             <span class="step-num">02</span>
             <div>
               <h3>On échange une demi-heure.</h3>
@@ -133,6 +175,9 @@
             </div>
           </li>
           <li class="step reveal" data-reveal-delay="200">
+            <span class="step-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none"><path d="M6 24 L6 8 L16 4 L26 8 L26 24 Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M11 14 L21 14 M11 18 L21 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
             <span class="step-num">03</span>
             <div>
               <h3>Je construis le site.</h3>
@@ -140,6 +185,9 @@
             </div>
           </li>
           <li class="step reveal" data-reveal-delay="300">
+            <span class="step-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none"><path d="M6 16 L13 23 L26 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
             <span class="step-num">04</span>
             <div>
               <h3>Vous validez, j'ajuste.</h3>
@@ -183,19 +231,59 @@
 
     <!-- QUI -->
     <section class="qui" id="qui">
-      <div class="container">
-        <p class="section-num">05</p>
-        <h2 class="reveal">Qui.</h2>
-        <p class="reveal">Rémi Chevassut, développeur de formation, installé à Grenoble. J'ai passé dix ans à construire des outils web pour des éditeurs de logiciels et des entreprises de service, en équipe, dans des contextes où la qualité du code et la fiabilité avaient de l'importance.</p>
-        <p class="reveal">J'ai créé Quelto parce que les artisans et les petits commerçants de mon entourage me demandaient régulièrement de l'aide pour leur site, et qu'aucune des offres qu'on leur proposait ne me semblait adaptée. Le site vitrine à vingt-neuf euros par mois était laid, le site sur mesure à huit mille euros était cher, et tout le monde voulait vendre un contrat de maintenance.</p>
-        <p class="reveal">Ici, le site vous appartient, vous pouvez le faire héberger où vous voulez, et je ne vends pas de contrat de maintenance. Si vous avez besoin d'aide six mois plus tard, on en discute, mais vous n'êtes pas engagé. Je préfère avoir peu de clients contents que beaucoup de clients verrouillés.</p>
-        <p class="signature reveal">Rémi Chevassut, développeur à Grenoble. Auto-entrepreneur, juillet 2026. SIRET sur demande.</p>
+      <div class="container qui-inner">
+        <div class="qui-text">
+          <p class="section-num">05</p>
+          <h2 class="reveal">Qui.</h2>
+          <p class="reveal">Rémi Chevassut, développeur de formation, installé à Grenoble. J'ai passé dix ans à construire des outils web pour des éditeurs de logiciels et des entreprises de service, en équipe, dans des contextes où la qualité du code et la fiabilité avaient de l'importance.</p>
+          <p class="reveal">J'ai créé Quelto parce que les artisans et les petits commerçants de mon entourage me demandaient régulièrement de l'aide pour leur site, et qu'aucune des offres qu'on leur proposait ne me semblait adaptée. Le site vitrine à vingt-neuf euros par mois était laid, le site sur mesure à huit mille euros était cher, et tout le monde voulait vendre un contrat de maintenance.</p>
+          <p class="reveal">Ici, le site vous appartient, vous pouvez le faire héberger où vous voulez, et je ne vends pas de contrat de maintenance. Si vous avez besoin d'aide six mois plus tard, on en discute, mais vous n'êtes pas engagé. Je préfère avoir peu de clients contents que beaucoup de clients verrouillés.</p>
+          <p class="signature reveal">Rémi Chevassut, développeur à Grenoble. Auto-entrepreneur, juillet 2026. SIRET sur demande.</p>
+        </div>
+        <aside class="qui-aside reveal" data-reveal-delay="200">
+          <svg viewBox="0 0 240 280" class="qui-illu" aria-hidden="true">
+            <!-- Desk silhouette -->
+            <rect x="20" y="180" width="200" height="6" fill="#1A1A1A"/>
+            <rect x="20" y="186" width="200" height="3" fill="#1A1A1A" opacity="0.4"/>
+            <!-- Monitor -->
+            <rect x="80" y="80" width="120" height="80" rx="2" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="1.5"/>
+            <line x1="80" y1="92" x2="200" y2="92" stroke="#1A1A1A" stroke-width="0.8"/>
+            <circle cx="86" cy="86" r="1.5" fill="#1A1A1A"/>
+            <circle cx="92" cy="86" r="1.5" fill="#1A1A1A"/>
+            <!-- Code lines on monitor -->
+            <line x1="90" y1="100" x2="120" y2="100" stroke="#3D5A4A" stroke-width="1.5"/>
+            <line x1="125" y1="100" x2="155" y2="100" stroke="#1A1A1A" stroke-width="1.5"/>
+            <line x1="95" y1="108" x2="140" y2="108" stroke="#1A1A1A" stroke-width="1.5"/>
+            <line x1="95" y1="116" x2="170" y2="116" stroke="#1A1A1A" stroke-width="1.5"/>
+            <line x1="100" y1="124" x2="135" y2="124" stroke="#1A1A1A" stroke-width="1.5"/>
+            <line x1="100" y1="132" x2="160" y2="132" stroke="#1A1A1A" stroke-width="1.5"/>
+            <line x1="95" y1="140" x2="125" y2="140" stroke="#3D5A4A" stroke-width="1.5"/>
+            <line x1="130" y1="140" x2="170" y2="140" stroke="#1A1A1A" stroke-width="1.5"/>
+            <!-- Stand -->
+            <rect x="135" y="160" width="10" height="14" fill="#1A1A1A"/>
+            <rect x="120" y="174" width="40" height="6" rx="1" fill="#1A1A1A"/>
+            <!-- Coffee cup -->
+            <path d="M40 170 L40 184 Q40 188 44 188 L52 188 Q56 188 56 184 L56 170 Z" fill="none" stroke="#1A1A1A" stroke-width="1.2"/>
+            <path d="M56 174 Q60 174 60 178 Q60 182 56 182" fill="none" stroke="#1A1A1A" stroke-width="1.2"/>
+            <path d="M44 166 Q44 162 46 162 M48 164 Q48 160 50 160 M52 166 Q52 162 54 162" stroke="#1A1A1A" stroke-width="1" fill="none" stroke-linecap="round"/>
+            <!-- Plant -->
+            <rect x="180" y="170" width="20" height="16" fill="none" stroke="#1A1A1A" stroke-width="1.2"/>
+            <path d="M190 170 L190 158 M190 162 Q186 158 184 162 M190 164 Q194 160 196 164" stroke="#3D5A4A" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <!-- Person silhouette behind monitor (just head/shoulders) -->
+            <circle cx="140" cy="48" r="14" fill="none" stroke="#1A1A1A" stroke-width="1.5"/>
+            <path d="M120 80 Q120 64 140 64 Q160 64 160 80" fill="none" stroke="#1A1A1A" stroke-width="1.5"/>
+            <!-- Light from monitor on face -->
+            <path d="M130 48 Q140 44 150 48" fill="none" stroke="#3D5A4A" stroke-width="1" opacity="0.6"/>
+          </svg>
+          <p class="qui-caption mono">fig. 03 — l'auteur,</p>
+          <p class="qui-caption">à son bureau, à Grenoble</p>
+        </aside>
       </div>
     </section>
 
     <!-- CONTACT FINAL -->
     <section class="contact">
-      <div class="contact-grain" aria-hidden="true"></div>
+      <div class="contact-pattern" aria-hidden="true"></div>
       <div class="container">
         <h2 class="reveal">Si vous voulez qu'on en parle.</h2>
         <p class="reveal">Écrire prend deux minutes, je réponds vite, et l'échange d'une demi-heure n'engage à rien.</p>
@@ -209,11 +297,28 @@
     </section>
   </main>
 
+  <!-- CARTE DE VISITE -->
+  <section class="carte-visite">
+    <div class="container carte-inner">
+      <div class="carte-col">
+        <p class="carte-label">Quelto</p>
+        <p class="carte-value">Sites web pour artisans et commerçants, à partir de 500&nbsp;€.</p>
+      </div>
+      <div class="carte-col">
+        <p class="carte-label">Rémi Chevassut</p>
+        <p class="carte-value">Développeur à Grenoble · auto-entrepreneur · juillet 2026</p>
+      </div>
+      <div class="carte-col">
+        <p class="carte-label">Contact direct</p>
+        <p class="carte-value"><a href="mailto:bonjour@quelto.fr">bonjour@quelto.fr</a><br><a href="tel:+336****0000">06 00 00 00 00</a></p>
+      </div>
+    </div>
+  </section>
+
   <footer class="site-footer">
     <div class="container footer-inner">
       <p class="footer-mark">Quelto</p>
-      <p>Rémi Chevassut · Grenoble · juillet 2026</p>
-      <p>Auto-entrepreneur · SIRET sur demande · <a href="mailto:bonjour@quelto.fr">bonjour@quelto.fr</a></p>
+      <p>© <span id="year">2026</span> · SIRET sur demande</p>
     </div>
   </footer>
 

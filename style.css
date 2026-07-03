@@ -1,24 +1,30 @@
 /* =========================================================
-   QUELTO — design final
-   - Editorial sobre + 3D + animations subtiles
-   - H1 impact, sections numérotées, accent orange unique
-   - 3D clock dans le hero (pas icosahedron random)
-   - Reveal au scroll (fade-up doux, pas agressif)
-   - Magnetic léger sur les CTA (10% max)
-   - Grain SVG noise très subtil en background
+   QUELTO — final design
+   - Cream warm + sage green + orange + ink
+   - 3 fontes : Inter (UI), JetBrains Mono (chiffres), Fraunces ital (accents)
+   - Grain SVG visible sur tout le site
+   - Illustrations SVG inline (fenêtre browser, dev au bureau)
+   - 3D clock dans le hero
+   - Pattern géométrique sur hero et contact
+   - Carte de visite éditoriale en bas
    ========================================================= */
 
 :root {
-  --c-bg: #FAFAF7;
-  --c-bg-2: #F2F0E9;
+  --c-bg: #F4F1E8;
+  --c-bg-2: #EAE6D8;
+  --c-bg-3: #DDD7C5;
   --c-ink: #1A1A1A;
   --c-ink-2: #2B2B28;
   --c-muted: #6B6963;
-  --c-line: #D9D6CC;
-  --c-line-soft: #E6E3DA;
+  --c-line: #C9C2AE;
+  --c-line-soft: #D8D2C0;
   --c-accent: #D97706;
+  --c-sage: #3D5A4A;
+  --c-sage-soft: #E8EFE9;
+
   --ff-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --ff-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+  --ff-serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -62,6 +68,8 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 :focus-visible { outline: 2px solid var(--c-ink); outline-offset: 3px; }
 ::selection { background: var(--c-ink); color: var(--c-bg); }
 
+.mono { font-family: var(--ff-mono); }
+
 .container {
   width: 100%;
   max-width: 1100px;
@@ -71,23 +79,36 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 @media (min-width: 720px) { .container { padding: 0 32px; } }
 
 /* =========================================================
-   Custom cursor — small dot, grows on interactive
+   Page grain — sur tout le body
+   ========================================================= */
+.page-grain {
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.1  0 0 0 0 0.1  0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.7;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* =========================================================
+   Custom cursor
    ========================================================= */
 .cursor {
   position: fixed;
   top: 0; left: 0;
-  width: 8px; height: 8px;
+  width: 10px; height: 10px;
   background: var(--c-ink);
   border-radius: 50%;
   pointer-events: none;
-  z-index: 100;
+  z-index: 200;
   transform: translate(-50%, -50%);
   transition: width 200ms var(--ease-out), height 200ms var(--ease-out), background 200ms ease;
   opacity: 0;
 }
 body.cursor-ready .cursor { opacity: 1; }
 .cursor.hover {
-  width: 24px; height: 24px;
+  width: 28px; height: 28px;
   background: var(--c-accent);
 }
 @media (hover: none), (max-width: 900px) { .cursor { display: none; } }
@@ -99,7 +120,7 @@ body.cursor-ready .cursor { opacity: 1; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(250, 250, 247, 0.85);
+  background: rgba(244, 241, 232, 0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid transparent;
@@ -112,6 +133,8 @@ body.cursor-ready .cursor { opacity: 1; }
   justify-content: space-between;
   gap: 16px;
   height: 68px;
+  position: relative;
+  z-index: 2;
 }
 .brand {
   display: inline-flex;
@@ -142,7 +165,6 @@ body.cursor-ready .cursor { opacity: 1; }
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  transition: transform 200ms var(--ease-out);
 }
 .nav-cta .arrow { transition: transform 200ms var(--ease-out); }
 .nav-cta:hover { text-decoration: underline; text-underline-offset: 4px; }
@@ -152,21 +174,23 @@ body.cursor-ready .cursor { opacity: 1; }
 @media (min-width: 720px) { .primary-nav { display: flex; } }
 
 /* =========================================================
-   HERO — split: content + 3D clock
+   HERO
    ========================================================= */
 .hero {
   position: relative;
-  padding: 64px 0 96px;
+  padding: 72px 0 96px;
   background: var(--c-bg);
-  border-bottom: 1px solid var(--c-line);
   overflow: hidden;
 }
-.hero-grain {
+.hero-pattern {
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.1  0 0 0 0 0.1  0 0 0 0.04 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(26, 26, 26, 0.07) 1px, transparent 0);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 30%, transparent 80%);
   opacity: 0.6;
-  mix-blend-mode: multiply;
   pointer-events: none;
 }
 .hero-inner {
@@ -175,29 +199,25 @@ body.cursor-ready .cursor { opacity: 1; }
   gap: 48px;
   align-items: center;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 @media (min-width: 900px) {
-  .hero-inner {
-    grid-template-columns: 1.3fr 1fr;
-    gap: 80px;
-  }
+  .hero-inner { grid-template-columns: 1.3fr 1fr; gap: 64px; }
 }
 .hero-content { max-width: 640px; }
 .hero-eyebrow {
   font-family: var(--ff-mono);
   font-size: 13px;
-  color: var(--c-muted);
+  color: var(--c-sage);
   letter-spacing: 0.05em;
   margin-bottom: 32px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
 }
-.hero-eyebrow::before {
-  content: "";
+.hero-eyebrow .dot {
   width: 6px; height: 6px;
-  background: var(--c-accent);
+  background: var(--c-sage);
   border-radius: 50%;
   animation: pulse 2.4s ease-in-out infinite;
 }
@@ -236,7 +256,7 @@ body.cursor-ready .cursor { opacity: 1; }
   background: var(--c-ink);
   text-decoration: none;
   padding: 13px 22px;
-  border-radius: 6px;
+  border-radius: 4px;
   transition: background-color 200ms ease, transform 200ms var(--ease-out), box-shadow 200ms ease;
 }
 .btn-primary:hover {
@@ -296,6 +316,19 @@ body.cursor-ready .cursor { opacity: 1; }
   max-width: 380px;
   margin: 0 auto;
 }
+.hero-3d-label {
+  position: absolute;
+  top: -28px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--c-sage);
+  z-index: 2;
+  letter-spacing: 0.02em;
+}
+.hero-3d-label .mono { font-weight: 500; }
 #heroCanvas {
   position: absolute;
   inset: 0;
@@ -318,15 +351,15 @@ body.cursor-ready .cursor { opacity: 1; }
 }
 
 /* =========================================================
-   Generic sections — number + heading + body
+   Generic sections
    ========================================================= */
-section { padding: 80px 0; }
+section { padding: 80px 0; position: relative; z-index: 2; }
 section + section { padding-top: 64px; }
 
 .section-num {
   font-family: var(--ff-mono);
   font-size: 13px;
-  color: var(--c-accent);
+  color: var(--c-sage);
   font-weight: 500;
   letter-spacing: 0.05em;
   margin-bottom: 24px;
@@ -342,24 +375,57 @@ h2 {
   color: var(--c-ink);
 }
 
-.offre, .comment, .tarif, .ne-fait-pas, .qui {
-  background: var(--c-bg);
-}
-.tarif, .ne-fait-pas {
-  background: var(--c-bg-2);
-}
+.offre, .comment, .tarif, .ne-fait-pas, .qui { background: var(--c-bg); }
+.tarif, .ne-fait-pas { background: var(--c-bg-2); }
 
-.offre p, .tarif p, .ne-fait-pas p, .comment p, .qui p, .contact p {
+/* =========================================================
+   OFFRE — 2 cols text + illu
+   ========================================================= */
+.offre-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: start;
+}
+@media (min-width: 900px) {
+  .offre-inner { grid-template-columns: 1.4fr 1fr; gap: 64px; }
+}
+.offre-text p, .tarif p, .ne-fait-pas p, .comment p, .qui-text p, .contact p {
   color: var(--c-ink-2);
   font-size: 17px;
   line-height: 1.65;
   margin-bottom: 16px;
   max-width: 64ch;
 }
-.offre p:last-child, .tarif p:last-child, .ne-fait-pas p:last-child,
-.comment p:last-child, .qui p:last-child, .contact p:last-child { margin-bottom: 0; }
+.offre-text p:last-child, .tarif p:last-child, .ne-fait-pas p:last-child,
+.comment p:last-child, .qui-text p:last-child, .contact p:last-child { margin-bottom: 0; }
 
-/* Steps */
+.offre-aside {
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.offre-illu {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  background: var(--c-bg-2);
+  border: 1px solid var(--c-line);
+  padding: 0;
+}
+.offre-caption {
+  font-size: 13px;
+  color: var(--c-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+.offre-caption.mono { color: var(--c-sage); font-weight: 500; }
+
+/* =========================================================
+   Process steps
+   ========================================================= */
 .steps {
   display: flex;
   flex-direction: column;
@@ -369,11 +435,12 @@ h2 {
 }
 .steps li {
   display: grid;
-  grid-template-columns: 60px 1fr;
-  gap: 24px;
+  grid-template-columns: 56px 56px 1fr;
+  gap: 20px;
   padding: 28px 0;
   border-bottom: 1px solid var(--c-line);
   position: relative;
+  align-items: start;
 }
 .steps li::before {
   content: "";
@@ -385,6 +452,17 @@ h2 {
   transition: width 800ms var(--ease-out);
 }
 .steps li.is-visible::before { width: 28px; }
+.step-icon {
+  width: 48px; height: 48px;
+  border: 1px solid var(--c-line);
+  background: var(--c-sage-soft);
+  color: var(--c-sage);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.step-icon svg { width: 24px; height: 24px; }
 .step-num {
   font-family: var(--ff-mono);
   font-size: 14px;
@@ -454,7 +532,41 @@ h2 {
 }
 
 /* =========================================================
-   CONTACT — section signature
+   QUI — 2 cols text + illu
+   ========================================================= */
+.qui-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: start;
+}
+@media (min-width: 900px) {
+  .qui-inner { grid-template-columns: 1.4fr 1fr; gap: 64px; }
+}
+.qui-aside {
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.qui-illu {
+  width: 100%;
+  height: auto;
+  background: var(--c-bg-2);
+  border: 1px solid var(--c-line);
+  border-radius: 4px;
+}
+.qui-caption {
+  font-size: 13px;
+  color: var(--c-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+.qui-caption.mono { color: var(--c-sage); font-weight: 500; }
+
+/* =========================================================
+   CONTACT
    ========================================================= */
 .contact {
   position: relative;
@@ -470,12 +582,13 @@ h2 {
   background: var(--c-accent);
   z-index: 1;
 }
-.contact-grain {
+.contact-pattern {
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-  opacity: 0.7;
-  mix-blend-mode: screen;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.06) 1px, transparent 0);
+  background-size: 32px 32px;
+  opacity: 0.6;
   pointer-events: none;
 }
 .contact h2 {
@@ -484,22 +597,59 @@ h2 {
   margin-bottom: 20px;
 }
 .contact p {
-  color: rgba(250, 250, 247, 0.8);
+  color: rgba(244, 241, 232, 0.8);
   font-size: 18px;
   line-height: 1.55;
   margin-bottom: 16px;
 }
 .contact a {
   color: var(--c-bg);
-  text-decoration-color: rgba(250, 250, 247, 0.3);
+  text-decoration-color: rgba(244, 241, 232, 0.3);
 }
 .contact a:hover { text-decoration-color: var(--c-bg); }
 .contact-direct {
   margin-top: 32px;
   font-size: 15px;
-  color: rgba(250, 250, 247, 0.6);
+  color: rgba(244, 241, 232, 0.6);
 }
 .contact-direct a { color: var(--c-bg); }
+
+/* =========================================================
+   CARTE DE VISITE — bottom signature band
+   ========================================================= */
+.carte-visite {
+  position: relative;
+  z-index: 2;
+  background: var(--c-sage);
+  color: var(--c-bg);
+  padding: 48px 0;
+  border-top: 4px solid var(--c-accent);
+}
+.carte-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: 720px) {
+  .carte-inner { grid-template-columns: 1fr 1fr 1fr; gap: 48px; }
+}
+.carte-label {
+  font-family: var(--ff-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--c-sage-soft);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.carte-value {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--c-bg);
+  margin: 0;
+}
+.carte-value a { color: var(--c-bg); text-decoration-color: rgba(244, 241, 232, 0.4); }
+.carte-value a:hover { text-decoration-color: var(--c-bg); }
 
 /* =========================================================
    Footer
@@ -507,26 +657,26 @@ h2 {
 .site-footer {
   background: var(--c-bg);
   border-top: 1px solid var(--c-line);
-  padding: 40px 0;
+  padding: 32px 0;
+  position: relative;
+  z-index: 2;
 }
 .footer-inner {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  font-size: 14px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13px;
   color: var(--c-muted);
 }
 .footer-mark {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--c-ink);
-  margin-bottom: 8px;
 }
-.footer-inner a { color: var(--c-muted); }
-.footer-inner a:hover { color: var(--c-ink); }
 
 /* =========================================================
-   Reveal animations — fade up + stagger
+   Reveal animations
    ========================================================= */
 .reveal {
   opacity: 0;
@@ -539,7 +689,7 @@ h2 {
 }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .hero-eyebrow::before, .hero-fallback { animation: none; }
+  .hero-eyebrow .dot, .hero-fallback { animation: none; }
   html { scroll-behavior: auto; }
   .cursor { display: none; }
 }

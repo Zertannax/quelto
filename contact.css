@@ -3,9 +3,21 @@
    ========================================================= */
 
 .contact-page {
+  position: relative;
   padding: 80px 0 96px;
   background: var(--c-bg);
+  overflow: hidden;
 }
+.contact-page .contact-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(26, 26, 26, 0.05) 1px, transparent 0);
+  background-size: 32px 32px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.contact-page .container { position: relative; z-index: 2; }
 .contact-page .hero-eyebrow { margin-bottom: 24px; }
 .contact-page h1 {
   font-size: clamp(40px, 6vw, 64px);
@@ -16,7 +28,7 @@
   color: var(--c-ink);
 }
 .contact-page .lead {
-  font-size: clamp(18px, 1.5vw, 21px);
+  font-size: clamp(18px, 1.4vw, 20px);
   line-height: 1.55;
   color: var(--c-ink-2);
   margin-bottom: 16px;
@@ -25,7 +37,7 @@
 .contact-page .direct {
   font-size: 16px;
   color: var(--c-ink-2);
-  margin-bottom: 56px;
+  margin-bottom: 48px;
   padding-bottom: 32px;
   border-bottom: 1px solid var(--c-line);
 }
@@ -55,7 +67,7 @@
   color: var(--c-ink);
   background: var(--c-bg);
   border: 1px solid var(--c-line);
-  border-radius: 6px;
+  border-radius: 4px;
   padding: 11px 14px;
   transition: border-color 150ms ease, box-shadow 150ms ease;
 }
@@ -63,7 +75,7 @@
 .field textarea:focus {
   outline: none;
   border-color: var(--c-ink);
-  box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.08);
+  box-shadow: 0 0 0 3px rgba(61, 90, 74, 0.15);
 }
 .field input.invalid,
 .field textarea.invalid {
@@ -87,12 +99,12 @@
   color: var(--c-bg);
   background: var(--c-ink);
   border: 0;
-  border-radius: 6px;
-  padding: 12px 22px;
+  border-radius: 4px;
+  padding: 13px 22px;
   cursor: pointer;
-  transition: background-color 150ms ease;
+  transition: background-color 200ms ease, transform 200ms var(--ease-out);
 }
-.form-foot .btn-primary:hover { background: #000; }
+.form-foot .btn-primary:hover { background: #000; transform: translateY(-1px); }
 .form-foot .btn-primary:disabled { background: #999; cursor: default; }
 .form-note {
   font-size: 14px;
@@ -104,16 +116,16 @@
 .form-success {
   margin-top: 24px;
   padding: 14px 16px;
-  background: var(--c-bg-2);
-  color: var(--c-ink);
-  border: 1px solid var(--c-line);
-  border-radius: 6px;
+  background: var(--c-sage-soft);
+  color: var(--c-sage);
+  border: 1px solid var(--c-sage);
+  border-radius: 4px;
   font-size: 15px;
   line-height: 1.5;
 }
 
 .back-link {
-  margin-top: 56px;
+  margin-top: 48px;
   font-size: 15px;
 }
 .back-link a { color: var(--c-ink); }

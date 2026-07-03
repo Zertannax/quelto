@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Écrire à Quelto</title>
   <meta name="description" content="Formulaire de contact Quelto. Réponse sous vingt-quatre heures ouvrées, sans engagement.">
-  <meta name="theme-color" content="#FAFAF7">
+  <meta name="theme-color" content="#F4F1E8">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -15,6 +15,7 @@
 </head>
 <body>
   <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="page-grain" aria-hidden="true"></div>
 
   <header class="site-header scrolled">
     <div class="container header-inner">
@@ -35,9 +36,9 @@
 
   <main>
     <section class="contact-page">
-      <div class="hero-grain" aria-hidden="true"></div>
+      <div class="contact-pattern" aria-hidden="true"></div>
       <div class="container">
-        <p class="hero-eyebrow">Contact</p>
+        <p class="hero-eyebrow"><span class="dot"></span>Contact</p>
         <h1 class="reveal">Écrire à Quelto.</h1>
         <p class="lead reveal">Quelques lignes sur votre activité, votre ville, et si vous avez une idée du site que vous voudriez. Je reviens vers vous sous vingt-quatre heures ouvrées, par e-mail ou par téléphone, pour proposer un créneau d'échange d'une demi-heure.</p>
         <p class="direct reveal">Si vous préférez écrire directement&nbsp;: <a href="mailto:bonjour@quelto.fr">bonjour@quelto.fr</a>. Ou téléphoner&nbsp;: <a href="tel:+336****0000">06 00 00 00 00</a>.</p>
@@ -81,11 +82,27 @@
     </section>
   </main>
 
+  <section class="carte-visite">
+    <div class="container carte-inner">
+      <div class="carte-col">
+        <p class="carte-label">Quelto</p>
+        <p class="carte-value">Sites web pour artisans et commerçants, à partir de 500&nbsp;€.</p>
+      </div>
+      <div class="carte-col">
+        <p class="carte-label">Rémi Chevassut</p>
+        <p class="carte-value">Développeur à Grenoble · auto-entrepreneur · juillet 2026</p>
+      </div>
+      <div class="carte-col">
+        <p class="carte-label">Contact direct</p>
+        <p class="carte-value"><a href="mailto:bonjour@quelto.fr">bonjour@quelto.fr</a><br><a href="tel:+336****0000">06 00 00 00 00</a></p>
+      </div>
+    </div>
+  </section>
+
   <footer class="site-footer">
     <div class="container footer-inner">
       <p class="footer-mark">Quelto</p>
-      <p>Rémi Chevassut · Grenoble · juillet 2026</p>
-      <p>Auto-entrepreneur · SIRET sur demande · <a href="mailto:bonjour@quelto.fr">bonjour@quelto.fr</a></p>
+      <p>© <span id="year">2026</span> · SIRET sur demande</p>
     </div>
   </footer>
 
